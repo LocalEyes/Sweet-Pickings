@@ -1,0 +1,11 @@
+/* dialog.st.css */
+
+.root {
+  -st-states:
+    variant(enum(1, 2, 3, 4, 5, 6)),
+    transition(enum(1, 2, 3, 4, 5, 6));
+}
+
+.backdrop {}
+
+.content {}

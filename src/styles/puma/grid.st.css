@@ -1,0 +1,59 @@
+/**
+ * = GRID - grid.st.css 
+ *
+ * Our main grid styles live here, you maybe tempted to make add a load of
+ * utilities that configure your grid in a load of ways... Be warned that having
+ * too much layout specified with the markup via props/classnames is a real pain 
+ * when you are trying to make changes to a page full of grids. Opinion.
+ * 
+ * ========================================================================= */
+
+
+/* = Default project vars. */
+:import {
+  -st-from: "@actionishope/shelley/styles/default/project.st.css";
+  -st-named:
+    breakpoint-sm,
+    breakpoint-md,
+    --spacing-unit;
+}
+
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: InchesTheme;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "@actionishope/shelley/components/Grid/grid.st.css";
+  -st-default: Grid;
+}
+
+@st-scope InchesTheme {
+  /* = Your grid styles here... */
+
+  /**
+   * Grid:variant(1 - 4) have been assigned as part of our default.
+   * You can overide those (in your project file) just import them from our 
+   * default project file and reassign.
+   */
+
+}
+
+
+@media value(breakpoint-sm) {
+  @st-scope InchesTheme {
+    Grid:variant(4) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@media value(breakpoint-md) {
+  @st-scope InchesTheme {
+    Grid:variant(4) {
+      grid-template-columns: repeat(3, minmax(0, 33.334%));
+    }
+  }
+}

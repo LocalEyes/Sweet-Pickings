@@ -1,0 +1,11 @@
+/* banner.st.css CSS API */
+
+.root {
+  -st-states:
+    tone(enum(1, 2, 3, 4, 5, 6)),
+    variant(enum(1, 2, 3, 4, 5, 6))
+}
+
+.media {}
+
+.text {}

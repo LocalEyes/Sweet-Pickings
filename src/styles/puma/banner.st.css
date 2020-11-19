@@ -1,0 +1,107 @@
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Puma;
+  -st-named:
+    --color-accent-1,
+    --color-accent-2,
+    --color-accent-3,
+    --select-icon-light;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/Banner/banner.st.css";
+  -st-default: Banner;
+}
+
+:import {
+  -st-from: "@actionishope/shelley/components/InputBase/inputBase.st.css";
+  -st-default: InputBase;
+}
+
+:import {
+  -st-from: "@actionishope/shelley/components/InputSelect/inputSelect.st.css";
+  -st-default: InputSelect;
+}
+
+:import {
+  -st-from: "@actionishope/shelley/components/Label/label.st.css";
+  -st-default: Label;
+}
+
+
+@st-scope Puma {
+
+  Banner {
+    min-height: 330px;
+    height: 40vh;
+    max-height: 450px;
+    /* margin-bottom: 56px; */
+    align-items: center;
+    align-content: center;
+    grid-row-gap: 8px;
+
+    /* https://live.staticflickr.com/6171/6193065097_f77d0e901d_h.jpg'); */
+    /* https://live.staticflickr.com/8605/16200926468_453e837b7d_c.jpg'); */
+    /* https://images.unsplash.com/photo-1586366461834-d2d65d725a2e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80'); */
+    /* https://energysavingtrust.org.uk/sites/localeyes/files/blog/images/GettyImages-177821789.jpg" */
+    /* https://www.lowcarbon.com/wp-content/uploads/2019/06/Solar-PV-2500x0-c-default.jpg" */
+    /* https://www.lowcarbon.com/development/uk-solar-development/ */
+
+    /* https://www.flickr.com/photos/steb1/29657750822/ 
+       Male Common Hawker (Aeshna juncea) in flight.
+     - permission granted.
+    */
+
+    /* https://cdn.pipandthecity.com/wp-content/uploads/2018/12/09102837/rachael-smith-668683-unsplash.jpg 
+       Awaiting response - https://pipandthecity.com/things-to-do-gower-wales/ 
+     */
+
+    position: relative;
+    overflow: hidden;
+
+    color: #fff;
+    background-color: rgb(33, 33, 33);
+  }
+
+  Banner:tone(1) {}
+
+  Banner InputBase::fieldContainer {
+    background-color: rgb(27 27 27 / 70%);
+  }
+
+  Banner InputSelect::fieldInput {
+    background-image: var(--select-icon-light);
+  }
+
+  Banner Label::labelText {
+    color: #fff
+  }
+
+  Banner:tone(1) InputBase::fieldContainer::before,
+  Banner:tone(1) InputBase::fieldContainer::after {
+    background-color: var(--color-accent-2);
+
+  }
+
+  /* --select-icon-light */
+
+  Banner::media {
+    margin: 0;
+    display: grid;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  Banner::media img {
+    /* width: 100%; */
+    /* margin-top: -22%; */
+  }
+
+  Banner::text {
+    z-index: 5;
+  }
+}

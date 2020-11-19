@@ -1,0 +1,61 @@
+/**
+ * = BUTTON - button.st.css
+ *
+ * We only have one, so far so good. YOu should have enough sizes and hooks
+ * but you can always add your own custome classes for whatever you need or 
+ * wrap this button up inside other buttons pre configured for your usecases.
+ * 
+ * ========================================================================= */
+
+
+/* = Default project vars. */
+:import {
+  -st-from: "@actionishope/shelley/styles/default/project.st.css";
+  -st-named:
+    --spacing-unit;
+}
+
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: InchesTheme;
+  -st-named:
+    /* = CSS3 Switcher vars. */
+    font-special,
+    --color-ui-inverse,
+    --color-ui,
+    --color-accent-1,
+    --color-accent-2,
+    --color-accent-3,
+    --color-accent-4,
+    --color-background-2;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../pages/solution.st.css";
+  -st-default: Solution;
+}
+
+
+/* = This is how we can scope the styles in Stylable. */
+@st-scope InchesTheme {
+
+
+  Solution {
+    padding-bottom: 20vh;
+  }
+
+  Solution::category,
+  Solution::solutionSub {
+    color: var(--color-accent-2);
+  }
+
+  .subCategory {}
+
+  .solutionSub {}
+
+
+
+
+}
