@@ -1,3 +1,9 @@
+Create a new branch `git checkout -b banch-name`
+
+The submit a pull request.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
