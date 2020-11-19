@@ -1,8 +1,12 @@
 Create a new branch `git checkout -b banch-name`
 
-The submit a pull request.
+The submit a pull request for that branch. This will trigger a build on Netify where you can view your changes.
 
+Please wait for review before merging.
 
+This project uses [http://shelley.earth](Shelley) which is a React UI framework which is under development outside of this project. It uses a lesser known css pre-processor developed by Wix called [https://stylable.io/](stylable).
+
+# React Create App Bootstrap Docs
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
