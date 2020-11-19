@@ -9,7 +9,7 @@ When adding new features the workflow:
 
 Please wait for review before merging.
 
-This project uses [http://shelley.earth](Shelley) which is a React UI framework which is under development outside of this project. It uses a lesser known css pre-processor developed by Wix called [https://stylable.io/](stylable).
+This project uses [Shelley](http://shelley.earth) which is a React UI framework which is under development outside of this project, [Shelley GitHub](https://github.com/action-is-hope/shelley). It uses a lesser known css pre-processor developed by Wix called [stylable](https://stylable.io).
 
 # React Create App Bootstrap Docs
 
