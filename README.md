@@ -1,6 +1,11 @@
-Create a new branch `git checkout -b banch-name`
+## Workflow
 
-The submit a pull request for that branch. This will trigger a build on Netify where you can view your changes.
+When adding new features the workflow:
+
+- Create a new branch `git checkout -b banchname`
+- Make your changes, `add` and `commit`
+- Push your changes to your branch `git push origin branchname`
+- Submit a pull request for that branch. This will trigger a build on Netify where you can view your changes.
 
 Please wait for review before merging.
 
