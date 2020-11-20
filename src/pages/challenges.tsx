@@ -43,12 +43,12 @@ const Challenges = ({ group }: ChallengesProps) => {
   const [loadedChallenge, setLoadedChallenge] = useState<any>();
 
   //
-  const loadChallenge = (topicId: string) => {
+  const loadChallenge = (topicKey: string) => {
     api
-      .get(`/topics/${topicId}`)
+      .get(`/topics/${topicKey}`)
       .then(async (response) => {
         console.log({ response });
-        setLoadedChallenge(response.data.data[0]);
+        setLoadedChallenge(response.data.data[0])
       })
       .catch((error) => {
         console.error(error);
@@ -57,7 +57,7 @@ const Challenges = ({ group }: ChallengesProps) => {
 
   useEffect(() => {
     // Get the default topic data.
-    group && loadChallenge(group.links.topics[0].id);
+    group && loadChallenge(group.links.topics[0].key);
   }, [group]);
 
   return (
@@ -120,13 +120,13 @@ const Challenges = ({ group }: ChallengesProps) => {
                     >
                       {/* {topic.name} */}
                       <InputSelection
-                        id={`chal${topic.id}`}
+                        id={`chal${topic.key}`}
                         checked={
                           loadedChallenge
-                            ? loadedChallenge.key === topic.id
+                            ? loadedChallenge.key === topic.key
                             : false
                         }
-                        value={topic.id}
+                        value={topic.key}
                         name="challegesRadios"
                         label={topic.name}
                         type="radio"
