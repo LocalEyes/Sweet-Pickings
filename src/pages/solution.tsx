@@ -40,7 +40,7 @@ const Solution = ({ match, location }: any) => {
         setContent({
           name: page.name,
           description: page.description,
-          image: page.links.images && page.links.images[0],
+          image: page.images[0],
         });
       })
       .catch((error) => {

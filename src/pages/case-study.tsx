@@ -36,7 +36,7 @@ const CaseStudy = ({ match, location }: any) => {
         setContent({
           name: page.title,
           description: page.description,
-          image: page.img_url,
+          image: page.images[0],
         });
       })
       .catch((error) => {

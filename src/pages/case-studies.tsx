@@ -169,7 +169,7 @@ const CaseStudies = () => {
                   title={item.title}
                   url={`/case-studies/${item.key}/${slug}`}
                   description={item.description}
-                  media={item.img_url}
+                  media={item.images[0]}
                   key={item.key}
                 />
               );

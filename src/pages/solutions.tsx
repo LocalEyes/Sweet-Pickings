@@ -147,7 +147,7 @@ const Solutions = () => {
                     title={solution.name}
                     url={`/solutions/${solution.key}/${slug}`}
                     description={solution.description}
-                    media={solution.links.images[0]}
+                    media={solution.images[0]}
                     key={solution.key}
                   />
                 );
