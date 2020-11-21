@@ -15,12 +15,10 @@ interface ChallengesProps {
 const Challenges = ({ group }: ChallengesProps) => {
   const [loadedChallenge, setLoadedChallenge] = useState<any>();
 
-  //
   const loadChallenge = (topicKey: string) => {
     api
       .get(`/topics/${topicKey}`)
       .then(async (response) => {
-        console.log({ response });
         setLoadedChallenge(response.data.data[0]);
       })
       .catch((error) => {
@@ -66,7 +64,7 @@ const Challenges = ({ group }: ChallengesProps) => {
               </span>
             </H1>
           </div>
-          {/* rgb(0 0 0 / 34%) */}
+
           <div className={grid.mid}>
             <P vol={2} style={{ marginBottom: "10px" }}>
               <b>Select a challenge from the scroll list:</b>
