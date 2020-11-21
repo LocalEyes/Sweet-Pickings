@@ -67,7 +67,11 @@ const CaseStudy = ({ match, location }: any) => {
         >
           <H2 className={grid.goal} vol={8} uppercase>
             <span
-              className={classnames(text.textBannerInline, classes.category)}
+              className={classnames(
+                text.textBannerInline,
+                classes.category,
+                text.color1
+              )}
             >
               {/* {category.title} */}[Main Category]
             </span>
@@ -83,7 +87,9 @@ const CaseStudy = ({ match, location }: any) => {
         </Banner>
         <Grid tag="main" variant={1} formatted>
           <H1 vol={7}>
-            <small className={classes.solutionSub}>Case Study:</small>
+            <small className={classnames(classes.solutionSub, text.color1)}>
+              Case Study:
+            </small>
             <br />
             {content.name}
           </H1>

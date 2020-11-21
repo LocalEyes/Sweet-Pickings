@@ -80,7 +80,11 @@ const Solution = ({ match, location }: any) => {
         >
           <H2 className={grid.goal} vol={8} uppercase>
             <span
-              className={classnames(text.textBannerInline, classes.category)}
+              className={classnames(
+                text.textBannerInline,
+                classes.category,
+                text.color2
+              )}
             >
               {/* {category.title} */}[Main Category]
             </span>
@@ -98,7 +102,9 @@ const Solution = ({ match, location }: any) => {
         </Banner>
         <Grid tag="main" variant={1} formatted>
           <H1 vol={7}>
-            <small className={classes.solutionSub}>Solution:</small>
+            <small className={classnames(classes.solutionSub, text.color2)}>
+              Solution:
+            </small>
             <br />
             {content.name}
           </H1>
