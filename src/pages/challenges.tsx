@@ -1,43 +1,16 @@
 import React, { useState, useEffect } from "react";
 import classnames from "classnames";
-
-/* = Local components */
+import { Helmet } from "react-helmet-async";
+import { api, slug } from "../api";
 import Banner from "../components/Banner/Banner";
 import Card from "../components/Card/Card";
-/* = Shelley components */
-import {
-  H1,
-  H2,
-  H3,
-  InputSelection,
-  P,
-  // InputSelect,
-  // InputText,
-  Grid,
-  // Button,
-  // VisuallyHidden,
-} from "@actionishope/shelley";
-/* = Explicitly used style imports */
+import { H1, H2, H3, InputSelection, P, Grid } from "@actionishope/shelley";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
-// import { classes as button } from "../styles/puma/button.st.css";
-// import { classes as spacing } from "../styles/puma/spacing.st.css";
 
-import { Helmet } from "react-helmet-async";
-import slugify from "slugify";
-
-// Import dependencies
-import { api } from "../api";
-// import { caseStudies } from "../dummyData/data";
 interface ChallengesProps {
   group: any;
 }
-
-const slugConfig = {
-  remove: undefined, // remove characters that match regex, defaults to `undefined`
-  lower: true, // convert to lower case, defaults to `false`
-  strict: true, // strip special characters except replacement, defaults to `false`
-};
 
 const Challenges = ({ group }: ChallengesProps) => {
   const [loadedChallenge, setLoadedChallenge] = useState<any>();
@@ -48,7 +21,7 @@ const Challenges = ({ group }: ChallengesProps) => {
       .get(`/topics/${topicKey}`)
       .then(async (response) => {
         console.log({ response });
-        setLoadedChallenge(response.data.data[0])
+        setLoadedChallenge(response.data.data[0]);
       })
       .catch((error) => {
         console.error(error);
@@ -118,7 +91,6 @@ const Challenges = ({ group }: ChallengesProps) => {
                         background: "rgb(27 27 27 / 70%)",
                       }}
                     >
-                      {/* {topic.name} */}
                       <InputSelection
                         id={`chal${topic.key}`}
                         checked={
@@ -138,10 +110,6 @@ const Challenges = ({ group }: ChallengesProps) => {
                           loadChallenge(e.target.value)
                         }
                       />
-                      {/* {topic.description}
-                    {topic.image}
-                    {topic.id}
-                    {topic.self} */}
                     </div>
                   );
                 })}
@@ -171,12 +139,10 @@ const Challenges = ({ group }: ChallengesProps) => {
             <Grid variant={4}>
               {loadedChallenge.links.ideas ? (
                 loadedChallenge.links.ideas.map((item: any) => {
-                  // Derive a slug from name.
-                  const slug = slugify(item.title, slugConfig);
                   return (
                     <Card
                       title={item.title}
-                      url={`/solutions/${item.key}/${slug}`}
+                      url={`/solutions/${item.key}/${slug(item.title)}`}
                       description={item.description}
                       media={item.images[0]}
                       key={item.key}

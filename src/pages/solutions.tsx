@@ -1,42 +1,20 @@
 import React, { useState, useEffect } from "react";
 import classnames from "classnames";
-
-/* = Local components */
-// import DefaultLayout from "../layouts";
+import { Helmet } from "react-helmet-async";
 import Banner from "../components/Banner/Banner";
 import Card from "../components/Card/Card";
-/* = Shelley components */
+import { api, slug } from "../api";
 import {
   H1,
   H2,
-  // P,
   InputSelect,
-  // InputText,
   Grid,
   Button,
   VisuallyHidden,
 } from "@actionishope/shelley";
-/* = Explicitly used style imports */
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
-// import { classes as button } from "../styles/puma/button.st.css";
 import { classes as spacing } from "../styles/puma/spacing.st.css";
-
-import { Helmet } from "react-helmet-async";
-
-import slugify from "slugify";
-
-// import { Link } from "react-router-dom";
-
-// Import dependencies
-import { api } from "../api";
-// import { caseStudies } from "../dummyData/data";
-
-const slugConfig = {
-  remove: undefined, // remove characters that match regex, defaults to `undefined`
-  lower: true, // convert to lower case, defaults to `false`
-  strict: true, // strip special characters except replacement, defaults to `false`
-};
 
 const Solutions = () => {
   const [content, setContent] = useState<any>([]);
@@ -136,22 +114,15 @@ const Solutions = () => {
         <div className={grid.goal}>
           <Grid variant={4}>
             {content.data &&
-              content.data.map((solution: any, index: number) => {
-                // Quick hack to limit number rendered.
-                if (index > 29) return false;
-
-                // Derive a slug from name.
-                const slug = slugify(solution.name, slugConfig);
-                return (
-                  <Card
-                    title={solution.name}
-                    url={`/solutions/${solution.key}/${slug}`}
-                    description={solution.description}
-                    media={solution.images[0]}
-                    key={solution.key}
-                  />
-                );
-              })}
+              content.data.map((item: any) => (
+                <Card
+                  title={item.name}
+                  url={`/solutions/${item.key}/${slug(item.name)}`}
+                  description={item.description}
+                  media={item.images[0]}
+                  key={item.key}
+                />
+              ))}
           </Grid>
         </div>
 
