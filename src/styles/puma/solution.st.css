@@ -46,16 +46,7 @@
     padding-bottom: 20vh;
   }
 
-  Solution::category,
-  Solution::solutionSub {
-    color: var(--color-accent-2);
-  }
-
   .subCategory {}
 
   .solutionSub {}
-
-
-
-
 }

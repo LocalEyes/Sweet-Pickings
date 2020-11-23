@@ -2,21 +2,16 @@ import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
-// = API
-import { api } from "../api";
-/* = Local components */
+import { renderers } from "../components/Markdown/MarkDownMap";
+import { useParams } from "react-router-dom";
+import { api, slug } from "../api";
 import DefaultLayout from "../layouts/Default";
 import Banner from "../components/Banner/Banner";
-/* = Shelley components */
+import Card from "../components/Card/Card";
 import { H1, H2, Grid } from "@actionishope/shelley";
-/* = Explicitly used style imports */
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
 import { st, classes } from "./solution.st.css";
-
-import { renderers } from "../components/Markdown/MarkDownMap";
-
-import { useParams } from "react-router-dom";
 
 const Solution = ({ match, location }: any) => {
   const params: any = useParams();
@@ -28,6 +23,8 @@ const Solution = ({ match, location }: any) => {
     description: location.state && location.state.description,
     image: location.state && location.state.media,
   });
+
+  const [caseStudies, setCaseStudies] = useState<any>([]);
 
   useEffect(() => {
     // GET solution via id from the url params.
@@ -42,6 +39,14 @@ const Solution = ({ match, location }: any) => {
           description: page.description,
           image: page.images[0],
         });
+        // Get and set case studies
+        page.links.news &&
+          api
+            .get(page.links.news)
+            .then(async (response) => setCaseStudies(response.data.data))
+            .catch((error) => {
+              console.error(error);
+            });
       })
       .catch((error) => {
         console.error(error);
@@ -75,7 +80,11 @@ const Solution = ({ match, location }: any) => {
         >
           <H2 className={grid.goal} vol={8} uppercase>
             <span
-              className={classnames(text.textBannerInline, classes.category)}
+              className={classnames(
+                text.textBannerInline,
+                classes.category,
+                text.color2
+              )}
             >
               {/* {category.title} */}[Main Category]
             </span>
@@ -93,7 +102,9 @@ const Solution = ({ match, location }: any) => {
         </Banner>
         <Grid tag="main" variant={1} formatted>
           <H1 vol={7}>
-            <small className={classes.solutionSub}>Solution:</small>
+            <small className={classnames(classes.solutionSub, text.color2)}>
+              Solution:
+            </small>
             <br />
             {content.name}
           </H1>
@@ -102,6 +113,24 @@ const Solution = ({ match, location }: any) => {
             renderers={renderers}
             plugins={[gfm]}
           />
+
+          {caseStudies.length > 0 && (
+            <div className={grid.goal}>
+              <Grid variant={4}>
+                {caseStudies.map((item: any) => {
+                  return (
+                    <Card
+                      title={item.title}
+                      url={`/case-studies/${item.key}/${slug(item.title)}`}
+                      description={item.description}
+                      media={item.img_url}
+                      key={item.key}
+                    />
+                  );
+                })}
+              </Grid>
+            </div>
+          )}
         </Grid>
       </DefaultLayout>
     </div>

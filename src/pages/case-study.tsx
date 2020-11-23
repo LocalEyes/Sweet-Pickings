@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
 import classnames from "classnames";
-/* = Local components */
 import DefaultLayout from "../layouts/Default";
 import Banner from "../components/Banner/Banner";
-/* = Shelley components */
 import { H1, H2, Grid } from "@actionishope/shelley";
-/* = Explicitly used stye imports */
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
 import { st, classes } from "./solution.st.css";
-
 import ReactMarkdown from "react-markdown";
 import { renderers } from "../components/Markdown/MarkDownMap";
 import gfm from "remark-gfm";
@@ -71,7 +67,11 @@ const CaseStudy = ({ match, location }: any) => {
         >
           <H2 className={grid.goal} vol={8} uppercase>
             <span
-              className={classnames(text.textBannerInline, classes.category)}
+              className={classnames(
+                text.textBannerInline,
+                classes.category,
+                text.color1
+              )}
             >
               {/* {category.title} */}[Main Category]
             </span>
@@ -82,15 +82,14 @@ const CaseStudy = ({ match, location }: any) => {
                 text.textBgSm,
                 classes.subCategory
               )}
-            >
-              {/* {subCategory.name} */}
-              {/* {content.links && content.links.topic.name} */}
-            </span>
+            ></span>
           </H2>
         </Banner>
         <Grid tag="main" variant={1} formatted>
           <H1 vol={7}>
-            <small className={classes.solutionSub}>Solution:</small>
+            <small className={classnames(classes.solutionSub, text.color1)}>
+              Case Study:
+            </small>
             <br />
             {content.name}
           </H1>

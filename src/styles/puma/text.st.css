@@ -168,14 +168,17 @@
     font-size: 0.6em;
   }
 
+  .color1,
   Text.color1 {
     color: var(--color-accent-1)
   }
 
+  .color2,
   Text.color2 {
     color: var(--color-accent-2)
   }
 
+  .color3,
   Text.color3 {
     color: var(--color-accent-3)
   }
