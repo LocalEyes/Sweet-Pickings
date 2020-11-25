@@ -38,6 +38,7 @@ const Solution = ({ match, location }: any) => {
           name: page.name,
           description: page.description,
           image: page.images[0],
+          links: page.links,
         });
         // Get and set case studies
         page.links.news &&

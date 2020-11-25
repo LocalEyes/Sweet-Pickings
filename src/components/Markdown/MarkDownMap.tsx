@@ -1,7 +1,6 @@
 import React from "react";
 import { Text, TextProps } from "@actionishope/shelley";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
-// import { classes as text } from "../../styles/puma/text.st.css";
 import { classes as spacing } from "../../styles/puma/spacing.st.css";
 
 import {
