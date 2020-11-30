@@ -39,8 +39,8 @@ const Solution = ({ match, location }: any) => {
           name: page.name,
           description: page.description,
           image: page.images[0],
-          categoryName: page.categories.main_categories.items[0].cat_name || ''
-
+          categoryName: page.categories.main_categories.items[0].cat_name || '',
+          links: page.links,
         });
 
         // Get and set case studies
