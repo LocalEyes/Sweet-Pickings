@@ -31,20 +31,29 @@ const Solution = ({ match, location }: any) => {
     api
       .get(`/ideas/${params.solutionId}`)
       .then(async (response) => {
+
+
         const page = response.data.data[0];
-        // console.log({ page });
         // Update content with what comes back from the API
         setContent({
           name: page.name,
           description: page.description,
           image: page.images[0],
+          categoryName: page.categories.main_categories.items[0].cat_name || ''
+
         });
+
         // Get and set case studies
         page.links.news &&
           api
             .get(page.links.news)
-            .then(async (response) => setCaseStudies(response.data.data))
-            .catch((error) => {
+            .then(async (response) => {
+             //console.log(response.data.data);
+              return setCaseStudies(response.data.data);
+
+            }
+
+            ).catch((error) => {
               console.error(error);
             });
       })
@@ -86,7 +95,7 @@ const Solution = ({ match, location }: any) => {
                 text.color2
               )}
             >
-              {/* {category.title} */}[Main Category]
+                {content.categoryName}
             </span>
             <br />
             <span
