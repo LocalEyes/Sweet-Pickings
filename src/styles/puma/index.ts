@@ -20,7 +20,7 @@ import Text from "./text.st.css";
 import Dialog from "./dialog.st.css";
 
 // = Application Components
-// import Footer from "./footer.st.css";
+import Footer from "./footer.st.css";
 import Banner from "./banner.st.css";
 import Card from "./card.st.css";
 import Header from "./header.st.css";
@@ -82,9 +82,9 @@ export const text = (...values: []) =>
   getStylableClassNames(values, Text, "text");
 
 // Application component exports
-// ...
-// export const footer = (...values: []) =>
-//   getStylableClassNames(values, Footer, "footer");
+
+export const footer = (...values: []) =>
+  getStylableClassNames(values, Footer, "footer");
 
 export const banner = (...values: []) =>
   getStylableClassNames(values, Banner, "banner");

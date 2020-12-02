@@ -137,6 +137,9 @@
     --accent: var(--color-ui);
   }
 
+  Button:disabled {
+    cursor: not-allowed;
+  }
 
   /* = Custom classes */
   .linkButton {

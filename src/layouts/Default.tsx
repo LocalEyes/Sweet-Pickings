@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 import classnames from "classnames";
 import { Link } from "react-router-dom";
-import { classes as style } from "./default.st.css";
-
-import { Project as Default } from "@actionishope/shelley/styles/default";
-import { Project as Shelley, Light } from "../styles/puma"; //Dark
-
-import { classes as selection } from "../styles/puma/inputSelection.st.css";
-
 import { InputSelection, Icon } from "@actionishope/shelley";
 import { Helmet } from "react-helmet-async";
+import { classes as style } from "./default.st.css";
+import { Project as Default } from "@actionishope/shelley/styles/default";
+import { Project as Shelley, Light } from "../styles/puma"; //Dark
+import { classes as selection } from "../styles/puma/inputSelection.st.css";
 
 export const Header = ({ altTheme, changeTheme }: any) => (
   <div className={style.navbar}>
@@ -99,9 +96,6 @@ const DefaultLayout = ({ children }: any) => {
           class: currentTheme,
         }}
       />
-
-      {/* <Header {...{ altTheme, changeTheme }} /> */}
-
       {children}
     </>
   );

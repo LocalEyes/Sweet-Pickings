@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
 import {
   BrowserRouter as Router,
   Route,
@@ -16,11 +14,13 @@ import ChallengesPage from "./pages/challenges";
 import SolutionsPage from "./pages/solutions";
 import CaseStudies from "./pages/case-studies";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import About from "./pages/about";
 import Solution from "./pages/solution";
 import CaseStudy from "./pages/case-study";
 import Header from "./components/Header/Header";
 
 import { api } from "./api";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   // Set the initial content with what have from the link via link state.
@@ -77,6 +77,9 @@ const App = () => {
             <Route exact path="/case-studies">
               <CaseStudies />
             </Route>
+            <Route exact path="/about">
+              <About />
+            </Route>
           </Switch>
           <Route
             path="/solutions/:solutionId/:solutionSlug"
@@ -86,6 +89,7 @@ const App = () => {
             path="/case-studies/:caseStudyId/:caseStudySlug"
             component={CaseStudy}
           />
+          <Footer />
         </Router>
       </DefaultLayout>
     </HelmetProvider>

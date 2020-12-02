@@ -3,7 +3,7 @@ import classnames from "classnames";
 import { st, classes } from "./footer.st.css";
 
 import { Grid, GridProps, Text } from "@actionishope/shelley";
-// import { Link } from "gatsby";
+import { Link } from "react-router-dom";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 
 const Footer = ({ className: classNameProp, children, ...rest }: GridProps) => {
@@ -16,9 +16,9 @@ const Footer = ({ className: classNameProp, children, ...rest }: GridProps) => {
       <nav className={grid.goal}>
         <ul className={classes.navList}>
           <Text uppercase vol={4} tag="li">
-            {/* <Link className={classes.navItem} to="/about">
+            <Link className={classes.navItem} to="/about">
               About
-            </Link> */}
+            </Link>
           </Text>
         </ul>
       </nav>
