@@ -42,7 +42,9 @@
 @st-scope InchesTheme {
 
 
-  Solution {}
+  Solution {
+    padding-bottom: 20vh;
+  }
 
   .subCategory {}
 

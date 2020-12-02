@@ -34,7 +34,7 @@ const Solutions = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ paddingBottom: "20vh" }}>
       <Helmet>
         <title>Solutions database</title>
       </Helmet>

@@ -28,7 +28,7 @@ const CaseStudies = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div>
+    <div style={{ paddingBottom: "20vh" }}>
       <Helmet>
         <title>Case Studies - Solutions database</title>
       </Helmet>
