@@ -2,22 +2,23 @@ import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 import Banner from "../components/Banner/Banner";
 import Card from "../components/Card/Card";
-import { H1, H2, Grid, VisuallyHidden } from "@actionishope/shelley";
+import { H1, H2, Grid, Button, VisuallyHidden } from "@actionishope/shelley";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
+import { classes as spacing } from "../styles/puma/spacing.st.css";
 import { Helmet } from "react-helmet-async";
 import { api, slug } from "../api";
 
 const CaseStudies = () => {
-  const [caseStudies, setCaseStudies] = useState<any>([]);
+  const [content, setContent] = useState<any>([]);
   useEffect(() => {
     // Send a GET request to api for CaseStudies.
     api
-      .get("/news")
+      .get("/news?per-page=18")
       .then(async (response) => {
         // Set solutions state with data.
-        console.log(response.data.data);
-        setCaseStudies(response.data.data);
+        // console.log(response.data);
+        setContent(response.data);
       })
       .catch((error) => {
         console.error(error);
@@ -68,17 +69,73 @@ const CaseStudies = () => {
 
         <div className={grid.goal}>
           <Grid variant={4}>
-            {caseStudies.map((item: any, index: number) => {
-              return (
-                <Card
-                  title={item.title}
-                  url={`/case-studies/${item.key}/${slug(item.title)}`}
-                  description={item.description}
-                  media={item.images[0]}
-                  key={item.key}
-                />
-              );
-            })}
+            {content.data &&
+              content.data.map((item: any, index: number) => {
+                return (
+                  <Card
+                    title={item.title}
+                    url={`/case-studies/${item.key}/${slug(item.title)}`}
+                    description={item.description}
+                    media={item.images[0]}
+                    key={item.key}
+                  />
+                );
+              })}
+          </Grid>
+          <Grid
+            variant={2}
+            formatted
+            className={classnames(spacing.mt2, spacing.mb4)}
+          >
+            {content.meta && (
+              <>
+                <Button
+                  variant={3}
+                  tone={5}
+                  vol={6}
+                  role="link"
+                  fullWidth
+                  disabled={!content.meta.pagination.links.prev}
+                  onClick={() => {
+                    // Change to smooth scroll and refs.
+                    window.scrollTo(0, 0);
+                    api
+                      .get(content.meta.pagination.links.prev)
+                      .then(async (response) => {
+                        setContent(response.data);
+                      })
+                      .catch((error) => {
+                        console.error(error);
+                      });
+                  }}
+                >
+                  Previous
+                </Button>
+
+                <Button
+                  variant={3}
+                  tone={5}
+                  vol={6}
+                  role="link"
+                  fullWidth
+                  disabled={!content.meta.pagination.links.next}
+                  onClick={() => {
+                    // Change to smooth scroll and refs.
+                    window.scrollTo(0, 0);
+                    api
+                      .get(content.meta.pagination.links.next)
+                      .then(async (response) => {
+                        setContent(response.data);
+                      })
+                      .catch((error) => {
+                        console.error(error);
+                      });
+                  }}
+                >
+                  Next
+                </Button>
+              </>
+            )}
           </Grid>
         </div>
       </Grid>

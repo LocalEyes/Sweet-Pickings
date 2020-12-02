@@ -31,7 +31,7 @@ const App = () => {
     api
       .get(`/groups/10479`)
       .then(async (response) => {
-        console.log("response", response.data.data[0]);
+        // console.log("response", response.data.data[0]);
         // Update solutions content with what comes back from the API
         setGroupData(response.data.data[0]);
       })

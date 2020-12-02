@@ -25,7 +25,7 @@ const Solutions = () => {
       .get("/solutions/10479?per-page=24")
       .then(async (response) => {
         // Set solutions state with data.
-        console.log(response.data);
+        // console.log(response.data);
         setContent(response.data);
       })
       .catch((error) => {
@@ -92,7 +92,6 @@ const Solutions = () => {
               id={`chall2`}
             /> */}
             <InputSelect
-              value="Who are you?"
               label={`Who are you?`}
               vol={3}
               variant={1}

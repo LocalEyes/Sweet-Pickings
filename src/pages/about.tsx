@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import classnames from "classnames";
 import { H1, P, Grid } from "@actionishope/shelley";
@@ -7,6 +7,9 @@ import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.cs
 import { classes as text } from "../styles/puma/text.st.css";
 
 const About = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
       <Helmet>
@@ -19,7 +22,7 @@ const About = () => {
         }}
       >
         <H1 vol={8} uppercase>
-          <span className={classnames(text.textBannerInline, text.textBg4)}>
+          <span className={classnames(text.textBannerInline, text.textBg2)}>
             About
           </span>
         </H1>
