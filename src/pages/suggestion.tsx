@@ -13,16 +13,15 @@ import Banner from "../components/Banner/Banner";
 import { classes as spacing } from "@actionishope/shelley/styles/default/spacing.st.css";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
-import { groupEnd } from "console";
 
-const SuggestSolution = () => {
+const Suggestion = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
     <div className={spacing.mb8}>
       <Helmet>
-        <title>Suggest a solution - Solutions database</title>
+        <title>Make a suggestion - Solutions database</title>
       </Helmet>
       <Banner
         className={grid.edge}
@@ -32,40 +31,37 @@ const SuggestSolution = () => {
       >
         <H1 vol={8} uppercase>
           <span className={classnames(text.textBannerInline, text.textBg2)}>
-            Suggest a Solution
+            Make a suggestion
           </span>
         </H1>
       </Banner>
       <Grid tag="main" variant={1} formatted>
         <div className={grid.mid}>
-          <InputText
-            placeholder="Solution title..."
-            label={`Title of your solution`}
-            vol={3}
-            variant={3}
-            id={`sol1`}
-          />
-          <br />
-          <br />
           <InputSelect
-            placeholder="How can we reduce our carbon footprint?"
-            label={`Select the challenge which most relates`}
+            label={`Suggestion type`}
+            placeholder="Please select"
             vol={3}
             variant={3}
             id={`sol2`}
           >
-            <option value={`carbon`}>
-              How can we reduce our carbon footprint?
-            </option>
-            <option value={`plastic`}>
-              How can we reduce our single use plastic?
-            </option>
+            <option value={`carbon`}>Case Study</option>
+            <option value={`plastic`}>Solution</option>
           </InputSelect>
           <br />
           <br />
           <InputText
-            placeholder="Solution content..."
+            placeholder="Title..."
+            label={`Title`}
+            vol={3}
+            variant={3}
+            id={`sol1`}
+          />
+
+          <br />
+          <br />
+          <InputText
             label={`Main content`}
+            placeholder="Start typing..."
             vol={3}
             variant={3}
             rows={10}
@@ -86,4 +82,4 @@ const SuggestSolution = () => {
   );
 };
 
-export default SuggestSolution;
+export default Suggestion;

@@ -15,7 +15,7 @@ import SolutionsPage from "./pages/solutions";
 import CaseStudies from "./pages/case-studies";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import About from "./pages/about";
-import SuggestSoultion from "./pages/suggest-solution";
+import Suggestion from "./pages/suggestion";
 import Solution from "./pages/solution";
 import CaseStudy from "./pages/case-study";
 import Header from "./components/Header/Header";
@@ -81,8 +81,8 @@ const App = () => {
             <Route exact path="/about">
               <About />
             </Route>
-            <Route exact path="/suggest-solution">
-              <SuggestSoultion />
+            <Route exact path="/suggestion">
+              <Suggestion />
             </Route>
           </Switch>
           <Route
