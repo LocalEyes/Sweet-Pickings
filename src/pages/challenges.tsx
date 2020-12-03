@@ -82,7 +82,7 @@ const Challenges = ({ group }: ChallengesProps) => {
             >
               {group &&
                 group.links.topics.map((topic: any, index: number) => {
-                  // console.log("topic", topic, index);
+                  console.log("topic", topic, index);
                   // console.log("selected topic", loadedChallenge);
                   return (
                     <div
@@ -121,18 +121,16 @@ const Challenges = ({ group }: ChallengesProps) => {
       </Banner>
 
       <Grid tag="main" variant={1}>
-        <H2
-          className={classnames(text.sectionHeader, grid.goal)}
-          vol={6}
-          // uppercase
-        >
+        <H2 className={classnames(text.sectionHeader, grid.goal)} vol={6}>
           {loadedChallenge && loadedChallenge.name}
         </H2>
+        <P className={classnames(grid.goal, spacing.mb4)}>
+          {loadedChallenge && loadedChallenge.description}
+        </P>
         <H3
-          className={classnames(text.color2, grid.goal)}
-          vol={4}
+          className={classnames(text.color2, grid.goal, spacing.mb2)}
+          vol={6}
           uppercase
-          style={{ marginBottom: "10px" }}
         >
           Solutions:
         </H3>
