@@ -132,7 +132,7 @@ const Solution = ({ match, location }: any) => {
                       title={item.title}
                       url={`/case-studies/${item.key}/${slug(item.title)}`}
                       description={item.description}
-                      media={item.img_url}
+                      media={item.images[0]}
                       key={item.key}
                     />
                   );
