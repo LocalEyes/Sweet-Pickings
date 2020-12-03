@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet-async";
 import classnames from "classnames";
 import {
   H1,
-  P,
   Grid,
   InputText,
   InputSelect,
