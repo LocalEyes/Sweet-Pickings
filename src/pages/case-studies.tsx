@@ -14,7 +14,7 @@ const CaseStudies = () => {
   useEffect(() => {
     // Send a GET request to api for CaseStudies.
     api
-      .get("/news?per-page=18")
+      .get("/news?per-page=15")
       .then(async (response) => {
         // Set solutions state with data.
         // console.log(response.data);

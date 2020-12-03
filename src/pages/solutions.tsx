@@ -22,7 +22,7 @@ const Solutions = () => {
   useEffect(() => {
     // Send a GET request to api for solutions.
     api
-      .get("/solutions/10479?per-page=24")
+      .get("/solutions/10479?per-page=15")
       .then(async (response) => {
         // Set solutions state with data.
         // console.log(response.data);
