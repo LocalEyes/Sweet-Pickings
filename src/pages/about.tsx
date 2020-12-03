@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import classnames from "classnames";
 import { H1, P, Grid } from "@actionishope/shelley";
 import Banner from "../components/Banner/Banner";
+import { classes as spacing } from "@actionishope/shelley/styles/default/spacing.st.css";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
 
@@ -11,7 +12,7 @@ const About = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div>
+    <div className={spacing.mb8}>
       <Helmet>
         <title>About - Solutions database</title>
       </Helmet>

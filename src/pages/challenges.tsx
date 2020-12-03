@@ -5,8 +5,11 @@ import { api, slug } from "../api";
 import Banner from "../components/Banner/Banner";
 import Card from "../components/Card/Card";
 import { H1, H2, H3, InputSelection, P, Grid } from "@actionishope/shelley";
+import { classes as spacing } from "@actionishope/shelley/styles/default/spacing.st.css";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
+import { classes as buttons } from "../styles/puma/button.st.css";
+import { Link } from "react-router-dom";
 
 interface ChallengesProps {
   group: any;
@@ -32,7 +35,7 @@ const Challenges = ({ group }: ChallengesProps) => {
   }, [group]);
 
   return (
-    <div>
+    <div className={spacing.mb8}>
       <Helmet>
         <title>Challenges - Solutions database</title>
       </Helmet>
@@ -88,6 +91,7 @@ const Challenges = ({ group }: ChallengesProps) => {
                         borderTop: "1px solid rgba(255,255,255,.05)",
                         background: "rgb(27 27 27 / 70%)",
                       }}
+                      key={`topics${topic.key}`}
                     >
                       <InputSelection
                         id={`chal${topic.key}`}
@@ -153,6 +157,20 @@ const Challenges = ({ group }: ChallengesProps) => {
             </Grid>
           </div>
         )}
+
+        <Grid
+          variant={2}
+          formatted
+          className={classnames(spacing.mt2, spacing.mb4)}
+        >
+          <Link to="/solutions" className={buttons.link}>
+            Find more solutions
+          </Link>
+
+          <Link to="/suggest-solution" className={buttons.link}>
+            Suggest a solution
+          </Link>
+        </Grid>
       </Grid>
     </div>
   );

@@ -34,7 +34,7 @@ const Solutions = () => {
   }, []);
 
   return (
-    <div style={{ paddingBottom: "20vh" }}>
+    <div className={spacing.mb8}>
       <Helmet>
         <title>Solutions database</title>
       </Helmet>

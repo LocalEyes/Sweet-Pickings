@@ -148,5 +148,31 @@
     cursor: none;
   }
 
+  /* @todo: Temp: Investigate Shelley button with link option. */
+  .link {
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    letter-spacing: .034em;
+    font-weight: 600;
+    padding: .2em 1em;
+    position: relative;
+    transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    text-transform: uppercase;
+    font-family: Impact, HelveticaNeue-CondensedBlack, Haettenschweiler, AvenirNextCondensed-Bold, 'Arial Narrow Bold', sans-serif;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+    justify-content: center;
+    background-color: #333;
+    color: #fff;
+    font-size: 1.375em;
+    min-height: 68px;
+  }
 
+  .link:hover {
+    opacity: 0.7;
+  }
 }

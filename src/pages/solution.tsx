@@ -3,7 +3,7 @@ import classnames from "classnames";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import { renderers } from "../components/Markdown/MarkDownMap";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { api, slug } from "../api";
 import DefaultLayout from "../layouts/Default";
 import Banner from "../components/Banner/Banner";
@@ -11,6 +11,7 @@ import Card from "../components/Card/Card";
 import { H1, H2, P, Grid } from "@actionishope/shelley";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as spacing } from "@actionishope/shelley/styles/default/spacing.st.css";
+import { classes as buttons } from "../styles/puma/button.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
 import { st, classes } from "./solution.st.css";
 
@@ -65,7 +66,7 @@ const Solution = ({ match, location }: any) => {
   }, []);
 
   return (
-    <div className={st(classnames(classes.root))}>
+    <div className={st(classnames(classes.root, spacing.mb8))}>
       <DefaultLayout>
         <Banner
           className={grid.edge}
@@ -121,7 +122,7 @@ const Solution = ({ match, location }: any) => {
               content.orgTypes.map((item: any, index: number) => {
                 const tail = index !== content.orgTypes.length - 1 && ", ";
                 return (
-                  <span>
+                  <span key={`cattypes${index}`}>
                     {item.cat_name}
                     {tail}
                   </span>
@@ -133,8 +134,28 @@ const Solution = ({ match, location }: any) => {
             renderers={renderers}
             plugins={[gfm]}
           />
+
+          <Grid
+            variant={2}
+            formatted
+            className={classnames(
+              spacing.mt2,
+              spacing.mt4,
+              spacing.mb8,
+              grid.pen
+            )}
+          >
+            <Link to="/solutions" className={buttons.link}>
+              Find more solutions
+            </Link>
+
+            <Link to="/suggest-solution" className={buttons.link}>
+              Suggest a solution
+            </Link>
+          </Grid>
+
           <H2 className={classnames(grid.goal, spacing.mb2)} vol={7} uppercase>
-            Related solutions
+            Related Case studies
           </H2>
           {caseStudies.length > 0 && (
             <div className={grid.goal}>

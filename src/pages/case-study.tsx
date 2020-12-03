@@ -3,6 +3,7 @@ import classnames from "classnames";
 import DefaultLayout from "../layouts/Default";
 import Banner from "../components/Banner/Banner";
 import { H1, H2, Grid } from "@actionishope/shelley";
+import { classes as spacing } from "@actionishope/shelley/styles/default/spacing.st.css";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
 import { st, classes } from "./solution.st.css";
@@ -45,7 +46,7 @@ const CaseStudy = ({ match, location }: any) => {
   }, []);
 
   return (
-    <div className={st(classnames(classes.root))}>
+    <div className={st(classnames(classes.root, spacing.mb8))}>
       <DefaultLayout>
         <Banner
           className={grid.edge}
