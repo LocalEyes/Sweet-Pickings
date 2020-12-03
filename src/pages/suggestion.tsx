@@ -56,7 +56,6 @@ const Suggestion = () => {
             variant={3}
             id={`sol1`}
           />
-
           <br />
           <br />
           <InputText
