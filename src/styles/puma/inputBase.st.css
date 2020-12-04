@@ -48,4 +48,9 @@
     background-color: var(--color-background-3);
   }
 
+  InputBase:variant(3)::fieldContainer {
+    margin-top: 12px;
+    background-color: rgb(218 214 209 / 26%)
+  }
+
 }

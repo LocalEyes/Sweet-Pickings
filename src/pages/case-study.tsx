@@ -3,6 +3,7 @@ import classnames from "classnames";
 import DefaultLayout from "../layouts/Default";
 import Banner from "../components/Banner/Banner";
 import { H1, H2, Grid } from "@actionishope/shelley";
+import { classes as spacing } from "@actionishope/shelley/styles/default/spacing.st.css";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
 import { st, classes } from "./solution.st.css";
@@ -10,7 +11,8 @@ import ReactMarkdown from "react-markdown";
 import { renderers } from "../components/Markdown/MarkDownMap";
 import gfm from "remark-gfm";
 import { api } from "../api";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { classes as buttons } from "../styles/puma/button.st.css";
 
 const CaseStudy = ({ match, location }: any) => {
   let params: any = useParams();
@@ -45,7 +47,7 @@ const CaseStudy = ({ match, location }: any) => {
   }, []);
 
   return (
-    <div className={st(classnames(classes.root))}>
+    <div className={st(classnames(classes.root, spacing.mb8))}>
       <DefaultLayout>
         <Banner
           className={grid.edge}
@@ -98,6 +100,24 @@ const CaseStudy = ({ match, location }: any) => {
             renderers={renderers}
             plugins={[gfm]}
           />
+          <Grid
+            variant={2}
+            formatted
+            className={classnames(
+              spacing.mt2,
+              spacing.mt4,
+              spacing.mb8,
+              grid.pen
+            )}
+          >
+            <Link to="/case-studies" className={buttons.link}>
+              Find more case studies
+            </Link>
+
+            <Link to="/suggestion" className={buttons.link}>
+              Suggest a case study
+            </Link>
+          </Grid>
         </Grid>
       </DefaultLayout>
     </div>

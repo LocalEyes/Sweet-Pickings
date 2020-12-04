@@ -22,10 +22,10 @@ const Solutions = () => {
   useEffect(() => {
     // Send a GET request to api for solutions.
     api
-      .get("/solutions/10479?per-page=24")
+      .get("/solutions/10479?per-page=15")
       .then(async (response) => {
         // Set solutions state with data.
-        console.log(response.data);
+        // console.log(response.data);
         setContent(response.data);
       })
       .catch((error) => {
@@ -34,7 +34,7 @@ const Solutions = () => {
   }, []);
 
   return (
-    <div>
+    <div className={spacing.mb8}>
       <Helmet>
         <title>Solutions database</title>
       </Helmet>
@@ -92,7 +92,6 @@ const Solutions = () => {
               id={`chall2`}
             /> */}
             <InputSelect
-              value="Who are you?"
               label={`Who are you?`}
               vol={3}
               variant={1}

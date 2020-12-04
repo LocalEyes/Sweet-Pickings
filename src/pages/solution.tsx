@@ -3,13 +3,15 @@ import classnames from "classnames";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import { renderers } from "../components/Markdown/MarkDownMap";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { api, slug } from "../api";
 import DefaultLayout from "../layouts/Default";
 import Banner from "../components/Banner/Banner";
 import Card from "../components/Card/Card";
-import { H1, H2, Grid } from "@actionishope/shelley";
+import { H1, H2, P, Grid } from "@actionishope/shelley";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
+import { classes as spacing } from "@actionishope/shelley/styles/default/spacing.st.css";
+import { classes as buttons } from "../styles/puma/button.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
 import { st, classes } from "./solution.st.css";
 
@@ -31,15 +33,14 @@ const Solution = ({ match, location }: any) => {
     api
       .get(`/ideas/${params.solutionId}`)
       .then(async (response) => {
-
-
         const page = response.data.data[0];
         // Update content with what comes back from the API
         setContent({
           name: page.name,
           description: page.description,
           image: page.images[0],
-          categoryName: page.categories.main_categories.items[0].cat_name || '',
+          mainCategores: page.categories.main_categories.items || false,
+          orgTypes: page.categories.organisation_types.items || false,
           links: page.links,
         });
 
@@ -48,12 +49,10 @@ const Solution = ({ match, location }: any) => {
           api
             .get(page.links.news)
             .then(async (response) => {
-             //console.log(response.data.data);
+              console.log(response.data.data);
               return setCaseStudies(response.data.data);
-
-            }
-
-            ).catch((error) => {
+            })
+            .catch((error) => {
               console.error(error);
             });
       })
@@ -67,7 +66,7 @@ const Solution = ({ match, location }: any) => {
   }, []);
 
   return (
-    <div className={st(classnames(classes.root))}>
+    <div className={st(classnames(classes.root, spacing.mb8))}>
       <DefaultLayout>
         <Banner
           className={grid.edge}
@@ -95,7 +94,7 @@ const Solution = ({ match, location }: any) => {
                 text.color2
               )}
             >
-                {content.categoryName}
+              {content.mainCategores && content.mainCategores[0].cat_name}
             </span>
             <br />
             <span
@@ -117,12 +116,47 @@ const Solution = ({ match, location }: any) => {
             <br />
             {content.name}
           </H1>
+          <P vol={2}>
+            <strong>Relevant for: </strong>
+            {content.orgTypes &&
+              content.orgTypes.map((item: any, index: number) => {
+                const tail = index !== content.orgTypes.length - 1 && ", ";
+                return (
+                  <span key={`cattypes${index}`}>
+                    {item.cat_name}
+                    {tail}
+                  </span>
+                );
+              })}
+          </P>
           <ReactMarkdown
             source={content.description}
             renderers={renderers}
             plugins={[gfm]}
           />
 
+          <Grid
+            variant={2}
+            formatted
+            className={classnames(
+              spacing.mt2,
+              spacing.mt4,
+              spacing.mb8,
+              grid.pen
+            )}
+          >
+            <Link to="/solutions" className={buttons.link}>
+              Find more solutions
+            </Link>
+
+            <Link to="/suggestion" className={buttons.link}>
+              Suggest a solution
+            </Link>
+          </Grid>
+
+          <H2 className={classnames(grid.goal, spacing.mb2)} vol={7} uppercase>
+            Related Case studies
+          </H2>
           {caseStudies.length > 0 && (
             <div className={grid.goal}>
               <Grid variant={4}>
