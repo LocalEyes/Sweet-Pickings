@@ -133,11 +133,7 @@ const Solution = ({ match, location }: any) => {
                 );
               })}
           </P>
-          {content.image == null ? (
-            <div></div>
-          ) : (
-            <img src={content.image} width="100%" height="250px"></img>
-          )}
+          {content.image && <img src={content.image} width="100%" alt="" />}
           <ReactMarkdown
             source={content.description}
             renderers={renderers}
