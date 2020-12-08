@@ -70,10 +70,10 @@ const App = () => {
               <HomePage />
             </Route>
             <Route exact path="/challenges">
-              <ChallengesPage group={groupData} />
+              <ChallengesPage group={groupData}/>
             </Route>
             <Route exact path="/solutions">
-              <SolutionsPage />
+              <SolutionsPage group={groupData}/>
             </Route>
             <Route exact path="/case-studies">
               <CaseStudies />

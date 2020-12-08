@@ -15,24 +15,26 @@ interface ChallengesProps {
   group: any;
 }
 
+// ({ group }: ChallengesProps) -> props for Challenges
 const Challenges = ({ group }: ChallengesProps) => {
   const [loadedChallenge, setLoadedChallenge] = useState<any>();
+  
 
-  const loadChallenge = (topicKey: string) => {
-    api
-      .get(`/topics/${topicKey}`)
-      .then(async (response) => {
-        setLoadedChallenge(response.data.data[0]);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+  // const loadChallenge = (topicKey: string) => {
+  //   api
+  //     .get(`/topics/${topicKey}`)
+  //     .then(async (response) => {
+  //       setLoadedChallenge(response.data.data[0]);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // };
 
-  useEffect(() => {
-    // Get the default topic data.
-    group && loadChallenge(group.links.topics[0].key);
-  }, [group]);
+  // useEffect(() => {
+  //   // Get the default topic data.
+  //   group && loadChallenge(group.links.topics[0].key);
+  // }, [group]);
 
   return (
     <div className={spacing.mb8}>
@@ -68,7 +70,7 @@ const Challenges = ({ group }: ChallengesProps) => {
             </H1>
           </div>
 
-          <div className={grid.mid}>
+          {/* <div className={grid.mid}>
             <P vol={2} style={{ marginBottom: "10px" }}>
               <b>Select a challenge from the scroll list:</b>
             </P>
@@ -116,35 +118,29 @@ const Challenges = ({ group }: ChallengesProps) => {
                   );
                 })}
             </div>
-          </div>
+          </div> */}
         </Grid>
       </Banner>
 
-      <Grid tag="main" variant={1}>
-        <H2 className={classnames(text.sectionHeader, grid.goal)} vol={6}>
-          {loadedChallenge && loadedChallenge.name}
-        </H2>
-        <P className={classnames(grid.goal, spacing.mb4)}>
-          {loadedChallenge && loadedChallenge.description}
-        </P>
+      <Grid tag="main" variant={1}>        
         <H3
           className={classnames(text.color2, grid.goal, spacing.mb2)}
           vol={6}
           uppercase
         >
-          Solutions:
+          Challenges:
         </H3>
-        {loadedChallenge && loadedChallenge.links && (
+        {group && group.links && (
           <div className={grid.goal}>
             <Grid variant={4}>
-              {loadedChallenge.links.ideas ? (
-                loadedChallenge.links.ideas.map((item: any) => {
+              {group.links.topics ? (
+                group.links.topics.map((item: any) => {
                   return (
                     <Card
-                      title={item.title}
-                      url={`/solutions/${item.key}/${slug(item.title)}`}
+                      title={item.name}
+                      url={`/solutions/${item.key}/${slug(item.name)}`}
                       description={item.description}
-                      media={item.images[0]}
+                      // media={item.images[0]}
                       key={item.key}
                     />
                   );
