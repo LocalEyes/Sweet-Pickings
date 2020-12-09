@@ -1,9 +1,5 @@
 {
   "extends": ["react-app"],
   "plugins": ["jsx-a11y", "import"],
-  "parser": "babel-eslint",
-  "rules": {
-    "max-len": ["warn", { "code": 110 }],
-    "prefer-arrow-callback": "warn"
-  }
+  "parser": "babel-eslint"
 }
