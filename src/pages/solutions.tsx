@@ -17,16 +17,16 @@ import {
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
 import { classes as spacing } from "../styles/puma/spacing.st.css";
+import { useParams } from "react-router-dom";
 
 interface ChallengesProps {
   group: any;
 }
 
-const Solutions = ({ group }: ChallengesProps) => {
-  console.log("group data : ",group);
+const Solutions = ({ group }: ChallengesProps) => {  
   const [content, setContent] = useState<any>([]);
   const [metaData, setMetaData] = useState<any>();
-
+  const params: any = useParams();
   const loadTopic = (topicKey: string) => {
     api
       .get(`/topics/${topicKey}?per-page=15`)
@@ -39,10 +39,14 @@ const Solutions = ({ group }: ChallengesProps) => {
       });
   };
   useEffect(() => {
-    // Get the default topic data.
-    group && loadTopic(group.links.topics[0].key);
+    // Get the default topic data.    
+    if(params.topicId == null){      
+      group && loadTopic(group.links.topics[0].key);
+    } else {      
+      params.topicId && loadTopic(params.topicId);
+    }
+    // group && loadTopic(group.links.topics[0].key);
   }, [group]);
-
 
   return (
     <div className={spacing.mb8}>
@@ -92,8 +96,7 @@ const Solutions = ({ group }: ChallengesProps) => {
               }}
             >
               {group &&
-                group.links.topics.map((topic: any, index: number) => {
-                  console.log("topic", topic, index);
+                group.links.topics.map((topic: any, index: number) => {                  
                   // console.log("selected topic", content);
                   return (
                     <div
