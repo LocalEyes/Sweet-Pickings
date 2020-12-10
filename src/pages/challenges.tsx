@@ -151,19 +151,6 @@ const Challenges = ({ group }: ChallengesProps) => {
           </div>
         )}
 
-        <Grid
-          variant={2}
-          formatted
-          className={classnames(spacing.mt2, spacing.mb4)}
-        >
-          <Link to="/solutions" className={buttons.link}>
-            Find more solutions
-          </Link>
-
-          <Link to="/suggestion" className={buttons.link}>
-            Suggest a solution
-          </Link>
-        </Grid>
       </Grid>
     </div>
   );
