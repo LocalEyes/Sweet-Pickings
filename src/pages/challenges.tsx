@@ -7,8 +7,6 @@ import { H1, H3, P, Grid } from "@actionishope/shelley";
 import { classes as spacing } from "@actionishope/shelley/styles/default/spacing.st.css";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
-import { classes as buttons } from "../styles/puma/button.st.css";
-import { Link } from "react-router-dom";
 
 interface ChallengesProps {
   group: any;
