@@ -7,6 +7,8 @@ When adding new features the workflow:
 - Push your changes to your branch `git push origin branchname`
 - Submit a pull request for that branch. This will trigger a build on Netify where you can view your changes.
 
+CHECK WARNINGS locally else the build will fail.
+
 Please wait for review before merging.
 
 This project uses [Shelley](http://shelley.earth) which is a React UI framework which is under development outside of this project, [Shelley GitHub](https://github.com/action-is-hope/shelley). It uses a lesser known css pre-processor developed by Wix called [stylable](https://stylable.io).

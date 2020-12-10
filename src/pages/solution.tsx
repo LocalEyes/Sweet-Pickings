@@ -18,6 +18,7 @@ import { st, classes } from "./solution.st.css";
 const Solution = ({ match, location }: any) => {
   const params: any = useParams();
   // console.log(match, location, params);
+
   // Set the initial content with what have from the link via link state.
   const [content, setContent] = useState<any>({
     name: location.state && location.state.title,
@@ -77,7 +78,13 @@ const Solution = ({ match, location }: any) => {
               <div
                 style={{
                   opacity: 0.15,
-                  backgroundImage: `url(${(content.mainCategores && content.mainCategores[0].cat_image)})`,
+
+                  backgroundImage: `url(${
+                    catImgBaseUrl +
+                    (content.mainCategores &&
+                      content.mainCategores[0].cat_image)
+                  })`,
+
                   backgroundSize: "cover",
                   backgroundPosition: "0 50%",
                 }}
@@ -128,7 +135,10 @@ const Solution = ({ match, location }: any) => {
                 );
               })}
           </P>
+
           {content.image == null ? <div></div> : <img src={content.image} width='100%' alt=""></img>}
+
+      
           <ReactMarkdown
             source={content.description}
             renderers={renderers}
