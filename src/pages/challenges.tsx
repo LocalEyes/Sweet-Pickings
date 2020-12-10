@@ -137,7 +137,7 @@ const Challenges = ({ group }: ChallengesProps) => {
                       title={item.name}
                       url={`/solutions/${item.key}`}
                       description={item.description}
-                      // media={item.images[0]}
+                      media={(item.images && item.images[0])}
                       key={item.key}
                     />
                   );
