@@ -73,7 +73,7 @@ const App = () => {
               <ChallengesPage group={groupData} />
             </Route>
             <Route exact path="/solutions">
-              <SolutionsPage />
+              <SolutionsPage group={groupData} />
             </Route>
             <Route exact path="/case-studies">
               <CaseStudies />
@@ -83,6 +83,9 @@ const App = () => {
             </Route>
             <Route exact path="/suggestion">
               <Suggestion />
+            </Route>
+            <Route exact path="/solutions/:topicId">
+              <SolutionsPage group={groupData} />
             </Route>
           </Switch>
           <Route
