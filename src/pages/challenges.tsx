@@ -7,8 +7,6 @@ import { H1, H3, P, Grid } from "@actionishope/shelley";
 import { classes as spacing } from "@actionishope/shelley/styles/default/spacing.st.css";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
-import { classes as buttons } from "../styles/puma/button.st.css";
-import { Link } from "react-router-dom";
 
 interface ChallengesProps {
   group: any;
@@ -139,7 +137,7 @@ const Challenges = ({ group }: ChallengesProps) => {
                       title={item.name}
                       url={`/solutions/${item.key}`}
                       description={item.description}
-                      // media={item.images[0]}
+                      media={(item.images && item.images[0])}
                       key={item.key}
                     />
                   );
@@ -151,19 +149,6 @@ const Challenges = ({ group }: ChallengesProps) => {
           </div>
         )}
 
-        <Grid
-          variant={2}
-          formatted
-          className={classnames(spacing.mt2, spacing.mb4)}
-        >
-          <Link to="/solutions" className={buttons.link}>
-            Find more solutions
-          </Link>
-
-          <Link to="/suggestion" className={buttons.link}>
-            Suggest a solution
-          </Link>
-        </Grid>
       </Grid>
     </div>
   );
