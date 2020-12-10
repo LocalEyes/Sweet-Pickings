@@ -80,10 +80,9 @@ const Solution = ({ match, location }: any) => {
                   opacity: 0.15,
 
                   backgroundImage: `url(${
-                    catImgBaseUrl +
                     (content.mainCategores &&
                       content.mainCategores[0].cat_image)
-                  })`,
+                    })`,
 
                   backgroundSize: "cover",
                   backgroundPosition: "0 50%",
@@ -138,7 +137,7 @@ const Solution = ({ match, location }: any) => {
 
           {content.image == null ? <div></div> : <img src={content.image} width='100%' alt=""></img>}
 
-      
+
           <ReactMarkdown
             source={content.description}
             renderers={renderers}
