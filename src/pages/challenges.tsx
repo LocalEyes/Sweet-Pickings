@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import classnames from "classnames";
 import { Helmet } from "react-helmet-async";
-import { api, slug } from "../api";
 import Banner from "../components/Banner/Banner";
 import Card from "../components/Card/Card";
-import { H1, H2, H3, InputSelection, P, Grid } from "@actionishope/shelley";
+import { H1, H3, P, Grid } from "@actionishope/shelley";
 import { classes as spacing } from "@actionishope/shelley/styles/default/spacing.st.css";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
@@ -17,8 +16,8 @@ interface ChallengesProps {
 
 // ({ group }: ChallengesProps) -> props for Challenges
 const Challenges = ({ group }: ChallengesProps) => {
-  const [loadedChallenge, setLoadedChallenge] = useState<any>();
-  
+  const [loadedChallenge] = useState<any>();
+
 
   // const loadChallenge = (topicKey: string) => {
   //   api
@@ -122,7 +121,7 @@ const Challenges = ({ group }: ChallengesProps) => {
         </Grid>
       </Banner>
 
-      <Grid tag="main" variant={1}>        
+      <Grid tag="main" variant={1}>
         <H3
           className={classnames(text.color2, grid.goal, spacing.mb2)}
           vol={6}
@@ -146,8 +145,8 @@ const Challenges = ({ group }: ChallengesProps) => {
                   );
                 })
               ) : (
-                <P>No results</P>
-              )}
+                  <P>No results</P>
+                )}
             </Grid>
           </div>
         )}

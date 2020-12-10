@@ -6,7 +6,7 @@ import Card from "../components/Card/Card";
 import { api, slug } from "../api";
 import {
   H1,
-  H2,  
+  H2,
   Grid,
   Button,
   VisuallyHidden,
@@ -23,7 +23,7 @@ interface ChallengesProps {
   group: any;
 }
 
-const Solutions = ({ group }: ChallengesProps) => {  
+const Solutions = ({ group }: ChallengesProps) => {
   const [content, setContent] = useState<any>([]);
   const [metaData, setMetaData] = useState<any>();
   const params: any = useParams();
@@ -40,13 +40,13 @@ const Solutions = ({ group }: ChallengesProps) => {
   };
   useEffect(() => {
     // Get the default topic data.    
-    if(params.topicId == null){      
+    if (params.topicId == null) {
       group && loadTopic(group.links.topics[0].key);
-    } else {      
+    } else {
       params.topicId && loadTopic(params.topicId);
     }
     // group && loadTopic(group.links.topics[0].key);
-  }, [group]);
+  }, [group, params]);
 
   return (
     <div className={spacing.mb8}>
@@ -96,7 +96,7 @@ const Solutions = ({ group }: ChallengesProps) => {
               }}
             >
               {group &&
-                group.links.topics.map((topic: any, index: number) => {                  
+                group.links.topics.map((topic: any, index: number) => {
                   // console.log("selected topic", content);
                   return (
                     <div
@@ -169,8 +169,8 @@ const Solutions = ({ group }: ChallengesProps) => {
                   );
                 })
               ) : (
-                <P>No results</P>
-              )}
+                  <P>No results</P>
+                )}
             </Grid>
           </div>
         )}
@@ -179,7 +179,7 @@ const Solutions = ({ group }: ChallengesProps) => {
           variant={2}
           formatted
           className={classnames(spacing.mt2, spacing.mb4)}
-        >          
+        >
           {metaData && (
             <>
               <Button

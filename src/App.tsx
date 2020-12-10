@@ -22,7 +22,6 @@ import Header from "./components/Header/Header";
 
 import { api } from "./api";
 import Footer from "./components/Footer/Footer";
-import Solutions from "./pages/solutions";
 
 const App = () => {
   // Set the initial content with what have from the link via link state.
@@ -71,10 +70,10 @@ const App = () => {
               <HomePage />
             </Route>
             <Route exact path="/challenges">
-              <ChallengesPage group={groupData}/>
+              <ChallengesPage group={groupData} />
             </Route>
             <Route exact path="/solutions">
-              <SolutionsPage group={groupData}/>
+              <SolutionsPage group={groupData} />
             </Route>
             <Route exact path="/case-studies">
               <CaseStudies />
@@ -85,9 +84,9 @@ const App = () => {
             <Route exact path="/suggestion">
               <Suggestion />
             </Route>
-            <Route exact path="/solutions/:topicId">  
-          <SolutionsPage group={groupData}/>
-          </Route>
+            <Route exact path="/solutions/:topicId">
+              <SolutionsPage group={groupData} />
+            </Route>
           </Switch>
           <Route
             path="/solutions/:solutionId/:solutionSlug"
@@ -96,7 +95,7 @@ const App = () => {
           <Route
             path="/case-studies/:caseStudyId/:caseStudySlug"
             component={CaseStudy}
-          />                  
+          />
           <Footer />
         </Router>
       </DefaultLayout>
