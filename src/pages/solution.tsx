@@ -136,7 +136,7 @@ const Solution = ({ match, location }: any) => {
                 );
               })}
           </P>   
-           {typeof content.images === "object" && content.images.map((item: any) => { image_list.push(item);})}
+           {typeof content.images === "object" && content.images.forEach((item: any) => { image_list.push(item);})}
 
         <div className={grid.mid}>
         <div className="slide-container"> 
