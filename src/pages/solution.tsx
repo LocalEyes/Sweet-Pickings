@@ -15,6 +15,10 @@ import { classes as buttons } from "../styles/puma/button.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
 import { st, classes } from "./solution.st.css";
 
+// @ts-ignore
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css';
+
 const Solution = ({ match, location }: any) => {
   const params: any = useParams();
   // console.log(match, location, params);
@@ -23,11 +27,11 @@ const Solution = ({ match, location }: any) => {
   const [content, setContent] = useState<any>({
     name: location.state && location.state.title,
     description: location.state && location.state.description,
-    image: location.state && location.state.media,
+    images: location.state && location.state.media,
   });
 
   const [caseStudies, setCaseStudies] = useState<any>([]);
-
+  const image_list: any = []
   useEffect(() => {
     // GET solution via id from the url params.
     api
@@ -38,18 +42,16 @@ const Solution = ({ match, location }: any) => {
         setContent({
           name: page.name,
           description: page.description,
-          image: page.images[0],
+          images: page.images || false,
           mainCategores: page.categories.main_categories.items || false,
           orgTypes: page.categories.organisation_types.items || false,
           links: page.links,
-        });
-
+        });        
         // Get and set case studies
         page.links.news &&
           api
             .get(page.links.news)
-            .then(async (response) => {
-              console.log(response.data.data);
+            .then(async (response) => {              
               return setCaseStudies(response.data.data);
             })
             .catch((error) => {
@@ -58,7 +60,7 @@ const Solution = ({ match, location }: any) => {
       })
       .catch((error) => {
         console.error(error);
-      });
+      });      
   }, [params.solutionId]);
 
   useEffect(() => {
@@ -74,7 +76,7 @@ const Solution = ({ match, location }: any) => {
             marginBottom: "3vw",
           }}
           media={
-            content.image && (
+            content.images && (
               <div
                 style={{
                   opacity: 0.15,
@@ -112,7 +114,7 @@ const Solution = ({ match, location }: any) => {
               {content.links && content.links.topic.name}
             </span>
           </H2>
-        </Banner>
+        </Banner>           
         <Grid tag="main" variant={1} formatted>
           <H1 vol={7}>
             <small className={classnames(classes.solutionSub, text.color2)}>
@@ -133,11 +135,18 @@ const Solution = ({ match, location }: any) => {
                   </span>
                 );
               })}
-          </P>
+          </P>   
+           {typeof content.images === "object" && content.images.forEach((item: any) => { image_list.push(item);})}
 
-          {content.image == null ? <div></div> : <img src={content.image} width='100%' alt=""></img>}
-
-
+        <div className={grid.mid}>
+        <div className="slide-container"> 
+            <Slide infinite = {false} arrows = {image_list.length > 1 ? true : false}>
+              {image_list && image_list.map((item: any, index: number) => {
+                return (<img key={index} src={item} width='100%' alt=""/>);
+              })}
+            </Slide>
+          </div>
+          </div>                                          
           <ReactMarkdown
             source={content.description}
             renderers={renderers}
