@@ -14,8 +14,13 @@ import { api } from "../api";
 import { Link, useParams } from "react-router-dom";
 import { classes as buttons } from "../styles/puma/button.st.css";
 
+// @ts-ignore
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css';
+
 const CaseStudy = ({ match, location }: any) => {
   let params: any = useParams();
+  const image_list: any = [];
   // console.log(match, location, params);
   // Set the initial content with what have from the link via link state.
   const [content, setContent] = useState<any>({
@@ -34,7 +39,7 @@ const CaseStudy = ({ match, location }: any) => {
         setContent({
           name: page.title,
           description: page.description,
-          image: page.images[0],
+          images: page.images,
         });
       })
       .catch((error) => {
@@ -55,11 +60,11 @@ const CaseStudy = ({ match, location }: any) => {
             marginBottom: "3vw",
           }}
           media={
-            content.image && (
+            content.images && (
               <div
                 style={{
                   opacity: 0.15,
-                  backgroundImage: `url(${content.image})`,
+                  backgroundImage: `url(${content.images[0]})`,
                   backgroundSize: "cover",
                   backgroundPosition: "0 50%",
                 }}
@@ -95,6 +100,17 @@ const CaseStudy = ({ match, location }: any) => {
             <br />
             {content.name}
           </H1>
+          {typeof content.images === "object" && content.images.forEach((item: any) => { image_list.push(item);})}
+
+        <div className={grid.mid}>
+        <div className="slide-container"> 
+            <Slide infinite = {false} arrows = {image_list.length > 1 ? true : false} autoplay = {false}>
+              {image_list && image_list.map((item: any, index: number) => {
+                return (<img key={index} src={item} width='100%' alt=""/>);
+              })}
+            </Slide>
+          </div>
+          </div>  
           <ReactMarkdown
             source={content.description}
             renderers={renderers}
