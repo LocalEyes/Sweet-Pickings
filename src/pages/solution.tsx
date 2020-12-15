@@ -31,7 +31,8 @@ const Solution = ({ match, location }: any) => {
   });
 
   const [caseStudies, setCaseStudies] = useState<any>([]);
-  const image_list: any = []
+  const [similarSolutions, setSimilarSolutions] = useState<any>([]);
+  const image_list: any = [];
   useEffect(() => {
     // GET solution via id from the url params.
     api
@@ -57,10 +58,19 @@ const Solution = ({ match, location }: any) => {
             .catch((error) => {
               console.error(error);
             });
-      })
+            page.links.topic.key && 
+            api
+               .get(`/topics/${page.links.topic.key}`)
+               .then(async (response) => {
+                  return setSimilarSolutions(response.data.data[0].links.ideas);              
+               })
       .catch((error) => {
         console.error(error);
-      });      
+      });    
+    })
+      .catch((error) => {
+        console.error(error);
+      });    
   }, [params.solutionId]);
 
   useEffect(() => {
@@ -192,6 +202,40 @@ const Solution = ({ match, location }: any) => {
               </Grid>
             </div>
           )}
+          <Grid            
+            formatted
+            className={classnames(
+              spacing.mt2,
+              spacing.mt4,             
+              grid.pen
+            )}
+            >                
+          <H2 className={classnames(grid.goal, spacing.mb2)} vol={7} uppercase>
+            Related Solutions
+          </H2>
+          {similarSolutions.length > 0 && (
+            <div className={grid.goal}>
+              <Grid variant={4}>
+                {similarSolutions.map((item: any) => {
+                  if(parseInt(item.key) !== parseInt(params.solutionId)){                  
+                  return (
+                    <Card
+                      title={item.title}
+                      url={`/solutions/${item.key}/${slug(item.title)}`}
+                      description={item.description}
+                      media={item.images[0]}
+                      key={item.key}
+                      onClick = {() =>{window.scrollTo(0, 0);}}
+                    />
+                  );
+                  } else {
+                    return null;
+                  }
+                })}
+              </Grid>
+            </div>
+          )}
+          </Grid> 
         </Grid>
       </DefaultLayout>
     </div>
