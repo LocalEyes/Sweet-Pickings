@@ -190,13 +190,13 @@ const Solutions = ({ group }: ChallengesProps) => {
             Results
           </H2>
         </VisuallyHidden>
-
-        <H2 className={classnames(text.sectionHeader, grid.goal)} vol={6}>
+        {allSolutionsSelected ? <div className={grid.goal}></div>: <div className={grid.goal} ><H2 className={classnames(grid.goal, spacing.mb1)} vol={6}>
           {content && content.name}
         </H2>
-        <P className={classnames(grid.goal, spacing.mb4)}>
+        <P className={classnames(grid.goal, spacing.mb2)}>
           {content && content.description}
-        </P>
+        </P></div>}
+        
         <H3
           className={classnames(text.color2, grid.goal, spacing.mb2)}
           vol={6}
