@@ -26,22 +26,45 @@ interface ChallengesProps {
 const Solutions = ({ group }: ChallengesProps) => {
   const [content, setContent] = useState<any>([]);
   const [metaData, setMetaData] = useState<any>();
+  const [allSolutionsSelected, setallSolutionsSelected] = useState<any>(false);
   const params: any = useParams();
   const loadTopic = (topicKey: string) => {
     api
       .get(`/topics/${topicKey}?per-page=15`)
       .then(async (response) => {
-        setContent(response.data.data[0]);
-        setMetaData(response.data.meta);
+        const data =  response.data.data[0];
+        setContent({
+          data: data.links.ideas,
+          name: data.name,
+          description: data.description,
+          key: data.key,
+          images: data.images
+        });
+          setMetaData(response.data.meta);
+          setallSolutionsSelected(false);
       })
       .catch((error) => {
         console.error(error);
       });
   };
+  const loadAllSolutions = () => {
+    api.get(`/solutions/10479?per-page=15`)
+    .then(async (response) => {
+      const data =  response.data.data;      
+      setContent({
+        data: data,        
+      });
+      setMetaData(response.data.meta);
+      setallSolutionsSelected(true);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
   useEffect(() => {
     // Get the default topic data.    
     if (params.topicId == null) {
-      group && loadTopic(group.links.topics[0].key);
+      loadAllSolutions();
     } else {
       params.topicId && loadTopic(params.topicId);
     }
@@ -95,6 +118,34 @@ const Solutions = ({ group }: ChallengesProps) => {
                 maxHeight: "300px",
               }}
             >
+              <div
+                      style={{
+                        padding: "10px 18px",
+                        borderTop: "1px solid rgba(255,255,255,.05)",
+                        background: "rgb(27 27 27 / 70%)",
+                      }}
+                      key={`topics`}
+                    >
+                      <InputSelection
+                        id={`chal`}
+                        checked={
+                          allSolutionsSelected
+                            ? true
+                            : false
+                        }
+                        // value={topic.key}
+                        name="challegesRadios"
+                        label='All Challenges'
+                        type="radio"
+                        variant={1}
+                        vol={3}
+                        inputPos="start"
+                        error="Form item error message"
+                        onChange={()=> {
+                          loadAllSolutions();
+                        }}                        
+                      />
+                    </div>
               {group &&
                 group.links.topics.map((topic: any, index: number) => {
                   // console.log("selected topic", content);
@@ -139,13 +190,13 @@ const Solutions = ({ group }: ChallengesProps) => {
             Results
           </H2>
         </VisuallyHidden>
-
-        <H2 className={classnames(text.sectionHeader, grid.goal)} vol={6}>
+        {allSolutionsSelected ? <div className={grid.goal}></div>: <div className={grid.goal} ><H2 className={classnames(grid.goal, spacing.mb1)} vol={6}>
           {content && content.name}
         </H2>
-        <P className={classnames(grid.goal, spacing.mb4)}>
+        <P className={classnames(grid.goal, spacing.mb2)}>
           {content && content.description}
-        </P>
+        </P></div>}
+        
         <H3
           className={classnames(text.color2, grid.goal, spacing.mb2)}
           vol={6}
@@ -153,15 +204,15 @@ const Solutions = ({ group }: ChallengesProps) => {
         >
           Solutions:
         </H3>
-        {content && content.links && (
+        {content && content.data && (
           <div className={grid.goal}>
             <Grid variant={4}>
-              {content.links.ideas ? (
-                content.links.ideas.map((item: any) => {
+              {content.data ? (
+                content.data.map((item: any) => {
                   return (
                     <Card
                       title={item.title}
-                      url={`/solutions/${item.key}/${slug(item.title)}`}
+                      url={`/solutions/${item.key}/${allSolutionsSelected ? item.name && slug(item.name) : item.title && slug(item.title)}`}
                       description={item.description}
                       media={item.images[0]}
                       key={item.key}
@@ -195,7 +246,22 @@ const Solutions = ({ group }: ChallengesProps) => {
                   api
                     .get(metaData.pagination.links.prev)
                     .then(async (response) => {
-                      setContent(response.data.data[0]);
+                      if(allSolutionsSelected){
+                        const data =  response.data.data;
+                        setContent({
+                          data: data,                          
+                        });
+                      } else {
+                        const data =  response.data.data[0];
+                        setContent({
+                          data: data.links.ideas,
+                          name: data.name,
+                          description: data.description,
+                          key: data.key,
+                          images: data.images
+                        });                          
+                      }
+                      setMetaData(response.data.meta);  
                     })
                     .catch((error) => {
                       console.error(error);
@@ -218,7 +284,22 @@ const Solutions = ({ group }: ChallengesProps) => {
                   api
                     .get(metaData.pagination.links.next)
                     .then(async (response) => {
-                      setContent(response.data.data[0]);
+                      if(allSolutionsSelected){
+                        const data =  response.data.data;
+                        setContent({
+                          data: data,                          
+                        });
+                      } else {
+                        const data =  response.data.data[0];
+                        setContent({
+                          data: data.links.ideas,
+                          name: data.name,
+                          description: data.description,
+                          key: data.key,
+                          images: data.images
+                        });                          
+                      }
+                      setMetaData(response.data.meta);   
                     })
                     .catch((error) => {
                       console.error(error);
