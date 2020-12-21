@@ -177,7 +177,7 @@ const Solution = ({ match, location }: any) => {
               Find more solutions
             </Link>
 
-            <Link to="/suggestion" className={buttons.link}>
+            <Link to="/suggestion/solution" className={buttons.link}>
               Suggest a solution
             </Link>
           </Grid>
