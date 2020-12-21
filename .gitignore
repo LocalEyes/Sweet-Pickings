@@ -10,7 +10,7 @@ node_modules
 dist
 run
 tmp
-# build
+build
 coverage
 .nyc_output
 .npmrc
