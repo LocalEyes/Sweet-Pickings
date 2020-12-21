@@ -211,7 +211,7 @@ const Solutions = ({ group }: ChallengesProps) => {
                 content.data.map((item: any) => {
                   return (
                     <Card
-                      title={item.title}
+                      title={allSolutionsSelected ? item.name && item.name : item.title && item.title}
                       url={`/solutions/${item.key}/${allSolutionsSelected ? item.name && slug(item.name) : item.title && slug(item.title)}`}
                       description={item.description}
                       media={item.images[0]}
