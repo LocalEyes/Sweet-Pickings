@@ -15,7 +15,7 @@ const Footer = ({ className: classNameProp, children, ...rest }: GridProps) => {
     >
       <nav className={grid.goal}>
         <ul className={classes.navList}>
-          <Text uppercase vol={4} tag="li">
+          <Text uppercase vol={4} as="li">
             <Link className={classes.navItem} to="/about">
               About
             </Link>

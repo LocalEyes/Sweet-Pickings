@@ -8,12 +8,12 @@ import {
   shouldTransform,
 } from "../../components/Markdown/transformers/youtube";
 
-export const paragraph = ({ children, tag = "p", vol = 3 }: TextProps) => (
-  <Text {...{ vol, tag }}>{children}</Text>
+export const paragraph = ({ children, as = "p", vol = 3 }: TextProps) => (
+  <Text {...{ vol, as }}>{children}</Text>
 );
 
-export const listItem = ({ children, tag = "li", vol = 3 }: TextProps) => (
-  <Text {...{ vol, tag }} className={spacing.mb05}>
+export const listItem = ({ children, as = "li", vol = 3 }: TextProps) => (
+  <Text {...{ vol, as }} className={spacing.mb05}>
     {children}
   </Text>
 );
@@ -31,9 +31,9 @@ export const link = (props: any) => {
 };
 
 export const heading = ({ node, children }: any) => {
-  const tag = node.depth === 2 ? "h2" : "h3";
+  const as = node.depth === 2 ? "h2" : "h3";
   const vol = node.depth === 2 ? 6 : 5;
-  return <Text {...{ tag, vol }}>{children}</Text>;
+  return <Text {...{ as, vol }}>{children}</Text>;
 };
 
 export const table = ({ children }: any) => {
