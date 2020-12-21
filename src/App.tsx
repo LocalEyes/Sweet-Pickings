@@ -84,6 +84,9 @@ const App = () => {
             <Route exact path="/suggestion">
               <Suggestion />
             </Route>
+            <Route exact path="/suggestion/:type">
+              <Suggestion />
+            </Route>
             <Route exact path="/solutions/:topicId">
               <SolutionsPage group={groupData} />
             </Route>

@@ -130,7 +130,7 @@ const CaseStudy = ({ match, location }: any) => {
               Find more case studies
             </Link>
 
-            <Link to="/suggestion" className={buttons.link}>
+            <Link to="/suggestion/case-study" className={buttons.link}>
               Suggest a case study
             </Link>
           </Grid>

@@ -8,6 +8,7 @@ import ChevRight from "../components/icons/ChevRight";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
 import { classes as spacing } from "../styles/puma/spacing.st.css";
+import { classes as buttons } from "../styles/puma/button.st.css";
 import { api, slug } from "../api";
 import Card from "../components/Card/Card";
 
@@ -105,6 +106,23 @@ const Home = () => {
             </Grid>
           </div>
         )}
+        <Grid
+            variant={2}
+            formatted
+            className={classnames(
+              spacing.mt2,
+              spacing.mt4,
+              spacing.mb8,
+              grid.pen
+            )}
+          >
+         <Link to="/challenges" className={buttons.link}>
+              Find more challenges
+            </Link>
+            <Link to="/suggestion/challenge" className={buttons.link}>
+              Suggest a challenge
+            </Link>
+            </Grid>
         </div>
         <div className={classnames(text.sectionLinkBanner, grid.edge)}>
           <H2 className={classnames(text.color2)} vol={7} uppercase>
@@ -138,6 +156,24 @@ const Home = () => {
             </Grid>
           </div>
         )}
+        <Grid
+            variant={2}
+            formatted
+            className={classnames(
+              spacing.mt2,
+              spacing.mt4,
+              spacing.mb8,
+              grid.pen
+            )}
+          >
+        <Link to="/solutions" className={buttons.link}>
+          Find more solutions
+        </Link>
+
+        <Link to="/suggestion/solution" className={buttons.link}>
+          Suggest a solution
+        </Link>
+        </Grid>
         </div>
         <div className={classnames(text.sectionLinkBanner, grid.edge)}>
           <H2 className={classnames(text.color1)} vol={7} uppercase>
@@ -169,7 +205,25 @@ const Home = () => {
               )} 
               </Grid>   
             </div>  
-          }      
+          }
+          <Grid
+            variant={2}
+            formatted
+            className={classnames(
+              spacing.mt2,
+              spacing.mt4,
+              spacing.mb8,
+              grid.pen
+            )}
+          >
+           <Link to="/case-studies" className={buttons.link}>
+              Find more case studies
+            </Link>
+
+            <Link to="/suggestion/case-study" className={buttons.link}>
+              Suggest a case study
+            </Link>
+            </Grid>
         </div>
       </Grid>
     </div>

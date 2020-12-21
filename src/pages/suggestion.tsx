@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import classnames from "classnames";
 import {
@@ -12,11 +12,28 @@ import Banner from "../components/Banner/Banner";
 import { classes as spacing } from "@actionishope/shelley/styles/default/spacing.st.css";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
+import { useParams } from "react-router-dom";
 
 const Suggestion = () => {
+  const params: any = useParams();
+  const [defaultSelection, setDefaultSelection] = useState<string>('default');
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    window.scrollTo(0, 0);   
+    switch (params.type){
+      case 'solution':
+        setDefaultSelection('plastic');
+        break;
+      case 'case-study':
+        setDefaultSelection('carbon');
+        break;
+      case 'challenge':
+        setDefaultSelection('challenge');
+        break;
+      default:
+        setDefaultSelection('default');
+    }
+  }, [params.type]);
   return (
     <div className={spacing.mb8}>
       <Helmet>
@@ -42,9 +59,12 @@ const Suggestion = () => {
             vol={3}
             variant={3}
             id={`sol2`}
+            value={defaultSelection}
           >
+            <option value={`default`}>--Please Select--</option>
             <option value={`carbon`}>Case Study</option>
             <option value={`plastic`}>Solution</option>
+            <option value={`challenge`}>Challenge</option>
           </InputSelect>
           <br />
           <br />
