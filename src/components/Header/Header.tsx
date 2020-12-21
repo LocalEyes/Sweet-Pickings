@@ -16,25 +16,25 @@ const Header = ({ className: classNameProp, children, ...rest }: GridProps) => {
       {/* {children} */}
       <nav className={grid.goal}>
         <ul className={classes.navList}>
-          <Text uppercase vol={4} tag="li">
+          <Text uppercase vol={4} as="li">
             <Link className={classes.navItem} to="/">
               Home
             </Link>
           </Text>
 
-          <Text uppercase vol={4} tag="li">
+          <Text uppercase vol={4} as="li">
             <Link className={classes.navItem} to="/challenges">
               Challenges
             </Link>
           </Text>
 
-          <Text uppercase vol={4} tag="li">
+          <Text uppercase vol={4} as="li">
             <Link className={classes.navItem} to="/solutions">
               Solutions
             </Link>
           </Text>
 
-          <Text uppercase vol={4} tag="li">
+          <Text uppercase vol={4} as="li">
             <Link className={classes.navItem} to="/case-studies">
               Case Studies
             </Link>
