@@ -1,0 +1,8 @@
+.suggestionForm p {
+  color: #bf1650;
+}
+
+.suggestionForm p::before {
+  display: inline;
+  content: "⚠ ";
+}
