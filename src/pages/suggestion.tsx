@@ -41,9 +41,16 @@ const Suggestion = () => {
       </Helmet>
       <Banner
         className={grid.edge}
-        style={{
-          marginBottom: "3vw",
-        }}
+        media={
+          <div
+            style={{
+              opacity: 0.15,
+              backgroundImage: `url(https://ik.imagekit.io/tcvka0ufln/home_TUhFZjeTJ.jpg)`,
+              backgroundSize: "cover",
+              backgroundPosition: "0 50%",
+            }}
+          />
+        }
       >
         <H1 vol={8} uppercase>
           <span className={classnames(text.textBannerInline, text.textBg2)}>
@@ -51,6 +58,7 @@ const Suggestion = () => {
           </span>
         </H1>
       </Banner>
+      <br />
       <Grid tag="main" variant={1} formatted>
         <div className={grid.mid}>
           <InputSelect
