@@ -20,6 +20,11 @@ const Footer = ({ className: classNameProp, children, ...rest }: GridProps) => {
               About
             </Link>
           </Text>
+          <Text uppercase vol={4} as="li">
+            <Link className={classes.navItem} to="/suggestion">
+              SUGGEST CONTENT
+            </Link>
+          </Text>
         </ul>
       </nav>
 
