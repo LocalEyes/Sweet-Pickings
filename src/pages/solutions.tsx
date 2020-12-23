@@ -13,11 +13,14 @@ import {
   InputSelection,
   P,
   H3,
+  InputSelect,
 } from "@actionishope/shelley";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
 import { classes as spacing } from "../styles/puma/spacing.st.css";
 import { useParams } from "react-router-dom";
+import "../styles/puma/solutions.css";
+import 'font-awesome/css/font-awesome.min.css';
 
 interface ChallengesProps {
   group: any;
@@ -28,6 +31,7 @@ const Solutions = ({ group }: ChallengesProps) => {
   const [metaData, setMetaData] = useState<any>();
   const [allSolutionsSelected, setallSolutionsSelected] = useState<any>(false);
   const params: any = useParams();
+  const [filterData, setFilterData] = useState<any>({groups: [], topics: [], categories: [], q: ''});
   const loadTopic = (topicKey: string) => {
     api
       .get(`/topics/${topicKey}?per-page=15`)
@@ -70,6 +74,31 @@ const Solutions = ({ group }: ChallengesProps) => {
     }
     // group && loadTopic(group.links.topics[0].key);
   }, [group, params]);
+
+  useEffect(() => {
+    console.log('Filter Options', filterData);
+    api.post(`/ideas/search`, filterData)
+    .then(async(response) => {
+      console.log("Response ", response.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  },[filterData])
+
+  useEffect(()=>{
+    const stickyHeader: HTMLElement | null = document.getElementById("stickyHeader");
+    const sticky = stickyHeader && stickyHeader.offsetTop;
+    window.addEventListener("scroll", () => {
+      if(sticky){
+        if (window.pageYOffset > sticky) {
+          stickyHeader && stickyHeader.classList.add("sticky");
+        } else {
+          stickyHeader && stickyHeader.classList.remove("sticky");
+        }
+      }
+    });
+  },[])
 
   return (
     <div className={spacing.mb8}>
@@ -196,6 +225,50 @@ const Solutions = ({ group }: ChallengesProps) => {
         <P className={classnames(grid.goal, spacing.mb2)}>
           {content && content.description}
         </P></div>}
+        <div className={`${grid.goal} filterSection`}>
+        <div className="filterBar" id='stickyHeader'>
+        <i className="fa fa-filter" aria-hidden="true" style={{fontSize: "40px", paddingTop: '12px'}}></i>
+        <InputSelect className = "inputFilter"
+            label={`Challenges`}
+            placeholder="Please select"
+            vol={2}
+            variant={2}
+            id={`sol2`}
+            onChange = { (e) => {setFilterData({...filterData, groups: [e.target.value]})}}
+          >
+            <option value="">--Please Select--</option>
+            {group && group.links.topics.map((topic: any) => {
+              return (<option value={topic.key}>{topic.name}</option>);
+            })}
+          </InputSelect> 
+          <InputSelect className = "inputFilter"
+            label={`Organisation Type`}
+            placeholder="Please select"
+            vol={2}
+            variant={2}
+            id={`sol2`}
+            onChange = { (e) => {setFilterData({...filterData, topics: [e.target.value]})}}
+          >
+            <option value="">--Please Select--</option>
+            <option value={`1`}>Org Type 1</option>
+            <option value={`2`}>Org Type 2</option>
+          </InputSelect>
+          <InputSelect className = "inputFilter"
+            label={'Category'}
+            placeholder="Please select"
+            vol={2}
+            variant={2}            
+            id={`sol2`}
+            onChange = { (e) => {setFilterData({...filterData, categories: [e.target.value]})}}
+          >
+            <option value="">--Please Select--</option>
+            <option value={`1`}>Cat entry 1</option>
+            <option value={`2`}>Cat entry 2</option>
+          </InputSelect>
+         
+        </div>
+        <br/>
+        </div>
         
         <H3
           className={classnames(text.color2, grid.goal, spacing.mb2)}

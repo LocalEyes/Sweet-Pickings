@@ -1,0 +1,25 @@
+.sticky {
+  position: fixed;
+  top: 74.16px;
+}
+
+.filterBar {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f0f0f0;
+  z-index: 1000;
+  padding: 1%;
+}
+
+.inputFilter {
+  background-color: #f0f0f0 !important;
+  width: 30%;
+}
+/* #f0f0f0 */
+.filterSection .filterBar {
+  width: 100%;
+}
+
+.filterSection .filterBar.sticky {
+  width: 85.7% !important;
+}
