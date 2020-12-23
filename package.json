@@ -30,6 +30,7 @@
     "axios": "^0.21.0",
     "axios-cache-adapter": "^2.5.0",
     "classnames": "^2.2.6",
+    "font-awesome": "^4.7.0",
     "lodash.throttle": "^4.1.1",
     "react": "^16.14.0",
     "react-alice-carousel": "^2.1.0",
