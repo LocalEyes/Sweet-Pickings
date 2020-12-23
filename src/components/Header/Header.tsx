@@ -1,8 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import { st, classes } from "./header.st.css";
-
-import { Grid, GridProps, Text } from "@actionishope/shelley";
+import { Grid, GridProps, Text, Button } from "@actionishope/shelley";
 import { Link } from "react-router-dom";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 
@@ -39,7 +38,26 @@ const Header = ({ className: classNameProp, children, ...rest }: GridProps) => {
               Case Studies
             </Link>
           </Text>
-        </ul>
+          {/* <div style={{margin: 'auto'}}> */}
+          <div style={{ display: 'flex',
+    justifyContent: 'flex-end',
+    width: '47.5%',
+    alignItems: 'center'}}>
+          {/* <InputText
+            label =""           
+            placeholder="Type here..."   
+            variant={1} 
+            vol={3}   
+            error="Form item error message"
+            id = ""            
+          /> */}
+          <input type="text" id="fname" name="firstname" placeholder="Type Here.." style={{height: '40%',width: '50%'}}/>
+          <Button tone={4} variant={3} vol={3} style={{height: '40%',marginLeft: '10px'}} as="li">
+          Search
+        </Button>
+        </div>
+        {/* </div> */}
+        </ul>        
       </nav>
     </Grid>
   );
