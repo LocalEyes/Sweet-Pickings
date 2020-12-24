@@ -35,7 +35,7 @@ const About = () => {
           </span>
         </H1>
       </Banner>
-      <Grid tag="main" variant={1} formatted>
+      <Grid tag="main" variant={1} formatted className={classnames(spacing.mt3)}>
         <P>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
