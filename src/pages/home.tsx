@@ -12,21 +12,15 @@ import { classes as buttons } from "../styles/puma/button.st.css";
 import { api, slug } from "../api";
 import Card from "../components/Card/Card";
 
-const Home = () => {
-  const [challenges, setChallenges] = useState<any>();
+interface challengesProps {
+  group: any;
+}
+
+const Home = ({ group }: challengesProps) => {  
   const [solutions, setSolutions] = useState<any>();
   const [caseStudies, setCaseStudies] = useState<any>();
   useEffect(() => {
-    window.scrollTo(0, 0);
-    // API for challenges
-    api
-      .get(`/groups/10479`)
-      .then(async (response) => {        
-        setChallenges(response.data.data[0].links.topics);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    window.scrollTo(0, 0);    
       // API for solutions
       api.get(`/solutions/10479?per-page=15`)
     .then(async (response) => {     
@@ -81,11 +75,11 @@ const Home = () => {
             We need to understand the challenges before we can fix anything; get
             familiar with our challenges and lets face them together.
           </P>
-          {challenges && (
+          {group && (
           <div className={classnames(grid.edge)}>
             <Grid variant={4}>
-              {challenges ? (
-                challenges.map((item: any, index: number) => {
+              {group.links.topics ? (
+                group.links.topics.map((item: any, index: number) => {
                   if(index < 3){
                   return (
                     <Card
