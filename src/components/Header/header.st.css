@@ -1,6 +1,32 @@
 /* header.st.css CSS API */
-.root {}
+.root {
+}
 
-.navList {}
+.navList {
+}
 
-.navItem {}
+.navItem {
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.search_div {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.search_field {
+  height: 40px;
+  width: 100%;
+}
+
+.search_button {
+  height: 40px;
+  width: 25%;
+  margin-left: 10px;
+}
