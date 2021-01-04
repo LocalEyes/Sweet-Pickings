@@ -35,6 +35,7 @@
     "react": "^16.14.0",
     "react-alice-carousel": "^2.1.0",
     "react-app-rewired": "^2.1.6",
+    "react-document-meta": "^3.0.0-beta.2",
     "react-dom": "^16.14.0",
     "react-focus-on": "^3.5.0",
     "react-helmet": "^6.1.0",
@@ -44,6 +45,7 @@
     "react-player": "^2.6.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.4",
+    "react-share": "^4.3.1",
     "react-slideshow-image": "^3.4.2",
     "react-syntax-highlighter": "^15.2.1",
     "react-tabs": "^3.1.1",
@@ -81,6 +83,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-document-meta": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^2.x",
     "@typescript-eslint/parser": "^2.x",
     "typescript": "3.9.7"

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 import { Helmet } from "react-helmet-async";
 import Banner from "../components/Banner/Banner";
+import SocialSahre from "../components/SocialSahre/SocialShare";
 import Card from "../components/Card/Card";
 import { api, slug } from "../api";
 import {
@@ -233,7 +234,7 @@ const Solutions = ({ group }: ChallengesProps) => {
             placeholder="Please select"
             vol={2}
             variant={2}
-            id={`sol2`}
+            id={`sol1`}
             onChange = { (e) => {setFilterData({...filterData, groups: [e.target.value]})}}
           >
             <option value="">--Please Select--</option>
@@ -258,7 +259,7 @@ const Solutions = ({ group }: ChallengesProps) => {
             placeholder="Please select"
             vol={2}
             variant={2}            
-            id={`sol2`}
+            id={`sol3`}
             onChange = { (e) => {setFilterData({...filterData, categories: [e.target.value]})}}
           >
             <option value="">--Please Select--</option>
@@ -385,6 +386,7 @@ const Solutions = ({ group }: ChallengesProps) => {
           )}
         </Grid>
       </Grid>
+      <SocialSahre title={(content && content.name) ? content.name : 'Solutions'} url={document.URL}></SocialSahre>
     </div>
   );
 };

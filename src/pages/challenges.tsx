@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classnames from "classnames";
 import { Helmet } from "react-helmet-async";
 import Banner from "../components/Banner/Banner";
+import SocialShare from "../components/SocialSahre/SocialShare";
 import Card from "../components/Card/Card";
 import { H1, H3, P, Grid } from "@actionishope/shelley";
 import { classes as spacing } from "@actionishope/shelley/styles/default/spacing.st.css";
@@ -146,6 +147,7 @@ const Challenges = ({ group }: ChallengesProps) => {
                   <P>No results</P>
                 )}
             </Grid>
+            <SocialShare url={document.URL} title={'Challenges'}></SocialShare>
           </div>
         )}
 

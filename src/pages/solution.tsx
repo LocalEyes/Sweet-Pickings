@@ -7,6 +7,7 @@ import { Link, useParams } from "react-router-dom";
 import { api, slug } from "../api";
 import DefaultLayout from "../layouts/Default";
 import Banner from "../components/Banner/Banner";
+import SocialShare from "../components/SocialSahre/SocialShare";
 import Card from "../components/Card/Card";
 import { H1, H2, P, Grid } from "@actionishope/shelley";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
@@ -238,6 +239,7 @@ const Solution = ({ match, location }: any) => {
           </Grid> 
         </Grid>
       </DefaultLayout>
+      <SocialShare title={(content && content.name) ? content.name : 'Solutions page'} url={document.URL}></SocialShare>
     </div>
   );
 };

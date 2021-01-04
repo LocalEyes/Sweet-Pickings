@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 import Banner from "../components/Banner/Banner";
+import SocialShare from "../components/SocialSahre/SocialShare";
 import Card from "../components/Card/Card";
 import { H1, H2, Grid, Button, VisuallyHidden } from "@actionishope/shelley";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
@@ -139,6 +140,7 @@ const CaseStudies = () => {
           </Grid>
         </div>
       </Grid>
+      <SocialShare title={(content && content.name) ? content.name : 'Case Studies'} url={document.URL}></SocialShare>
     </div>
   );
 };

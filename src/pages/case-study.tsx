@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 import DefaultLayout from "../layouts/Default";
 import Banner from "../components/Banner/Banner";
+import SocialShare from "../components/SocialSahre/SocialShare";
 import { H1, H2, Grid } from "@actionishope/shelley";
 import { classes as spacing } from "@actionishope/shelley/styles/default/spacing.st.css";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
@@ -136,6 +137,7 @@ const CaseStudy = ({ match, location }: any) => {
           </Grid>
         </Grid>
       </DefaultLayout>
+      <SocialShare url={document.URL} title={(content && content.name) ? content.name : 'Case Study'}></SocialShare>
     </div>
   );
 };
