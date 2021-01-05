@@ -14,6 +14,7 @@ const Header = ({ className: classNameProp, children, ...rest }: GridProps) => {
     >
       {/* {children} */}
       <nav className={grid.goal}>
+        <div className={classes.flex}>
         <ul className={classes.navList}>
           <Text uppercase vol={4} as="li">
             <Link className={classes.navItem} to="/">
@@ -38,26 +39,14 @@ const Header = ({ className: classNameProp, children, ...rest }: GridProps) => {
               Case Studies
             </Link>
           </Text>
-          {/* <div style={{margin: 'auto'}}> */}
-          <div style={{ display: 'flex',
-    justifyContent: 'flex-end',
-    width: '47.5%',
-    alignItems: 'center'}}>
-          {/* <InputText
-            label =""           
-            placeholder="Type here..."   
-            variant={1} 
-            vol={3}   
-            error="Form item error message"
-            id = ""            
-          /> */}
-          <input type="text" id="fname" name="firstname" placeholder="Type Here.." style={{height: '40%',width: '50%'}}/>
-          <Button tone={4} variant={3} vol={3} style={{height: '40%',marginLeft: '10px'}} as="li">
+        </ul>
+        <div className={classes.search_div}>
+        <input type="text" id="fname" name="firstname" placeholder="Type Here.." className={classes.search_field}/>
+          <Button tone={4} variant={3} vol={3} className={classes.search_button} as="li">
           Search
         </Button>
         </div>
-        {/* </div> */}
-        </ul>        
+        </div>
       </nav>
     </Grid>
   );
