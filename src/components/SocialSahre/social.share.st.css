@@ -1,0 +1,70 @@
+/* banner.st.css CSS API */
+
+.root {
+    -st-states:
+      tone(enum(1, 2, 3, 4, 5, 6)),
+      variant(enum(1, 2, 3, 4, 5, 6))
+  }
+  
+  .media {}
+  
+  .text {}
+  .container {
+    position: relative;
+    width: 320px;
+    height: 200px;
+    background: #ececec;
+  }
+  .floating_menu {
+    position: fixed;
+    right: 8px;
+    bottom: 132px;
+    height: 25%;
+    text-align: right;
+    /*transition: height 250ms ease-in-out;*/
+  }
+  
+  .floating-menu.open {
+    height: 150px;
+    overflow: hidden;
+  }
+  
+  .floating-menu.open .floating_menu_item {
+    margin-top: 8px;
+  }
+  
+  .floating_menu_item label{
+    display: inline-block;
+    margin-right: 8px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: rgba(0,0,0,.25);
+    opacity: 0;
+    transition: opacity 250ms ease-in-out;
+  }
+  
+  .floating-menu.open .floating_menu_item label {
+    opacity: 0.4;
+  }
+  
+  .floating-menu-icon{
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    vertical-align: middle;
+    background: #e53935;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,.2);
+    text-align: center;
+  }
+  
+  .floating-menu-icon .material-icons {
+    font-size: 40px;
+    color: #fff;
+    vertical-align: middle;
+  }
+  .share_toggle{
+    outline: none !important;
+  }

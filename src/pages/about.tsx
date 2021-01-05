@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import classnames from "classnames";
 import { H1, P, Grid } from "@actionishope/shelley";
 import Banner from "../components/Banner/Banner";
+import SocialShare from "../components/SocialSahre/SocialShare";
 import { classes as spacing } from "@actionishope/shelley/styles/default/spacing.st.css";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
@@ -14,7 +15,7 @@ const About = () => {
   return (
     <div className={spacing.mb8}>
       <Helmet>
-        <title>About - Solutions database</title>
+          <title>{'About - Solutions database'}</title>        
       </Helmet>
       <Banner
         className={grid.edge}
@@ -34,9 +35,10 @@ const About = () => {
             About
           </span>
         </H1>
-      </Banner>
+        <SocialShare title={'About - Solutions databaseout'} url={document.URL} description={'This is for test'}></SocialShare>
+      </Banner> 
       <Grid tag="main" variant={1} formatted className={classnames(spacing.mt3)}>
-        <P>
+        <P>"
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
           since the 1500s, when an unknown printer took a galley of type and
