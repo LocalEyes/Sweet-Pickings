@@ -41,6 +41,7 @@ const CaseStudy = ({ match, location }: any) => {
           name: page.title,
           description: page.description,
           images: page.images,
+          categories: page.categories && page.categories.main_categories && page.categories.main_categories.items,
         });
       })
       .catch((error) => {
@@ -81,7 +82,8 @@ const CaseStudy = ({ match, location }: any) => {
                 text.color1
               )}
             >
-              {/* {category.title} */}[Main Category]
+              {/* {category.title} */}
+              {content.categories && content.categories[0].cat_name}
             </span>
             <br />
             <span
