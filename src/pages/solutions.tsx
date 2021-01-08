@@ -43,7 +43,10 @@ const Solutions = ({ group }: ChallengesProps) => {
           name: data.name,
           description: data.description,
           key: data.key,
-          images: data.images
+          images: data.images,
+          mainCategores:  data.categories && data.categories.main_categories ? data.categories.main_categories.items : false,
+          orgTypes: data.categories && data.categories.organisation_types ? data.categories.organisation_types.items : false,
+          stakeholders: data.categories && data.categories.stakeholders ? data.categories.stakeholders.items : false,
         });
           setMetaData(response.data.meta);
           setallSolutionsSelected(false);
@@ -222,10 +225,44 @@ const Solutions = ({ group }: ChallengesProps) => {
         </VisuallyHidden>
         {allSolutionsSelected ? <div className={grid.goal}></div>: <div className={grid.goal} ><H2 className={classnames(grid.goal, spacing.mb1)} vol={6}>
           {content && content.name}
-        </H2>
+        </H2>        
         <P className={classnames(grid.goal, spacing.mb2)}>
           {content && content.description}
-        </P></div>}
+        </P>
+        <P vol={2}>
+        {content.mainCategores || content.orgTypes || content.stakeholders ? <strong>Relevant for: </strong> : null}
+            {content.mainCategores &&
+              content.mainCategores.map((item: any, index: number) => {
+                const tail = index !== content.mainCategores.length - 1 ? ", " : content.orgTypes && content.orgTypes.length !== 0 && ", ";
+                return (
+                  <span key={`cattypes${index}`}>
+                    {item.cat_name}
+                    {tail}
+                  </span>
+                );
+              })}
+            {content.orgTypes &&
+              content.orgTypes.map((item: any, index: number) => {
+                const tail = index !== content.orgTypes.length - 1 ? ", " :  content.stakeholders && content.stakeholders.length !== 0 && ", ";
+                return (
+                  <span key={`cattypes${index}`}>
+                    {item.cat_name}
+                    {tail}
+                  </span>
+                );
+              })}
+              {content.stakeholders &&
+              content.stakeholders.map((item: any, index: number) => {
+                const tail = index !== content.stakeholders.length - 1 && ", ";
+                return (
+                  <span key={`cattypes${index}`}>
+                    {item.cat_name}
+                    {tail}
+                  </span>
+                );
+              })}
+              </P>
+        </div>}
         <div className={`${grid.goal} filterSection`}>
         <div className="filterBar" id='stickyHeader'>
         <i className="fa fa-filter" aria-hidden="true" style={{fontSize: "40px", paddingTop: '12px'}}></i>
