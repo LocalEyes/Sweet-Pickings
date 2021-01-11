@@ -49,6 +49,9 @@ const Solution = ({ match, location }: any) => {
           orgTypes:  page.categories.organisation_types ? page.categories.organisation_types.items : false,
           stakeholders:page.categories.stakeholders ? page.categories.stakeholders.items : false,
           links: page.links,
+          mainCatLabel: page.categories.main_categories ? page.categories.main_categories.sys_name: false,
+          orgTypesLabel: page.categories.organisation_types ? page.categories.organisation_types.sys_name : false,
+          stakeholdersLabel: page.categories.stakeholders ? page.categories.stakeholders.sys_name : false
         });        
         // Get and set case studies
         page.links.news &&
@@ -152,10 +155,10 @@ const Solution = ({ match, location }: any) => {
             plugins={[gfm]}
           />
   <P vol={2}>
-          {content.mainCategores || content.orgTypes || content.stakeholders ? <strong>Relevant for: </strong> : null}
+          {content.mainCategores ? <strong>{content.mainCatLabel+': '}</strong> : null}
             {content.mainCategores &&
               content.mainCategores.map((item: any, index: number) => {
-                const tail = index !== content.mainCategores.length - 1 ? ", " : content.orgTypes && content.orgTypes.length !== 0 && ", ";
+                const tail = index !== content.mainCategores.length - 1 && ", ";
                 return (
                   <span key={`cattypes${index}`}>
                     {item.cat_name}
@@ -163,9 +166,12 @@ const Solution = ({ match, location }: any) => {
                   </span>
                 );
               })}
+          </P>
+          <P vol={2}>
+          {content.orgTypes ? <strong>{content.orgTypesLabel+': '}</strong> : null}
             {content.orgTypes &&
               content.orgTypes.map((item: any, index: number) => {
-                const tail = index !== content.orgTypes.length - 1 ? ", " :  content.stakeholders && content.stakeholders.length !== 0 && ", ";
+                const tail = index !== content.orgTypes.length - 1 && ", ";
                 return (
                   <span key={`cattypes${index}`}>
                     {item.cat_name}
@@ -173,6 +179,9 @@ const Solution = ({ match, location }: any) => {
                   </span>
                 );
               })}
+          </P>
+          <P vol={2}>
+          {content.stakeholders ? <strong>{content.stakeholdersLabel+': '} </strong> : null}
               {content.stakeholders &&
               content.stakeholders.map((item: any, index: number) => {
                 const tail = index !== content.stakeholders.length - 1 && ", ";
