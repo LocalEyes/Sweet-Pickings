@@ -9,11 +9,13 @@
   background-color: #f0f0f0;
   z-index: 1000;
   padding: 1%;
+  align-items: center;
+  height: 80px;
 }
 
 .inputFilter {
   background-color: #f0f0f0 !important;
-  width: 30%;
+  width: 25%;
 }
 /* #f0f0f0 */
 .filterSection .filterBar {

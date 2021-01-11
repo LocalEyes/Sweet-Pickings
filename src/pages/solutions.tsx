@@ -13,7 +13,6 @@ import {
   InputSelection,
   P,
   H3,
-  InputSelect,
 } from "@actionishope/shelley";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
@@ -21,17 +20,32 @@ import { classes as spacing } from "../styles/puma/spacing.st.css";
 import { useParams } from "react-router-dom";
 import "../styles/puma/solutions.css";
 import 'font-awesome/css/font-awesome.min.css';
+import Select from 'react-select';
 
 interface ChallengesProps {
   group: any;
 }
 
+interface postData{
+  groups: Array<number>,
+  topics: Array<number>,
+  categories: Array<string>,
+  q: string
+}
+
 const Solutions = ({ group }: ChallengesProps) => {
   const [content, setContent] = useState<any>([]);
   const [metaData, setMetaData] = useState<any>();
-  const [allSolutionsSelected, setallSolutionsSelected] = useState<any>(false);
+  const [allSolutionsSelected, setallSolutionsDataFormatSelected] = useState<any>(false);  
   const params: any = useParams();
-  const [filterData, setFilterData] = useState<any>({groups: [], topics: [], categories: [], q: ''});
+  const [mainCategories, setMainCategories] = useState<any>();
+  const [organisationTypes, setOrganisationTypes] = useState<any>();
+  let filterData: postData = {groups: [10479], topics: [], categories: [], q: ''};
+  const [topicSelected, setTopic] = useState<any>();
+  const [categorySelected, setCategory] = useState<any>();
+  const [organisationTypeSelected, setOrganisationType]= useState<any>();
+  let solutionsData: any;
+
   const loadTopic = (topicKey: string) => {
     api
       .get(`/topics/${topicKey}?per-page=15`)
@@ -45,7 +59,7 @@ const Solutions = ({ group }: ChallengesProps) => {
           images: data.images
         });
           setMetaData(response.data.meta);
-          setallSolutionsSelected(false);
+          setallSolutionsDataFormatSelected(false);         
       })
       .catch((error) => {
         console.error(error);
@@ -54,17 +68,18 @@ const Solutions = ({ group }: ChallengesProps) => {
   const loadAllSolutions = () => {
     api.get(`/solutions/10479?per-page=15`)
     .then(async (response) => {
-      const data =  response.data.data;      
+      solutionsData =  response.data.data;
       setContent({
-        data: data,        
+        data: solutionsData,        
       });
       setMetaData(response.data.meta);
-      setallSolutionsSelected(true);
+      setallSolutionsDataFormatSelected(true);      
     })
     .catch((error) => {
       console.log(error);
     })
   }
+
   useEffect(() => {
     // Get the default topic data.    
     if (params.topicId == null) {
@@ -73,18 +88,64 @@ const Solutions = ({ group }: ChallengesProps) => {
       params.topicId && loadTopic(params.topicId);
     }
     // group && loadTopic(group.links.topics[0].key);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [group, params]);
 
-  useEffect(() => {
-    console.log('Filter Options', filterData);
-    api.post(`/ideas/search`, filterData)
-    .then(async(response) => {
-      console.log("Response ", response.data);
+  useEffect(()=> {
+    // API for main categories
+    api.get("/categories/main_categories")
+    .then(async (response) => {      
+      console.log('categories:',response.data);
+      setMainCategories(response.data)
     })
-    .catch((error) => {
-      console.error(error);
-    });
-  },[filterData])
+    .catch((error)=>{
+      console.log(error);
+    })
+    // API for organisation types
+    api.get("/categories/organisation_types")
+    .then(async (response) => {      
+      console.log('organisation_types:',response.data);
+      setOrganisationTypes(response.data)
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+  },[])
+
+  // eslint-disable-next-line
+  useEffect(() => {    
+    filterData.topics = [];
+    topicSelected && filterData.topics.push(topicSelected);
+    filterData.categories = [];
+    categorySelected && filterData.categories.push(categorySelected);
+    organisationTypeSelected && filterData.categories.push(organisationTypeSelected);
+    console.log('Filter Options', filterData);
+    if(filterData.categories.length !== 0){
+      api.post(`/ideas/search`, JSON.stringify(filterData), {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+      .then(async(response) => {
+        const data =  response.data.data;
+      setContent({
+        data: data,        
+      });
+      setMetaData(response.data.meta);      
+      setallSolutionsDataFormatSelected(true);    
+      console.log("Response ", response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });      
+    } else if(filterData.topics.length !== 0 ) {
+      loadTopic(filterData.topics[0].toString());
+    } 
+    else {
+      loadAllSolutions();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[topicSelected, categorySelected, organisationTypeSelected])
 
   useEffect(()=>{
     const stickyHeader: HTMLElement | null = document.getElementById("stickyHeader");
@@ -227,45 +288,44 @@ const Solutions = ({ group }: ChallengesProps) => {
         </P></div>}
         <div className={`${grid.goal} filterSection`}>
         <div className="filterBar" id='stickyHeader'>
-        <i className="fa fa-filter" aria-hidden="true" style={{fontSize: "40px", paddingTop: '12px'}}></i>
-        <InputSelect className = "inputFilter"
-            label={`Challenges`}
-            placeholder="Please select"
-            vol={2}
-            variant={2}
-            id={`sol2`}
-            onChange = { (e) => {setFilterData({...filterData, groups: [e.target.value]})}}
-          >
-            <option value="">--Please Select--</option>
-            {group && group.links.topics.map((topic: any) => {
-              return (<option value={topic.key}>{topic.name}</option>);
+        <i className="fa fa-filter" aria-hidden="true" style={{fontSize: "40px"}}></i>        
+          <Select className = "inputFilter" isClearable
+            options={group && group.links.topics.map((topic: any) => {
+              return ({label: topic.name, value: topic.key});
             })}
-          </InputSelect> 
-          <InputSelect className = "inputFilter"
-            label={`Organisation Type`}
-            placeholder="Please select"
-            vol={2}
-            variant={2}
-            id={`sol2`}
-            onChange = { (e) => {setFilterData({...filterData, topics: [e.target.value]})}}
-          >
-            <option value="">--Please Select--</option>
-            <option value={`1`}>Org Type 1</option>
-            <option value={`2`}>Org Type 2</option>
-          </InputSelect>
-          <InputSelect className = "inputFilter"
-            label={'Category'}
-            placeholder="Please select"
-            vol={2}
-            variant={2}            
-            id={`sol2`}
-            onChange = { (e) => {setFilterData({...filterData, categories: [e.target.value]})}}
-          >
-            <option value="">--Please Select--</option>
-            <option value={`1`}>Cat entry 1</option>
-            <option value={`2`}>Cat entry 2</option>
-          </InputSelect>
-         
+            onChange = {(e) => {
+              setTopic(e && e.value)
+            }}
+            // onChange = { (e) => {e && e.value != null ? setFilterData({...filterData, topics: [e && e.value]})
+            //  : setFilterData({...filterData, topics: []})}}
+            placeholder = "Select Challenge..."
+          />          
+          <Select className = "inputFilter" isClearable
+            placeholder="Select Organization Type..."
+            options={organisationTypes && organisationTypes.data.map((organisation: any)=>{
+              return ({label: organisation.name, value: organisation.code})
+            })}
+            onChange={(e) => {
+              setOrganisationType(e && e.value)
+            }}
+          //   onChange = { (e) => {e && e.value != null ? categorySelected = e.value : categorySelected = null;
+          //     categorySelected ? setFilterData({...filterData, categories: [categorySelected, organisationTypeSelected && organisationTypeSelected]}) : 
+          //     organisationTypeSelected && setFilterData({...filterData, categories: [organisationTypeSelected]});
+          // }}
+          />          
+          <Select className = "inputFilter" isClearable
+            placeholder="Select Category..."
+            options={mainCategories && mainCategories.data.map((categories: any)=>{
+              return ({label: categories.name, value: categories.code})
+            })}
+            onChange={(e) => {
+              setCategory(e && e.value)
+            }}
+          //   onChange = { (e) =>{e && e.value != null ? organisationTypeSelected = e.value : organisationTypeSelected = null;
+          //     organisationTypeSelected ? setFilterData({...filterData, categories: [categorySelected && categorySelected, organisationTypeSelected]}) : 
+          //     categorySelected && setFilterData({...filterData, categories: [categorySelected]});
+          // }}
+          />
         </div>
         <br/>
         </div>
