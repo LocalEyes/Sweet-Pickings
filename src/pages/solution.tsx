@@ -45,9 +45,13 @@ const Solution = ({ match, location }: any) => {
           name: page.name,
           description: page.description,
           images: page.images || false,
-          mainCategores: page.categories.main_categories.items || false,
-          orgTypes: page.categories.organisation_types.items || false,
+          mainCategores: page.categories.main_categories ? page.categories.main_categories.items : false,
+          orgTypes:  page.categories.organisation_types ? page.categories.organisation_types.items : false,
+          stakeholders:page.categories.stakeholders ? page.categories.stakeholders.items : false,
           links: page.links,
+          mainCatLabel: page.categories.main_categories ? page.categories.main_categories.sys_name: false,
+          orgTypesLabel: page.categories.organisation_types ? page.categories.organisation_types.sys_name : false,
+          stakeholdersLabel: page.categories.stakeholders ? page.categories.stakeholders.sys_name : false
         });        
         // Get and set case studies
         page.links.news &&
@@ -133,20 +137,7 @@ const Solution = ({ match, location }: any) => {
             </small>
             <br />
             {content.name}
-          </H1>
-          <P vol={2}>
-            <strong>Relevant for: </strong>
-            {content.orgTypes &&
-              content.orgTypes.map((item: any, index: number) => {
-                const tail = index !== content.orgTypes.length - 1 && ", ";
-                return (
-                  <span key={`cattypes${index}`}>
-                    {item.cat_name}
-                    {tail}
-                  </span>
-                );
-              })}
-          </P>   
+          </H1>                       
            {typeof content.images === "object" && content.images.forEach((item: any) => { image_list.push(item);})}
 
         <div className={grid.mid}>
@@ -163,7 +154,45 @@ const Solution = ({ match, location }: any) => {
             renderers={renderers}
             plugins={[gfm]}
           />
-
+  <P vol={2}>
+          {content.mainCategores ? <strong>{content.mainCatLabel+': '}</strong> : null}
+            {content.mainCategores &&
+              content.mainCategores.map((item: any, index: number) => {
+                const tail = index !== content.mainCategores.length - 1 && ", ";
+                return (
+                  <span key={`cattypes${index}`}>
+                    {item.cat_name}
+                    {tail}
+                  </span>
+                );
+              })}
+          </P>
+          <P vol={2}>
+          {content.orgTypes ? <strong>{content.orgTypesLabel+': '}</strong> : null}
+            {content.orgTypes &&
+              content.orgTypes.map((item: any, index: number) => {
+                const tail = index !== content.orgTypes.length - 1 && ", ";
+                return (
+                  <span key={`cattypes${index}`}>
+                    {item.cat_name}
+                    {tail}
+                  </span>
+                );
+              })}
+          </P>
+          <P vol={2}>
+          {content.stakeholders ? <strong>{content.stakeholdersLabel+': '} </strong> : null}
+              {content.stakeholders &&
+              content.stakeholders.map((item: any, index: number) => {
+                const tail = index !== content.stakeholders.length - 1 && ", ";
+                return (
+                  <span key={`cattypes${index}`}>
+                    {item.cat_name}
+                    {tail}
+                  </span>
+                );
+              })}
+          </P>
           <Grid
             variant={2}
             formatted
