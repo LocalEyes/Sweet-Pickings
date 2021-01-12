@@ -382,7 +382,7 @@ const Solutions = ({ group }: ChallengesProps) => {
                     <Card
                       title={allSolutionsSelected ? item.name && item.name : item.title && item.title}
                       url={`/solutions/${item.key}/${allSolutionsSelected ? item.name && slug(item.name) : item.title && slug(item.title)}`}
-                      description={item.description}
+                      description={item.excerpt ? item.excerpt : item.description}
                       media={item.images[0]}
                       key={item.key}
                     />
