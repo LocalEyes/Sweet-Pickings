@@ -10,19 +10,63 @@
 
 .flex {
   display: flex;
-  flex-wrap: wrap;
+}
+
+.flex_spaceBetween {
+  display: flex;
   justify-content: space-between;
+}
+
+.header_burger_border {
+  border-bottom: 1px solid #fff;
+}
+
+.burger_style {
+  align-self: center;
+  float: left;
+  cursor: pointer;
+}
+
+.burger_style div {
+  width: 30px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+}
+
+.burger_options {
+  font-family: Impact;
+  color: white;
+  font-size: 20px;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+.burger_options div {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.burger_options div a {
+  text-decoration: none;
+  width: 100%;
+}
+
+.last_div {
+  margin-bottom: 12px;
 }
 
 .search_div {
   display: flex;
   align-items: center;
   margin: 10px;
+  width: 340px;
 }
 
 .search_field {
   height: 40px;
   width: 100%;
+  padding-left: 8px;
 }
 
 .search_button {
