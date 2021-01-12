@@ -125,6 +125,7 @@ const Solutions = ({ group }: ChallengesProps) => {
     organisationTypeSelected && filterData.categories.push(organisationTypeSelected);
     console.log('Filter Options', filterData);
     if(filterData.categories.length !== 0){
+      console.log(filterData); 
       api.post(`/ideas/search`, JSON.stringify(filterData))
       .then(async(response) => {
         const data =  response.data.data;
