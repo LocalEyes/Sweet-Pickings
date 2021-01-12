@@ -67,7 +67,7 @@ const App = () => {
         */}
           <Switch>
             <Route exact path="/">
-              <HomePage />
+              <HomePage group={groupData}/>
             </Route>
             <Route exact path="/challenges">
               <ChallengesPage group={groupData} />

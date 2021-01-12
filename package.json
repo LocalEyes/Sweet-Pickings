@@ -36,6 +36,7 @@
     "react": "^16.14.0",
     "react-alice-carousel": "^2.1.0",
     "react-app-rewired": "^2.1.6",
+    "react-document-meta": "^3.0.0-beta.2",
     "react-dom": "^16.14.0",
     "react-focus-on": "^3.5.0",
     "react-helmet": "^6.1.0",
@@ -43,6 +44,7 @@
     "react-hook-form": "^6.13.1",
     "react-markdown": "^5.0.2",
     "react-player": "^2.6.2",
+    "react-responsive": "^8.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.4",
     "react-select": "^3.1.1",
@@ -84,6 +86,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-document-meta": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^2.x",
     "@typescript-eslint/parser": "^2.x",
     "typescript": "3.9.7"

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 import DefaultLayout from "../layouts/Default";
 import Banner from "../components/Banner/Banner";
-import { H1, H2, Grid } from "@actionishope/shelley";
+import SocialShare from "../components/SocialSahre/SocialShare";
+import { H1, H2, Grid, P } from "@actionishope/shelley";
 import { classes as spacing } from "@actionishope/shelley/styles/default/spacing.st.css";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
@@ -40,6 +41,9 @@ const CaseStudy = ({ match, location }: any) => {
           name: page.title,
           description: page.description,
           images: page.images,
+
+          categories: page.categories && page.categories.main_categories && page.categories.main_categories.items,
+
         });
       })
       .catch((error) => {
@@ -80,7 +84,8 @@ const CaseStudy = ({ match, location }: any) => {
                 text.color1
               )}
             >
-              {/* {category.title} */}[Main Category]
+              {/* {category.title} */}
+              {content.categories && content.categories[0].cat_name}
             </span>
             <br />
             <span
@@ -99,7 +104,7 @@ const CaseStudy = ({ match, location }: any) => {
             </small>
             <br />
             {content.name}
-          </H1>
+          </H1>        
           {typeof content.images === "object" && content.images.forEach((item: any) => { image_list.push(item);})}
 
         <div className={grid.mid}>
@@ -116,6 +121,39 @@ const CaseStudy = ({ match, location }: any) => {
             renderers={renderers}
             plugins={[gfm]}
           />
+          <P vol={2}>
+            {content.mainCategores || content.orgTypes || content.stakeholders ? <strong>Relevant for: </strong> : null}
+            {content.mainCategores &&
+              content.mainCategores.map((item: any, index: number) => {
+                const tail = index !== content.mainCategores.length - 1 ? ", " : content.orgTypes && content.orgTypes.length !== 0 && ", ";
+                return (
+                  <span key={`cattypes${index}`}>
+                    {item.cat_name}
+                    {tail}
+                  </span>
+                );
+              })}
+            {content.orgTypes &&
+              content.orgTypes.map((item: any, index: number) => {
+                const tail = index !== content.orgTypes.length - 1 ? ", " :  content.stakeholders && content.stakeholders.length !== 0 && ", ";
+                return (
+                  <span key={`cattypes${index}`}>
+                    {item.cat_name}
+                    {tail}
+                  </span>
+                );
+              })}
+              {content.stakeholders &&
+              content.stakeholders.map((item: any, index: number) => {
+                const tail = index !== content.stakeholders.length - 1 && ", ";
+                return (
+                  <span key={`cattypes${index}`}>
+                    {item.cat_name}
+                    {tail}
+                  </span>
+                );
+              })}
+          </P>
           <Grid
             variant={2}
             formatted
@@ -136,6 +174,7 @@ const CaseStudy = ({ match, location }: any) => {
           </Grid>
         </Grid>
       </DefaultLayout>
+      <SocialShare url={document.URL} title={(content && content.name) ? content.name : 'Case Study'}></SocialShare>
     </div>
   );
 };

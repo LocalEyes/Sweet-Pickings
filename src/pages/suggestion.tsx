@@ -9,6 +9,7 @@ import {
   Button,
 } from "@actionishope/shelley";
 import Banner from "../components/Banner/Banner";
+import SocialSahre from "../components/SocialSahre/SocialShare";
 import { classes as spacing } from "@actionishope/shelley/styles/default/spacing.st.css";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
@@ -130,6 +131,7 @@ const Suggestion = () => {
           </form>
         </div>
       </Grid>
+      <SocialSahre title={'Suggestion page'} url={document.URL}></SocialSahre>
     </div>
   );
 };
