@@ -137,7 +137,7 @@ const Challenges = ({ group }: ChallengesProps) => {
                     <Card
                       title={item.name}
                       url={`/solutions/${item.key}`}
-                      description={item.description}
+                      description={item.excerpt ? item.excerpt : item.description}
                       media={(item.images && item.images[0])}
                       key={item.key}
                     />

@@ -86,7 +86,7 @@ const Home = ({ group }: challengesProps) => {
                     <Card
                       title={item.name}
                       url={`/solutions/${item.key}`}
-                      description={item.description}
+                      description={item.excerpt ? item.excerpt : item.description}
                       media={(item.images && item.images[0])}
                       key={item.key}
                     />
@@ -137,7 +137,7 @@ const Home = ({ group }: challengesProps) => {
                     <Card
                       title={item.name}
                       url={`/solutions/${item.key}/${item.name}`}
-                      description={item.description}
+                      description={item.excerpt ? item.excerpt : item.description}
                       media={item.images[0]}
                       key={item.key}
                     />
@@ -188,7 +188,7 @@ const Home = ({ group }: challengesProps) => {
                   <Card
                     title={item.title}
                     url={`/case-studies/${item.key}/${slug(item.title)}`}
-                    description={item.description}
+                    description={item.excerpt ? item.excerpt : item.description}
                     media={item.images[0]}
                     key={item.key}
                   />
