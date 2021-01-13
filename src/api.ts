@@ -10,6 +10,9 @@ export const api = setup({
     maxAge: 15 * 60 * 1000,
   },
 });
+api.defaults.headers = {
+      'Content-Type': 'application/json'
+};
 
 export const slugConfig = {
   remove: undefined, // remove characters that match regex, defaults to `undefined`
