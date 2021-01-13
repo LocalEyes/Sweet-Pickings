@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import classnames from "classnames";
 import { Helmet } from "react-helmet-async";
 import Banner from "../components/Banner/Banner";
@@ -46,6 +46,7 @@ const Solutions = ({ group }: ChallengesProps) => {
   const [categorySelected, setCategory] = useState<any>();
   const [organisationTypeSelected, setOrganisationType]= useState<any>();
   let solutionsData: any;
+  const isFirstRun = useRef(true);
 
   const loadTopic = (topicKey: string) => {
     api
@@ -84,16 +85,17 @@ const Solutions = ({ group }: ChallengesProps) => {
     })
   }
 
-  useEffect(() => {
+  useEffect(() => {    
     // Get the default topic data.    
     if (params.topicId == null) {
+      console.log("params useEffect called!")
       loadAllSolutions();
     } else {
       params.topicId && loadTopic(params.topicId);
     }
     // group && loadTopic(group.links.topics[0].key);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [group, params]);
+  }, []);
 
   useEffect(()=> {
     // API for main categories
@@ -117,7 +119,11 @@ const Solutions = ({ group }: ChallengesProps) => {
   },[])
 
   // eslint-disable-next-line
-  useEffect(() => {    
+  useEffect(() => {
+    if (isFirstRun.current) {
+      isFirstRun.current = false;
+      return;
+    }
     filterData.topics = [];
     topicSelected && filterData.topics.push(topicSelected);
     filterData.categories = [];
