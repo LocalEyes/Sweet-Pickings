@@ -23,10 +23,12 @@ import Header from "./components/Header/Header";
 import { api } from "./api";
 import Footer from "./components/Footer/Footer";
 
+import SearchResults from "./pages/search-results";
+
 const App = () => {
   // Set the initial content with what have from the link via link state.
   const [groupData, setGroupData] = useState<any>();
-
+  // const params: any = useParams();
   useEffect(() => {
     // GET solution via id from the url params.
     api
@@ -89,6 +91,9 @@ const App = () => {
             </Route>
             <Route exact path="/solutions/:topicId">
               <SolutionsPage group={groupData} />
+            </Route>
+            <Route exact path="/search_results/:searchText">
+              <SearchResults group={groupData} search={''} />
             </Route>
           </Switch>
           <Route

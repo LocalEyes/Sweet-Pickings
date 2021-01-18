@@ -7,11 +7,13 @@ import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.cs
 
 // @ts-ignore
 import { useMediaQuery } from 'react-responsive';
+import { useHistory } from 'react-router-dom';
 
 const Header = ({ className: classNameProp, children, ...rest }: GridProps) => {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991px)' });
   const [burgerManager, setBurgerManager] = useState<boolean>(false);
-
+  const history = useHistory();
+  const [searchQuery, setSearchQuery] = useState('')
   useEffect(() => {
     !isTabletOrMobile && setBurgerManager(false);
   },[isTabletOrMobile]);
@@ -55,8 +57,15 @@ const Header = ({ className: classNameProp, children, ...rest }: GridProps) => {
           </Text>
         </ul> }                 
         <div className={classes.search_div}>
-        <input type="text" id="fname" name="firstname" placeholder="Search..." className={classes.search_field}/>
-          <Button tone={4} variant={3} vol={3} className={classes.search_button} as="li">
+        <input type="text" id="search_query" 
+          name="search_query" 
+          placeholder="Type Here.."
+          value={searchQuery}
+          className={classes.search_field}
+          onChange={(e) => setSearchQuery(e.target.value)}/>
+          <Button tone={4} variant={3} vol={3} className={classes.search_button} as="li" onClick={()=>{
+            history.push('/search_results/'+searchQuery)
+          }}>
           Search
         </Button>
         </div>
