@@ -61,10 +61,10 @@ const Card = ({
               },
             }}
           >
-            {<Highlighted text={title} highlight={params.searchText}></Highlighted>}
+            {<Highlighted text={title ? title : ''} highlight={params.searchText}></Highlighted>}
           </Link>
         </H3>
-        <P>{<Highlighted text={description} highlight={params.searchText}></Highlighted>}</P>
+        <P>{<Highlighted text={description ? description : ''} highlight={params.searchText}></Highlighted>}</P>
         {children}
       </div>
     </div>
