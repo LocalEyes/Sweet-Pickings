@@ -2,8 +2,8 @@ import React from "react";
 import classnames from "classnames";
 import { H3, P } from "@actionishope/shelley";
 import { st, classes } from "./card.st.css";
-import { Link } from "react-router-dom";
-
+import { Link, useParams } from "react-router-dom";
+import  Highlighted  from "./TextHighlighted";
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
   media?: string;
@@ -29,7 +29,7 @@ const Card = ({
   ...rest
 }: CardProps) => {
   const rootClassNames = classnames(classes.root, classNameProp);
-
+  const params: any = useParams();
   return (
     <div className={st(rootClassNames)} {...rest}>
       <div className={classes.media}>
@@ -61,10 +61,10 @@ const Card = ({
               },
             }}
           >
-            {title}
+            {<Highlighted text={title} highlight={params.searchText}></Highlighted>}
           </Link>
         </H3>
-        <P>{description}</P>
+        <P>{<Highlighted text={description} highlight={params.searchText}></Highlighted>}</P>
         {children}
       </div>
     </div>
