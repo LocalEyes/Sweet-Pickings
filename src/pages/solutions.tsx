@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import classnames from "classnames";
 import { Helmet } from "react-helmet-async";
 import Banner from "../components/Banner/Banner";
@@ -11,7 +11,6 @@ import {
   Grid,
   Button,
   VisuallyHidden,
-  InputSelection,
   P,
   H3,
 } from "@actionishope/shelley";
@@ -41,10 +40,14 @@ const Solutions = ({ group }: ChallengesProps) => {
   const params: any = useParams();
   const [mainCategories, setMainCategories] = useState<any>();
   const [organisationTypes, setOrganisationTypes] = useState<any>();
+  const [stakeHolders, setStakeHolders] = useState<any>();
   let filterData: postData = {groups: [10479], topics: [], categories: [], q: ''};
   const [topicSelected, setTopic] = useState<any>();
   const [categorySelected, setCategory] = useState<any>();
-  const [organisationTypeSelected, setOrganisationType]= useState<any>();
+  const [organisationTypeSelected, setOrganisationType] = useState<any>();
+  const [stakeHolderSelected, setStakeHolder] = useState<any>();
+  const isFirstRun = useRef(true);
+  
   let solutionsData: any;
 
   const loadTopic = (topicKey: string) => {
@@ -84,16 +87,22 @@ const Solutions = ({ group }: ChallengesProps) => {
     })
   }
 
+  useEffect(() => {    
+    params.topicId && group && group.links.topics.forEach((topic: any) => {
+      if(params.topicId === topic.key.toString()){        
+        setTopic({label: topic.name, value: topic.key})
+      }
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[group])
+
   useEffect(() => {
     // Get the default topic data.    
     if (params.topicId == null) {
-      loadAllSolutions();
-    } else {
-      params.topicId && loadTopic(params.topicId);
+      loadAllSolutions();    
     }
-    // group && loadTopic(group.links.topics[0].key);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [group, params]);
+  }, []);
 
   useEffect(()=> {
     // API for main categories
@@ -114,15 +123,28 @@ const Solutions = ({ group }: ChallengesProps) => {
     .catch((error)=>{
       console.log(error);
     })
+    // API for StakeHolders
+    api.get("/categories/stakeholders")
+    .then(async (response) => {      
+      console.log('stakeholders:',response.data);
+      setStakeHolders(response.data)
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
   },[])
-
-  // eslint-disable-next-line
-  useEffect(() => {    
+  
+  useEffect(() => {
+    if (isFirstRun.current) {
+      isFirstRun.current = false;
+      return;
+    }
     filterData.topics = [];
-    topicSelected && filterData.topics.push(topicSelected);
     filterData.categories = [];
+    topicSelected && filterData.topics.push(topicSelected.value);
     categorySelected && filterData.categories.push(categorySelected);
     organisationTypeSelected && filterData.categories.push(organisationTypeSelected);
+    stakeHolderSelected && filterData.categories.push(stakeHolderSelected);
     console.log('Filter Options', filterData);
     if(filterData.categories.length !== 0){
       console.log(filterData); 
@@ -146,7 +168,7 @@ const Solutions = ({ group }: ChallengesProps) => {
       loadAllSolutions();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[topicSelected, categorySelected, organisationTypeSelected])
+  },[topicSelected, categorySelected, organisationTypeSelected, stakeHolderSelected])
 
   useEffect(()=>{
     const stickyHeader: HTMLElement | null = document.getElementById("stickyHeader");
@@ -197,82 +219,6 @@ const Solutions = ({ group }: ChallengesProps) => {
             </H1>
           </div>
           {/* rgb(0 0 0 / 34%) */}
-          <div className={grid.mid}>
-            <P vol={2} style={{ marginBottom: "10px" }}>
-              <b>Select a topic from the scroll list:</b>
-            </P>
-            <div
-              style={{
-                overflowX: "hidden",
-                overflowY: "scroll",
-                height: "30vh",
-                maxHeight: "300px",
-              }}
-            >
-              <div
-                      style={{
-                        padding: "10px 18px",
-                        borderTop: "1px solid rgba(255,255,255,.05)",
-                        background: "rgb(27 27 27 / 70%)",
-                      }}
-                      key={`topics`}
-                    >
-                      <InputSelection
-                        id={`chal`}
-                        checked={
-                          allSolutionsSelected
-                            ? true
-                            : false
-                        }
-                        // value={topic.key}
-                        name="challegesRadios"
-                        label='All Challenges'
-                        type="radio"
-                        variant={1}
-                        vol={3}
-                        inputPos="start"
-                        error="Form item error message"
-                        onChange={()=> {
-                          loadAllSolutions();
-                        }}                        
-                      />
-                    </div>
-              {group &&
-                group.links.topics.map((topic: any, index: number) => {
-                  // console.log("selected topic", content);
-                  return (
-                    <div
-                      style={{
-                        padding: "10px 18px",
-                        borderTop: "1px solid rgba(255,255,255,.05)",
-                        background: "rgb(27 27 27 / 70%)",
-                      }}
-                      key={`topics${topic.key}`}
-                    >
-                      <InputSelection
-                        id={`chal${topic.key}`}
-                        checked={
-                          content
-                            ? content.key === topic.key
-                            : false
-                        }
-                        value={topic.key}
-                        name="challegesRadios"
-                        label={topic.name}
-                        type="radio"
-                        variant={1}
-                        vol={3}
-                        inputPos="start"
-                        error="Form item error message"
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                          loadTopic(e.target.value)
-                        }
-                      />
-                    </div>
-                  );
-                })}
-            </div>
-          </div>
         </Grid>
       </Banner>
       <Grid tag="main" variant={1} formatted>
@@ -324,30 +270,25 @@ const Solutions = ({ group }: ChallengesProps) => {
         <div className={`${grid.goal} filterSection`}>
         <div className="filterBar" id='stickyHeader'>
 
-        <i className="fa fa-filter" aria-hidden="true" style={{fontSize: "40px"}}></i>        
-          <Select className = "inputFilter" isClearable
+        <i className="fa fa-filter" aria-hidden="true" style={{fontSize: "40px"}}></i>
+        <Select className = "inputFilter" isClearable
+            placeholder = "Select Challenge..."
+            value = {topicSelected}
             options={group && group.links.topics.map((topic: any) => {
               return ({label: topic.name, value: topic.key});
             })}
             onChange = {(e) => {
-              setTopic(e && e.value)
+              setTopic(e && e)
             }}
-            // onChange = { (e) => {e && e.value != null ? setFilterData({...filterData, topics: [e && e.value]})
-            //  : setFilterData({...filterData, topics: []})}}
-            placeholder = "Select Challenge..."
-          />          
+          />
           <Select className = "inputFilter" isClearable
-            placeholder="Select Organization Type..."
+            placeholder="Select Organization..."
             options={organisationTypes && organisationTypes.data.map((organisation: any)=>{
               return ({label: organisation.name, value: organisation.code})
             })}
             onChange={(e) => {
               setOrganisationType(e && e.value)
             }}
-          //   onChange = { (e) => {e && e.value != null ? categorySelected = e.value : categorySelected = null;
-          //     categorySelected ? setFilterData({...filterData, categories: [categorySelected, organisationTypeSelected && organisationTypeSelected]}) : 
-          //     organisationTypeSelected && setFilterData({...filterData, categories: [organisationTypeSelected]});
-          // }}
           />          
           <Select className = "inputFilter" isClearable
             placeholder="Select Category..."
@@ -357,12 +298,16 @@ const Solutions = ({ group }: ChallengesProps) => {
             onChange={(e) => {
               setCategory(e && e.value)
             }}
-          //   onChange = { (e) =>{e && e.value != null ? organisationTypeSelected = e.value : organisationTypeSelected = null;
-          //     organisationTypeSelected ? setFilterData({...filterData, categories: [categorySelected && categorySelected, organisationTypeSelected]}) : 
-          //     categorySelected && setFilterData({...filterData, categories: [categorySelected]});
-          // }}
           />
-
+          <Select className = "inputFilter" isClearable
+            placeholder="Who Are You..."
+            options={stakeHolders && stakeHolders.data.map((stakeHolder: any)=>{
+              return ({label: stakeHolder.name, value: stakeHolder.code})
+            })}
+            onChange={(e) => {
+              setStakeHolder(e && e.value)
+            }}
+          />
         </div>
         <br/>
         </div>
