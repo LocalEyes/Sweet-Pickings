@@ -31,7 +31,7 @@ interface postData{
   topics: Array<number>,
   categories: Array<string>,
   q: string,
-  catFilterOperator: string
+  categoryOperator: string
 }
 
 const Solutions = ({ group }: ChallengesProps) => {
@@ -42,7 +42,7 @@ const Solutions = ({ group }: ChallengesProps) => {
   const [mainCategories, setMainCategories] = useState<any>();
   const [organisationTypes, setOrganisationTypes] = useState<any>();
   const [stakeHolders, setStakeHolders] = useState<any>();
-  let filterData: postData = {groups: [10479], topics: [], categories: [], q: '', catFilterOperator: 'AND'};
+  let filterData: postData = {groups: [10479], topics: [], categories: [], q: '', categoryOperator: 'AND'};
   const [topicSelected, setTopic] = useState<any>();
   const [categorySelected, setCategory] = useState<any>();
   const [organisationTypeSelected, setOrganisationType] = useState<any>();
