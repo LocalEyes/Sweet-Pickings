@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import classnames from "classnames";
 import { Helmet } from "react-helmet-async";
 import Banner from "../components/Banner/Banner";
@@ -8,6 +8,7 @@ import { H1, H3, P, Grid } from "@actionishope/shelley";
 import { classes as spacing } from "@actionishope/shelley/styles/default/spacing.st.css";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
+import headerImage from "../images/environmental-solutions-how-to-guide-tree-planting-swansea-environmental-forumn-vocaleyes-4.jpg";
 
 interface ChallengesProps {
   group: any;
@@ -15,7 +16,7 @@ interface ChallengesProps {
 
 // ({ group }: ChallengesProps) -> props for Challenges
 const Challenges = ({ group }: ChallengesProps) => {
-  const [loadedChallenge] = useState<any>();
+  // const [loadedChallenge] = useState<any>();
 
 
   // const loadChallenge = (topicKey: string) => {
@@ -48,9 +49,7 @@ const Challenges = ({ group }: ChallengesProps) => {
           <div
             style={{
               opacity: 0.36,
-              backgroundImage: loadedChallenge
-                ? `url(${loadedChallenge.images[0]})`
-                : "none",
+              backgroundImage: `url(${headerImage})`,
               backgroundSize: "cover",
               backgroundPosition: "0 50%",
             }}
