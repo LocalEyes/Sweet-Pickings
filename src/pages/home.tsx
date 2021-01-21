@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { H1, H2, P, Grid } from "@actionishope/shelley";
 import Banner from "../components/Banner/Banner";
 import SocialShare from "../components/SocialSahre/SocialShare";
-import ChevRight from "../components/icons/ChevRight";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
 import { classes as spacing } from "../styles/puma/spacing.st.css";
@@ -68,64 +67,12 @@ const Home = ({ group }: challengesProps) => {
         </H1>
       </Banner>
       <Grid tag="main" variant={1} formatted>
-        <div className={classnames(text.sectionLinkBanner, grid.edge)}>
-          <H2 className={classnames(text.color3)} vol={7} uppercase>
-            <Link to="/challenges">Challenges</Link> <ChevRight />
+      <div className={classnames(text.sectionLinkBanner, grid.edge)}>
+          <H2 className={classnames(text.color2,text.center)} vol={7} uppercase>
+            <Link to="/solutions"><i className="fa fa-ellipsis-h" aria-hidden="true" style={{fontSize: "40px"}}></i>Solutions<i className="fa fa-ellipsis-h" aria-hidden="true" style={{fontSize: "40px"}}></i></Link>
           </H2>
-          <P className={classnames(spacing.mb2)} vol={3}>
-            We need to understand the challenges before we can fix anything; get
-            familiar with our challenges and lets face them together.
-          </P>
-          {group && (
-          <div className={classnames(grid.edge)}>
-            <Grid variant={4}>
-              {group.links.topics ? (
-                group.links.topics.map((item: any, index: number) => {
-                  if(index < 3){
-                  return (
-                    <Card
-                      title={item.name}
-                      url={`/solutions/${item.key}`}
-                      description={item.excerpt ? item.excerpt : item.description}
-                      media={(item.images && item.images[0])}
-                      key={item.key}
-                    />
-                  );}
-                  else {
-                    return null;
-                  }
-                })
-              ) : (
-                  <P>No results</P>
-                )}
-            </Grid>
-          </div>
-        )}
-        <Grid
-            variant={2}
-            formatted
-            className={classnames(
-              spacing.mt2,
-              spacing.mt4,
-              spacing.mb8,
-              grid.pen
-            )}
-          >
-         <Link to="/challenges" className={buttons.link}>
-              Find more challenges
-            </Link>
-            <Link to="/suggestion/challenge" className={buttons.link}>
-              Suggest a challenge
-            </Link>
-            </Grid>
-        </div>
-        <div className={classnames(text.sectionLinkBanner, grid.edge)}>
-          <H2 className={classnames(text.color2)} vol={7} uppercase>
-            <Link to="/solutions">Solutions</Link> <ChevRight />
-          </H2>
-          <P className={classnames(spacing.mb2)} vol={3}>
-            Find solutions that are suited to you and framed around a specific
-            challenge, the solutions are updated as they evolve.
+          <P className={classnames(spacing.mb2,text.center)} vol={3}>
+            DISCOVER STEP-BY-STEP GUIDES TO TAKING ENVIRONMENTAL ACTION
           </P>
           {solutions && (
           <div className={grid.edge}>
@@ -171,12 +118,11 @@ const Home = ({ group }: challengesProps) => {
         </Grid>
         </div>
         <div className={classnames(text.sectionLinkBanner, grid.edge)}>
-          <H2 className={classnames(text.color1)} vol={7} uppercase>
-            <Link to="/case-studies">Case Studies</Link> <ChevRight />
+          <H2 className={classnames(text.color1,text.center)} vol={7} uppercase>
+            <Link to="/case-studies"><i className="fa fa-ellipsis-h" aria-hidden="true" style={{fontSize: "40px"}}></i>Case Studies<i className="fa fa-ellipsis-h" aria-hidden="true" style={{fontSize: "40px"}}></i></Link>
           </H2>
-          <P  className={classnames(spacing.mb2)} vol={3}>
-            Get inspired by the trailblazers that have completed projects and
-            are sharing their experiences and become one yourself!
+          <P  className={classnames(spacing.mb2,text.center)} vol={3}>
+            GET INSPRIED BY THE TRAILBLAZERS WHO HAVE CREATED POSITIVE CHANGE
           </P>
           {caseStudies &&
           <div className={grid.edge}>
@@ -217,6 +163,56 @@ const Home = ({ group }: challengesProps) => {
 
             <Link to="/suggestion/case-study" className={buttons.link}>
               Suggest a case study
+            </Link>
+            </Grid>
+        </div>
+        <div className={classnames(text.sectionLinkBanner,grid.edge)}>
+            <H2 className={classnames(text.color3,text.center)} vol={7} uppercase>
+              <Link to="/challenges"><i className="fa fa-ellipsis-h" aria-hidden="true" style={{fontSize: "40px"}}></i>Challenges<i className="fa fa-ellipsis-h" aria-hidden="true" style={{fontSize: "40px"}}></i></Link>
+            </H2>
+            <P className={classnames(spacing.mb2,text.center)} vol={3}>
+              EXPLORE & OVERCOME THE MOST URGENT ENVIRONMENTAL ISSUES
+            </P>
+          {group && (
+          <div className={classnames(grid.edge)}>
+            <Grid variant={4}>
+              {group.links.topics ? (
+                group.links.topics.map((item: any, index: number) => {
+                  if(index < 3){
+                  return (
+                    <Card
+                      title={item.name}
+                      url={`/solutions/${item.key}`}
+                      description={item.excerpt ? item.excerpt : item.description}
+                      media={(item.images && item.images[0])}
+                      key={item.key}
+                    />
+                  );}
+                  else {
+                    return null;
+                  }
+                })
+              ) : (
+                  <P>No results</P>
+                )}
+            </Grid>
+          </div>
+        )}
+        <Grid
+            variant={2}
+            formatted
+            className={classnames(
+              spacing.mt2,
+              spacing.mt4,
+              spacing.mb8,
+              grid.pen
+            )}
+          >
+         <Link to="/challenges" className={buttons.link}>
+              Find more challenges
+            </Link>
+            <Link to="/suggestion/challenge" className={buttons.link}>
+              Suggest a challenge
             </Link>
             </Grid>
         </div>
