@@ -50,6 +50,7 @@ const Solutions = ({ group }: ChallengesProps) => {
   const isFirstRun = useRef(true);
   
   let solutionsData: any;
+  const isFirstRun = useRef(true);
 
   const loadTopic = (topicKey: string) => {
     api
@@ -89,6 +90,7 @@ const Solutions = ({ group }: ChallengesProps) => {
   }
 
   useEffect(() => {    
+
     params.topicId && group && group.links.topics.forEach((topic: any) => {
       if(params.topicId === topic.key.toString()){        
         setTopic({label: topic.name, value: topic.key})
@@ -101,6 +103,7 @@ const Solutions = ({ group }: ChallengesProps) => {
     // Get the default topic data.    
     if (params.topicId == null) {
       loadAllSolutions();    
+
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -133,8 +136,8 @@ const Solutions = ({ group }: ChallengesProps) => {
     .catch((error)=>{
       console.log(error);
     })
-  },[])
-  
+  },[]);
+
   useEffect(() => {
     if (isFirstRun.current) {
       isFirstRun.current = false;
