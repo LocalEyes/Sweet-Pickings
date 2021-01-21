@@ -25,7 +25,7 @@ const SearchResults = ({ group, search }: challengesProps) => {
   useEffect(() => {
     window.scrollTo(0, 0);    
       // API for solutions
-      api.post(`/ideas/search`,JSON.stringify({"q":params.searchText}))
+      api.post(`/ideas/search`,JSON.stringify({"q":params.searchText,"groups": [10479]}))
     .then(async (response) => {     
       console.log(response, " solutions response");
       setSolutions(response.data.data.length?response.data.data:false);
@@ -35,7 +35,7 @@ const SearchResults = ({ group, search }: challengesProps) => {
     });
     // API for case-studies
     api
-      .get("/news?per-page=15&q="+params.searchText)
+      .get("/news?per-page=15&q="+params.searchText+"&grpId=10479")
       .then(async (response) => {        
         setCaseStudies(response.data.data);
       })
@@ -43,8 +43,8 @@ const SearchResults = ({ group, search }: challengesProps) => {
         console.error(error);
       });
       api
-      .post("/topics/search",JSON.stringify({"q":params.searchText}))
-      .then(async (response) => {        
+      .post("/topics/search",JSON.stringify({"q":params.searchText,"groups": [10479]}))
+      .then(async (response) => {
         console.log(response, " topics response");
         setChallenges(response.data.data.length?response.data.data:false);
       })
