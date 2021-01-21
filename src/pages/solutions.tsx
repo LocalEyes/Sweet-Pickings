@@ -50,7 +50,6 @@ const Solutions = ({ group }: ChallengesProps) => {
   const isFirstRun = useRef(true);
   
   let solutionsData: any;
-  const isFirstRun = useRef(true);
 
   const loadTopic = (topicKey: string) => {
     api
