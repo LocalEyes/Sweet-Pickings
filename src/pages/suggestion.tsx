@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import classnames from "classnames";
+import axios from "axios";
 import {
   H1,
   Grid,
@@ -15,7 +16,7 @@ import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.cs
 import { classes as text } from "../styles/puma/text.st.css";
 import { useParams } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import "../styles/puma/suggestion.css"
+import "../styles/puma/suggestion.css";
 
 type Inputs = {
   title: string,
@@ -26,20 +27,36 @@ type Inputs = {
 const Suggestion = () => {
   const params: any = useParams();
   const [defaultSelection, setDefaultSelection] = useState<string>('');
-  const { register, handleSubmit, errors } = useForm<Inputs>();
+  const { register, handleSubmit, errors, reset } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = data => {
-    console.log(JSON.stringify(data));
+    console.log(JSON.stringify(data));    
+    // API post
+    axios.post("https://2zxjdrcbe6.execute-api.eu-west-2.amazonaws.com/v1/suggestions", JSON.stringify(data),  {
+      headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': 'gma5wSaqQv8bZ6dVgF4JA1C64dO3pVvw5C8IsLbp'
+      }
+    })
+    .then(async(response) => {
+      console.log(response.data)
+      //reset the form
+      reset();
+      setDefaultSelection('');
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
     switch (params.type){
       case 'solution':
-        setDefaultSelection('plastic');
+        setDefaultSelection('solution');
         break;
       case 'case-study':
-        setDefaultSelection('carbon');
+        setDefaultSelection('case_study');
         break;
       case 'challenge':
         setDefaultSelection('challenge');
@@ -88,8 +105,8 @@ const Suggestion = () => {
             onChange = {(e) => {setDefaultSelection(e.target.value)}}
           >
             <option value=''>--Please Select--</option>
-            <option value={`carbon`}>Case Study</option>
-            <option value={`plastic`}>Solution</option>
+            <option value={`case_study`}>Case Study</option>
+            <option value={`solution`}>Solution</option>
             <option value={`challenge`}>Challenge</option>
           </InputSelect>
           {errors.suggestion_type && <p>This field is required</p>}
