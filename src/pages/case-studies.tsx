@@ -9,6 +9,7 @@ import { classes as text } from "../styles/puma/text.st.css";
 import { classes as spacing } from "../styles/puma/spacing.st.css";
 import { Helmet } from "react-helmet-async";
 import { api, slug } from "../api";
+import headerImage from "../images/environmental-solutions-how-to-guide-tree-planting-swansea-environmental-forumn-vocaleyes-2.jpg";
 
 const CaseStudies = () => {
   const [content, setContent] = useState<any>([]);
@@ -42,8 +43,7 @@ const CaseStudies = () => {
           <div
             style={{
               opacity: 0.2,
-              // backgroundImage:
-              //   "url(https://ik.imagekit.io/tcvka0ufln/solutions1_Rpskm-eQ_.jpg)",
+              backgroundImage: `url(${headerImage})`,
               backgroundSize: "cover",
               backgroundPosition: "0 50%",
             }}
