@@ -223,7 +223,7 @@ const Solution = ({ match, location }: any) => {
                     <Card
                       title={item.title}
                       url={`/case-studies/${item.key}/${slug(item.title)}`}
-                      description={item.description}
+                      description={item.excerpt ? item.excerpt : item.description}
                       media={item.images[0]}
                       key={item.key}
                     />
@@ -252,7 +252,7 @@ const Solution = ({ match, location }: any) => {
                     <Card
                       title={item.title}
                       url={`/solutions/${item.key}/${slug(item.title)}`}
-                      description={item.description}
+                      description={item.excerpt ? item.excerpt : item.description}
                       media={item.images[0]}
                       key={item.key}
                       onClick = {() =>{window.scrollTo(0, 0);}}
