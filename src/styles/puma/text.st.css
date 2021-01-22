@@ -245,7 +245,7 @@
   }
 
   .sectionLinkBanner :global(p)Text {
-    max-width: 34em;
+    /* max-width: 34em; */
   }
 
   .sectionLinkBanner h2 svg {
@@ -285,6 +285,5 @@
   .sectionHeader {
     margin-bottom: calc(var(--spacing-unit) * 1.5);
   }
-
 
 }

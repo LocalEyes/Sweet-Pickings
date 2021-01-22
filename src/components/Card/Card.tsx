@@ -31,7 +31,7 @@ const Card = ({
   const rootClassNames = classnames(classes.root, classNameProp);
   const params: any = useParams();
   return (
-    <div className={st(rootClassNames)} {...rest}>
+    <div className={st(rootClassNames,classes.card_default)} {...rest}>
       <div className={classes.media}>
         <img
           src={

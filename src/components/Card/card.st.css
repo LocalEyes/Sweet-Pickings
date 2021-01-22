@@ -9,3 +9,8 @@
 .link {}
 
 .title {}
+
+.card_default{
+    background-color: #E4E5E7 !important;
+    color: #000 !important;
+  }
