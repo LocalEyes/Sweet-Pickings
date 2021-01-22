@@ -59,12 +59,16 @@ const Home = ({ group }: challengesProps) => {
         }
       >
         <H1 className={grid.goal} vol={8} uppercase>
-          <span className={text.textBg}>Create</span>
+          <span className={text.textBg}>NATURE &</span>
           <br />
-          <span className={text.textBg}>community</span>
+          <span className={text.textBg}>CLIMATE</span>
           <br />
-          <span className={text.textBg}>well-being</span>
+          <span className={text.textBg}>SOLUTIONS</span>
         </H1>
+        <br />
+        <H2 className={grid.goal} vol={5} uppercase>
+          <span className={text.textBg}>A HUB OF ENVIRONMENTAL SOLUTIONS TO MAKE CHANGE POSSIBLE</span>
+        </H2>
       </Banner>
       <Grid tag="main" variant={1} formatted>
       <div className={classnames(text.sectionLinkBanner, grid.edge)}>
