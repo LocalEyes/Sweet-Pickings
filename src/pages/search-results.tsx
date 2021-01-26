@@ -54,7 +54,7 @@ const SearchResults = ({ group, search }: challengesProps) => {
   }, [params.searchText]);
 
   return (
-    <div className={spacing.mb8}>
+    <div>
       <Helmet>
         <title>Search Results - Solutions database</title>
       </Helmet>
@@ -71,47 +71,146 @@ const SearchResults = ({ group, search }: challengesProps) => {
           />
         }
       >
-         <H1 className={grid.goal} vol={8} uppercase>
+        <H1 className={grid.goal} vol={8} uppercase>
           <span className={text.textBg}>Create</span>
           <br />
          <span className={text.textBg}>community</span>
           <br />
           <span className={text.textBg}>well-being</span>
         </H1>
-       </Banner>
-       <br></br>
-       <Grid tag="main" variant={1}>
+      </Banner>
+      <Grid tag="main" variant={1} formatted style={{padding:"30px"}}>
+      <div className={classnames(grid.edge)}>
           <H3 className={classnames(text.color2, grid.goal, spacing.mb2)}
           vol={7}
           uppercase>
               Search Results For:{params.searchText}
           </H3>
-       </Grid>
-       <SocialShare url={document.URL} title={'Search Results for: '+params.searchText}></SocialShare>
-      <Grid tag="main" variant={1}>
-        <H2 className={classnames(text.color2, grid.goal, spacing.mb2)} vol={7} uppercase>
-          <Link to="/challenges">Challenges</Link> <ChevRight />
-        </H2>
-        <div className={grid.goal}>
-        {challenges ? (
+       </div>
+      <div className={classnames(grid.edge)}>
+          <H2 className={classnames(text.color2, spacing.mb2)} vol={7} uppercase>
+              <Link to="/challenges" style={{borderWidth: "0 0 0em 0"}}>Challenges</Link> <ChevRight />
+          </H2>
+          {challenges ? (
+          <div className={grid.edge}>
             <Grid variant={4}>
               {challenges ? (
-                challenges.map((item: any) => {
+               challenges.map((item: any, index: number) => {
+                // if(index < 3){
                   return (
                     <Card
                       title={item.name}
                       url={`/solutions/${item.key}`}
-                      description={item.description}
+                      description={item.excerpt ? item.excerpt : item.description}
+                      media={item.images[0]}
+                      key={item.key}
+                    />
+                  );
+                // } else {
+                //     return null;
+                //   }
+                })
+              ) : (
+                <P>No search results found!</P>
+                )}
+            </Grid>
+          </div>
+        ):<P>No search results found!</P>}
+        <Grid
+            variant={2}
+            formatted
+            className={classnames(
+              spacing.mt2,
+              spacing.mt4,
+              spacing.mb8,
+              grid.pen
+            )}
+          >
+        <Link to="/challenges" className={buttons.link}>
+          Find more challenges
+        </Link>
+        <Link to="/suggestion/challenge" className={buttons.link}>
+          Suggest a challenge
+        </Link>
+        </Grid>
+        </div>
+        <div className={classnames(grid.edge)}>
+          <H2 className={classnames(text.color2, spacing.mb2)} vol={7} uppercase>
+            <Link to="/solutions" style={{borderWidth: "0 0 0em 0"}}>Solutions</Link> <ChevRight />
+          </H2>
+          {solutions ?
+          <div className={grid.edge}>
+            <Grid variant={4}>
+          {solutions ? (
+              solutions.map((item: any, index: number) => {
+                // if(index < 3){
+                return (
+                  <Card
+                    title={item.title}
+                    url={`/case-studies/${item.key}/${slug(item.title?item.title:'')}`}
+                    description={item.excerpt ? item.excerpt : item.description}
+                    media={item.images[0]}
+                    key={item.key}
+                  />
+                );
+              // } else {
+              //     return null;
+              //   }
+              })) :(
+                <P>No search results found!</P>
+              )} 
+              </Grid>   
+            </div> : <P>No search results found!</P> 
+          }
+          <Grid
+            variant={2}
+            formatted
+            className={classnames(
+              spacing.mt2,
+              spacing.mt4,
+              spacing.mb8,
+              grid.pen
+            )}
+          >
+           <Link to="/solutions" className={buttons.link}>
+            Find more solutions
+          </Link>
+
+          <Link to="/suggestion/solution" className={buttons.link}>
+            Suggest a solution
+          </Link>
+            </Grid>
+        </div>
+        <div className={classnames(grid.edge)}>
+        <H2 className={classnames(text.color2, spacing.mb2)} vol={7} uppercase>
+          <Link to="/case-studies" style={{borderWidth: "0 0 0em 0"}}>Case Studies</Link> <ChevRight />
+        </H2>
+          {caseStudies ? (
+          <div className={classnames(grid.edge)}>
+            <Grid variant={4}>
+              {caseStudies ? (
+                caseStudies.map((item: any, index: number) => {
+                  // if(index < 3){
+                  return (
+                    <Card
+                      title={item.name}
+                      url={`/case-studies/${item.key}/${slug(item.title)}`}
+                      description={item.excerpt ? item.excerpt : item.description}
                       media={(item.images && item.images[0])}
                       key={item.key}
                     />
                   );
+                // }
+                //   else {
+                //     return null;
+                //   }
                 })
               ) : (
                 <P>No search results found!</P>
                 )}
             </Grid>
-        ) : <P>No search results found!</P>}
+          </div>
+        ):<P>No search results found!</P>}
         <Grid
             variant={2}
             formatted
@@ -122,107 +221,17 @@ const SearchResults = ({ group, search }: challengesProps) => {
               grid.pen
             )}
           >
-         <Link to="/challenges" className={buttons.link}>
-              Find more challenges
-            </Link>
-            <Link to="/suggestion/challenge" className={buttons.link}>
-              Suggest a challenge
-            </Link>
-            </Grid>
-            </div>
-      </Grid>
-      {/* Solutions grid start */}
-      <Grid tag="main" variant={1}>
-        <H2 className={classnames(text.color2, grid.goal, spacing.mb2)} vol={7} uppercase>
-          <Link to="/solutions">Solutions</Link> <ChevRight />
-        </H2>
-        <div className={grid.goal}>
-        {solutions ? (
-            <Grid variant={4}>
-              {solutions ? (
-                solutions.map((item: any) => {
-                  return (
-                    <Card
-                      title={item.name}
-                      url={`/solutions/${item.key}/${item.name}`}
-                      description={item.description}
-                      media={item.images[0]}
-                      key={item.key}
-                    />
-                  );
-                })
-              ) : (
-                <P>No search results found!</P>
-                )}
-            </Grid>
-        ) : <P>No search results found!</P>}
-        <Grid
-            variant={2}
-            formatted
-            className={classnames(
-              spacing.mt2,
-              spacing.mt4,
-              spacing.mb8,
-              grid.pen
-            )}
-          >
-         <Link to="/solutions" className={buttons.link}>
-           Find more solutions
-         </Link>
-
-         <Link to="/suggestion/solution" className={buttons.link}>
-           Suggest a solution
-         </Link>
-        </Grid>
-        </div>
-      </Grid>
-      {/* Solutions grid end */}
-      {/* CaseStudies grid start */}
-      <Grid tag="main" variant={1}>
-        <H2 className={classnames(text.color2, grid.goal, spacing.mb2)} vol={7} uppercase>
-          <Link to="/case-studies">Case Studies</Link> <ChevRight />
-        </H2>
-        <div className={grid.goal}>
-        {caseStudies ? (
-            <Grid variant={4}>
-              {caseStudies ? (
-                caseStudies.map((item: any) => {
-                  return (
-                    <Card
-                      title={item.title}
-                      url={`/case-studies/${item.key}/${slug(item.title)}`}
-                      description={item.description}
-                      media={item.images[0]}
-                      key={item.key}
-                    />
-                  );
-                })
-              ) : (
-                <P>No search results found!</P>
-                )}
-            </Grid>
-        ) : <P>No search results found!</P>}
-        <Grid
-            variant={2}
-            formatted
-            className={classnames(
-              spacing.mt2,
-              spacing.mt4,
-              spacing.mb8,
-              grid.pen
-            )}
-          >
-            <Link to="/case-studies" className={buttons.link}>
+         <Link to="/case-studies" className={buttons.link}>
                Find more case studies
             </Link>
 
             <Link to="/suggestion/case-study" className={buttons.link}>
               Suggest a case study
             </Link>
-        </Grid>
+            </Grid>
         </div>
       </Grid>
-      {/* CaseStudies grid end */}
+      <SocialShare title={'Home page'} url={document.URL}></SocialShare>
     </div>
   );
 };
