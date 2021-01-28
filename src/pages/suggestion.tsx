@@ -16,6 +16,8 @@ import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.cs
 import { classes as text } from "../styles/puma/text.st.css";
 import { useParams } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "../styles/puma/suggestion.css";
 
 type Inputs = {
@@ -41,10 +43,12 @@ const Suggestion = () => {
     .then(async(response) => {
       console.log(response.data)
       //reset the form
+      toast("Your suggestion is submitted!!", {type: "success"})
       reset();
       setDefaultSelection('');
     })
     .catch((error) => {
+      toast("Some error occured while submitting your suggestion", {type: "error"})
       console.error(error);
     });
   };
@@ -149,6 +153,16 @@ const Suggestion = () => {
         </div>
       </Grid>
       <SocialSahre title={'Suggestion page'} url={document.URL}></SocialSahre>
+      {/* toast for form status */}
+      <ToastContainer
+      position="bottom-center"
+      autoClose={4000}
+      hideProgressBar
+      newestOnTop={false}
+      closeOnClick
+      pauseOnFocusLoss
+      draggable
+      />
     </div>
   );
 };
