@@ -42,8 +42,8 @@ const Suggestion = () => {
     })
     .then(async(response) => {
       console.log(response.data)
-      //reset the form
       toast("Your suggestion is submitted!!", {type: "success"})
+      //reset the form
       reset();
       setDefaultSelection('');
     })
@@ -73,6 +73,11 @@ const Suggestion = () => {
     <div className={spacing.mb8}>
       <Helmet>
         <title>Make a suggestion - Solutions database</title>
+        <meta name="description" content="Suggest something!"/>
+        <meta property="og:title" content="Make a suggestion"/>
+        <meta property="og:description" content="Suggest something!"/>
+        <meta property="og:image" content="url(https://ik.imagekit.io/tcvka0ufln/home_TUhFZjeTJ.jpg)"/>
+        <meta property="og:type" content="website"/>
       </Helmet>
       <Banner
         className={grid.edge}

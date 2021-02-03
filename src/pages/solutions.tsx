@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import classnames from "classnames";
 import { Helmet } from "react-helmet-async";
 import Banner from "../components/Banner/Banner";
-import SocialSahre from "../components/SocialSahre/SocialShare";
+import SocialShare from "../components/SocialSahre/SocialShare";
 import Card from "../components/Card/Card";
 import { api, slug } from "../api";
 import {
@@ -191,6 +191,11 @@ const Solutions = ({ group }: ChallengesProps) => {
     <div className={spacing.mb8}>
       <Helmet>
         <title>Solutions database</title>
+        <meta name="description" content="Find solutions that are suited to you and framed around a specific challenge, the solutions are updated as they evolve."/>
+        <meta property="og:title" content="Solutions"/>
+        <meta property="og:description" content="Find solutions that are suited to you and framed around a specific challenge, the solutions are updated as they evolve."/>
+        <meta property="og:image" content="url(https://ik.imagekit.io/tcvka0ufln/solutions1_Rpskm-eQ_.jpg)"/>
+        <meta property="og:type" content="website"/>
       </Helmet>
       <Banner
         className={grid.edge}
@@ -430,7 +435,7 @@ const Solutions = ({ group }: ChallengesProps) => {
           )}
         </Grid>
       </Grid>
-      <SocialSahre title={(content && content.name) ? content.name : 'Solutions'} url={document.URL}></SocialSahre>
+      <SocialShare title={(content && content.name) ? content.name : 'Solutions'} url={document.URL} description="Find solutions that are suited to you and framed around a specific challenge, the solutions are updated as they evolve."></SocialShare>
     </div>
   );
 };

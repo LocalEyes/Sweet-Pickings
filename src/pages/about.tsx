@@ -15,7 +15,12 @@ const About = () => {
   return (
     <div className={spacing.mb8}>
       <Helmet>
-          <title>{'About - Solutions database'}</title>        
+          <title>{'About - Solutions database'}</title>
+          <meta name="description" content="About Description"/>
+          <meta property="og:title" content="About"/>
+          <meta property="og:description" content="About Description"/>
+          <meta property="og:image" content="url(https://ik.imagekit.io/tcvka0ufln/home_TUhFZjeTJ.jpg)"/>
+          <meta property="og:type" content="website"/>
       </Helmet>
       <Banner
         className={grid.edge}
@@ -35,7 +40,7 @@ const About = () => {
             About
           </span>
         </H1>
-        <SocialShare title={'About - Solutions databaseout'} url={document.URL} description={'This is for test'}></SocialShare>
+        <SocialShare title={'About'} url={document.URL} description={'About Description'}></SocialShare>
       </Banner> 
       <Grid tag="main" variant={1} formatted className={classnames(spacing.mt3)}>
         <P>"

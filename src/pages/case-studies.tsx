@@ -33,6 +33,11 @@ const CaseStudies = () => {
     <div className={spacing.mb8}>
       <Helmet>
         <title>Case Studies - Solutions database</title>
+        <meta name="description" content={"Get inspired by the trailblazers that have completed projects and are sharing their experiences and become one yourself!"}/>
+        <meta property="og:title" content="Case Studies"/>
+        <meta property="og:description" content={"Get inspired by the trailblazers that have completed projects and are sharing their experiences and become one yourself!"}/>
+        <meta property="og:image" content={headerImage}/>
+        <meta property="og:type" content="website"/>
       </Helmet>
       <Banner
         className={grid.edge}
@@ -140,7 +145,7 @@ const CaseStudies = () => {
           </Grid>
         </div>
       </Grid>
-      <SocialShare title={(content && content.name) ? content.name : 'Case Studies'} url={document.URL}></SocialShare>
+      <SocialShare title={(content && content.name) ? content.name : 'Case Studies'} url={document.URL} description = "Get inspired by the trailblazers that have completed projects and are sharing their experiences and become one yourself!"></SocialShare>
     </div>
   );
 };

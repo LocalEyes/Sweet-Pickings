@@ -18,6 +18,7 @@ import { classes as buttons } from "../styles/puma/button.st.css";
 // @ts-ignore
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
+import { Helmet } from "react-helmet-async";
 
 const CaseStudy = ({ match, location }: any) => {
   let params: any = useParams();
@@ -41,7 +42,7 @@ const CaseStudy = ({ match, location }: any) => {
           name: page.title,
           description: page.description,
           images: page.images,
-
+          excerpt: page.excerpt && page.excerpt,
           categories: page.categories && page.categories.main_categories && page.categories.main_categories.items,
 
         });
@@ -57,6 +58,13 @@ const CaseStudy = ({ match, location }: any) => {
 
   return (
     <div className={st(classnames(classes.root, spacing.mb8))}>
+      <Helmet>
+        <meta name="description" content={content.excerpt && content.excerpt}/>
+        <meta property="og:title" content={content.name && content.name}/>
+        <meta property="og:description" content={content.excerpt && content.excerpt}/>
+        <meta property="og:image" content={image_list && image_list[0]}/>
+        <meta property="og:type" content="website"/>
+      </Helmet>
       <DefaultLayout>
         <Banner
           className={grid.edge}
@@ -174,7 +182,7 @@ const CaseStudy = ({ match, location }: any) => {
           </Grid>
         </Grid>
       </DefaultLayout>
-      <SocialShare url={document.URL} title={(content && content.name) ? content.name : 'Case Study'}></SocialShare>
+      <SocialShare url={document.URL} title={(content && content.name) ? content.name : 'Case Study'} description={content.excerpt && content.excerpt}></SocialShare>
     </div>
   );
 };
