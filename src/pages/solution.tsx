@@ -19,6 +19,7 @@ import { st, classes } from "./solution.st.css";
 // @ts-ignore
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
+import { Helmet } from "react-helmet-async";
 
 const Solution = ({ match, location }: any) => {
   const params: any = useParams();
@@ -45,6 +46,7 @@ const Solution = ({ match, location }: any) => {
           name: page.name,
           description: page.description,
           images: page.images || false,
+          excerpt: page.excerpt,
           mainCategores: page.categories.main_categories ? page.categories.main_categories.items : false,
           orgTypes:  page.categories.organisation_types ? page.categories.organisation_types.items : false,
           stakeholders:page.categories.stakeholders ? page.categories.stakeholders.items : false,
@@ -84,6 +86,13 @@ const Solution = ({ match, location }: any) => {
 
   return (
     <div className={st(classnames(classes.root, spacing.mb8))}>
+      <Helmet>
+        <meta name="description" content={content.excerpt && content.excerpt}/>
+        <meta property="og:title" content={content.name && content.name}/>
+        <meta property="og:description" content={content.excerpt && content.excerpt}/>
+        <meta property="og:image" content={content.images && content.images[0]}/>
+        <meta property="og:type" content="website"/>
+      </Helmet>
       <DefaultLayout>
         <Banner
           className={grid.edge}
@@ -268,7 +277,7 @@ const Solution = ({ match, location }: any) => {
           </Grid> 
         </Grid>
       </DefaultLayout>
-      <SocialShare title={(content && content.name) ? content.name : 'Solutions page'} url={document.URL}></SocialShare>
+      <SocialShare title={(content && content.name) ? content.name : 'Solutions page'} url={document.URL} description={content.excerpt && content.excerpt}></SocialShare>
     </div>
   );
 };
