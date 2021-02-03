@@ -39,6 +39,11 @@ const Challenges = ({ group }: ChallengesProps) => {
     <div className={spacing.mb8}>
       <Helmet>
         <title>Challenges - Solutions database</title>
+        <meta name="description" content="We need to understand the challenges before we can fix anything; get familiar with our challenges and lets face them together."/>
+        <meta property="og:title" content="Challenges"/>
+        <meta property="og:description" content="We need to understand the challenges before we can fix anything; get familiar with our challenges and lets face them together."/>
+        <meta property="og:image" content={headerImage}/>
+        <meta property="og:type" content="website"/>
       </Helmet>
       <Banner
         className={grid.edge}
@@ -146,7 +151,7 @@ const Challenges = ({ group }: ChallengesProps) => {
                   <P>No results</P>
                 )}
             </Grid>
-            <SocialShare url={document.URL} title={'Challenges'}></SocialShare>
+            <SocialShare url={document.URL} title={'Challenges'} description="We need to understand the challenges before we can fix anything; get familiar with our challenges and lets face them together."></SocialShare>
           </div>
         )}
 

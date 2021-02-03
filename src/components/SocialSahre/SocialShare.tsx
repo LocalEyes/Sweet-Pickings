@@ -15,8 +15,8 @@ const SocialShare = ({
   return (
       <div className={classnames(classes.floating_menu)}>
         {
-          (showResults) ? <div><FacebookShareButton url={url} hashtag={''} quote={title}>
-          <FacebookIcon round={true} size={40}></FacebookIcon>
+          (showResults) ? <div><FacebookShareButton url={url} hashtag={''} quote={title.concat(' - ').concat(description)}>
+          <FacebookIcon round size={40}></FacebookIcon>
         </FacebookShareButton><br />
         <TwitterShareButton
           url={url}
