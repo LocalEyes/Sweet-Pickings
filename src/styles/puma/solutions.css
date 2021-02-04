@@ -4,18 +4,48 @@
 }
 
 .filterBar {
-  display: flex;
-  justify-content: space-around;
   background-color: #f0f0f0;
   z-index: 1000;
   padding: 1%;
   align-items: center;
-  height: 80px;
+  font-family: Impact;
+}
+
+.filterText {
+  padding: 11px;
+  letter-spacing: 1.3px;
+}
+
+.filterGroup {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 5px;
 }
 
 .inputFilter {
   background-color: #f0f0f0 !important;
-  width: 20%;
+  width: 23%;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  word-spacing: 1px;
+  border-radius: 6px;
+}
+.inputFilter
+  .css-yk16xz-control
+  .css-tlfecz-indicatorContainer:first-child
+  svg.css-6q0nyr-Svg {
+  background: red;
+  fill: white;
+  border-radius: 3px;
+}
+
+.inputFilter
+  .css-1pahdxg-control
+  .css-1gtu0rj-indicatorContainer:first-child
+  svg.css-6q0nyr-Svg {
+  background: red;
+  fill: white;
+  border-radius: 3px;
 }
 /* #f0f0f0 */
 .filterSection .filterBar {

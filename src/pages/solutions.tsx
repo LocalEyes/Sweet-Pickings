@@ -277,29 +277,20 @@ const Solutions = ({ group }: ChallengesProps) => {
         </div>}
         <div className={`${grid.goal} filterSection`}>
         <div className="filterBar" id='stickyHeader'>
-
-        <i className="fa fa-filter" aria-hidden="true" style={{fontSize: "40px"}}></i>
+          <p className="filterText"><b>FILTER: </b>SELECT FROM THE DROPDOWN MENU TO FIND PERSONALISED CONTENT</p>
+        <div className="filterGroup">
+        {/* <i className="fa fa-filter" aria-hidden="true" style={{fontSize: "40px"}}></i> */}
         <Select className = "inputFilter" isClearable
-            placeholder = "Select Challenge..."
-            value = {topicSelected}
-            options={group && group.links.topics.map((topic: any) => {
-              return ({label: topic.name, value: topic.key});
+            placeholder="WHO YOU ARE..."
+            options={stakeHolders && stakeHolders.data.map((stakeHolder: any)=>{
+              return ({label: stakeHolder.name, value: stakeHolder.code})
             })}
-            onChange = {(e) => {
-              setTopic(e && e)
+            onChange={(e) => {
+              setStakeHolder(e && e.value)
             }}
           />
           <Select className = "inputFilter" isClearable
-            placeholder="Select Organization..."
-            options={organisationTypes && organisationTypes.data.map((organisation: any)=>{
-              return ({label: organisation.name, value: organisation.code})
-            })}
-            onChange={(e) => {
-              setOrganisationType(e && e.value)
-            }}
-          />          
-          <Select className = "inputFilter" isClearable
-            placeholder="Select Category..."
+            placeholder="YOUR TYPE OF GROUP..."
             options={mainCategories && mainCategories.data.map((categories: any)=>{
               return ({label: categories.name, value: categories.code})
             })}
@@ -308,14 +299,25 @@ const Solutions = ({ group }: ChallengesProps) => {
             }}
           />
           <Select className = "inputFilter" isClearable
-            placeholder="Who Are You..."
-            options={stakeHolders && stakeHolders.data.map((stakeHolder: any)=>{
-              return ({label: stakeHolder.name, value: stakeHolder.code})
+            placeholder="A TOPIC OF INTEREST..."
+            options={organisationTypes && organisationTypes.data.map((organisation: any)=>{
+              return ({label: organisation.name, value: organisation.code})
             })}
             onChange={(e) => {
-              setStakeHolder(e && e.value)
+              setOrganisationType(e && e.value)
             }}
           />
+          <Select className = "inputFilter" isClearable
+            placeholder = "A TYPE OF CHALLENGE..."
+            value = {topicSelected}
+            options={group && group.links.topics.map((topic: any) => {
+              return ({label: topic.name, value: topic.key});
+            })}
+            onChange = {(e) => {
+              setTopic(e && e)
+            }}
+          />
+          </div>
         </div>
         <br/>
         </div>
