@@ -33,7 +33,7 @@
 .inputFilter
   .css-yk16xz-control
   .css-tlfecz-indicatorContainer:first-child
-  svg.css-6q0nyr-Svg {
+  svg {
   background: red;
   fill: white;
   border-radius: 3px;
@@ -42,7 +42,7 @@
 .inputFilter
   .css-1pahdxg-control
   .css-1gtu0rj-indicatorContainer:first-child
-  svg.css-6q0nyr-Svg {
+  svg {
   background: red;
   fill: white;
   border-radius: 3px;
