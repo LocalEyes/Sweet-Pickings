@@ -64,8 +64,10 @@ const Header = ({ className: classNameProp, children, ...rest }: GridProps) => {
           className={classes.search_field}
           onChange={(e) => setSearchQuery(e.target.value)}/>
           <Button tone={4} variant={3} vol={3} className={classes.search_button} as="li" onClick={()=>{
-            history.push('/search_results/'+searchQuery)
-          }}>
+            if( searchQuery ){
+              history.push('/search_results/'+searchQuery)
+            }
+          }} >
           Search
         </Button>
         </div>
