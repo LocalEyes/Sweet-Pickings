@@ -290,21 +290,21 @@ const Solutions = ({ group }: ChallengesProps) => {
             }}
           />
           <Select className = "inputFilter" isClearable
-            placeholder="YOUR TYPE OF GROUP..."
-            options={mainCategories && mainCategories.data.map((categories: any)=>{
-              return ({label: categories.name, value: categories.code})
-            })}
-            onChange={(e) => {
-              setCategory(e && e.value)
-            }}
-          />
-          <Select className = "inputFilter" isClearable
-            placeholder="A TOPIC OF INTEREST..."
+            placeholder="YOUR GROUP OR ORGANISATION..."
             options={organisationTypes && organisationTypes.data.map((organisation: any)=>{
               return ({label: organisation.name, value: organisation.code})
             })}
             onChange={(e) => {
               setOrganisationType(e && e.value)
+            }}
+          />
+          <Select className = "inputFilter" isClearable
+            placeholder="A TOPIC OF INTEREST..."
+            options={mainCategories && mainCategories.data.map((categories: any)=>{
+              return ({label: categories.name, value: categories.code})
+            })}
+            onChange={(e) => {
+              setCategory(e && e.value)
             }}
           />
           <Select className = "inputFilter" isClearable
