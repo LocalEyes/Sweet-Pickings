@@ -146,8 +146,8 @@ const SearchResults = ({ group, search }: challengesProps) => {
                 // if(index < 3){
                 return (
                   <Card
-                    title={item.title}
-                    url={`/case-studies/${item.key}/${slug(item.title?item.title:'')}`}
+                    title={item.name}
+                    url={`/solutions/${item.key}/${slug(item.name && item.name)}`}
                     description={item.excerpt ? item.excerpt : item.description}
                     media={item.images[0]}
                     key={item.key}
@@ -193,7 +193,7 @@ const SearchResults = ({ group, search }: challengesProps) => {
                   // if(index < 3){
                   return (
                     <Card
-                      title={item.name}
+                      title={item.title}
                       url={`/case-studies/${item.key}/${slug(item.title)}`}
                       description={item.excerpt ? item.excerpt : item.description}
                       media={(item.images && item.images[0])}
