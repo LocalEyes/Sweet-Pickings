@@ -44,9 +44,9 @@ const Home = ({ group }: challengesProps) => {
     <div>
       <Helmet>
         <title>Solutions database</title>
-        <meta name="description" content="A hub of environmental solutions to make change possible"/>
+        <meta name="description" content="Practical ideas for climate action and nature recovery"/>
         <meta property="og:title" content="Local Eyes"/>
-        <meta property="og:description" content="A hub of environmental solutions to make change possible"/>
+        <meta property="og:description" content="Practical ideas for climate action and nature recovery"/>
         <meta property="og:image" content="url(https://ik.imagekit.io/tcvka0ufln/home_TUhFZjeTJ.jpg)"/>
         <meta property="og:type" content="website"/>
       </Helmet>
@@ -72,7 +72,7 @@ const Home = ({ group }: challengesProps) => {
         </H1>
         <br />
         <H2 className={grid.goal} vol={5} uppercase>
-          <span className={text.textBg}>A HUB OF ENVIRONMENTAL SOLUTIONS TO MAKE CHANGE POSSIBLE</span>
+          <span className={text.textBg}>PRACTICAL IDEAS FOR CLIMATE ACTION AND NATURE RECOVERY</span>
         </H2>
       </Banner>
       <Grid tag="main" variant={1} formatted>
@@ -226,7 +226,7 @@ const Home = ({ group }: challengesProps) => {
             </Grid>
         </div>
       </Grid>
-      <SocialShare title={'Home page'} url={document.URL} description="A hub of environmental solutions to make change possible"></SocialShare>
+      <SocialShare title={'Home page'} url={document.URL} description="Practical ideas for climate action and nature recovery"></SocialShare>
     </div>
   );
 };
