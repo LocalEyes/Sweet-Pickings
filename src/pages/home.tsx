@@ -75,15 +75,15 @@ const Home = ({ group }: challengesProps) => {
           <span className={text.textBg}>PRACTICAL IDEAS FOR CLIMATE ACTION AND NATURE RECOVERY</span>
         </H2>
       </Banner>
-      <Grid tag="main" variant={1} formatted>
-      <div className={classnames(text.sectionLinkBanner, grid.edge)}>
-          <H2 className={classnames(text.color2,text.center)} vol={7} uppercase>
+      {/* <Grid tag="main" variant={1} formatted> */}
+      <div className={classnames(text.sectionLinkBanner, grid.edge)}></div>
+          {/* <H2 className={classnames(text.color2,text.center)} vol={7} uppercase>
             <Link to="/solutions"><i className="fa fa-ellipsis-h" aria-hidden="true" style={{fontSize: "40px"}}></i>Solutions<i className="fa fa-ellipsis-h" aria-hidden="true" style={{fontSize: "40px"}}></i></Link>
-          </H2>
-          <P className={classnames(spacing.mb2,text.center)} vol={3}>
+          </H2> */}
+          {/* <P className={classnames(spacing.mb2,text.center)} vol={3}>
             DISCOVER STEP-BY-STEP GUIDES TO TAKING ENVIRONMENTAL ACTION
-          </P>
-          {solutions && (
+          </P> */}
+          {/* {solutions && (
           <div className={grid.edge}>
             <Grid variant={4}>
               {solutions ? (
@@ -106,8 +106,8 @@ const Home = ({ group }: challengesProps) => {
                 )}
             </Grid>
           </div>
-        )}
-        <Grid
+        )} */}
+        {/* <Grid
             variant={2}
             formatted
             className={classnames(
@@ -124,8 +124,8 @@ const Home = ({ group }: challengesProps) => {
         <Link to="/suggestion/solution" className={buttons.link}>
           Suggest a solution
         </Link>
-        </Grid>
-        </div>
+        </Grid> */}
+        {/* </div>
         <div className={classnames(text.sectionLinkBanner, grid.edge)}>
           <H2 className={classnames(text.color1,text.center)} vol={7} uppercase>
             <Link to="/case-studies"><i className="fa fa-ellipsis-h" aria-hidden="true" style={{fontSize: "40px"}}></i>Case Studies<i className="fa fa-ellipsis-h" aria-hidden="true" style={{fontSize: "40px"}}></i></Link>
@@ -174,8 +174,8 @@ const Home = ({ group }: challengesProps) => {
               Suggest a case study
             </Link>
             </Grid>
-        </div>
-        <div className={classnames(text.sectionLinkBanner,grid.edge)}>
+        </div> */}
+        {/* <div className={classnames(text.sectionLinkBanner,grid.edge)}>
             <H2 className={classnames(text.color3,text.center)} vol={7} uppercase>
               <Link to="/challenges"><i className="fa fa-ellipsis-h" aria-hidden="true" style={{fontSize: "40px"}}></i>Challenges<i className="fa fa-ellipsis-h" aria-hidden="true" style={{fontSize: "40px"}}></i></Link>
             </H2>
@@ -205,9 +205,9 @@ const Home = ({ group }: challengesProps) => {
                   <P>No results</P>
                 )}
             </Grid>
-          </div>
-        )}
-        <Grid
+          </div> */}
+        {/* )} */}
+        {/* <Grid
             variant={2}
             formatted
             className={classnames(
@@ -225,8 +225,8 @@ const Home = ({ group }: challengesProps) => {
             </Link>
             </Grid>
         </div>
-      </Grid>
-      <SocialShare title={'Home page'} url={document.URL} description="Practical ideas for climate action and nature recovery"></SocialShare>
+      </Grid> */}
+      {/* <SocialShare title={'Home page'} url={document.URL} description="Practical ideas for climate action and nature recovery"></SocialShare> */}
     </div>
   );
 };

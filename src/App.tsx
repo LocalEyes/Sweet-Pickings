@@ -19,6 +19,7 @@ import Suggestion from "./pages/suggestion";
 import Solution from "./pages/solution";
 import CaseStudy from "./pages/case-study";
 import Header from "./components/Header/Header";
+import HeaderTwo from "./components/Header/HeaderTwo";
 
 import { api } from "./api";
 import Footer from "./components/Footer/Footer";
@@ -59,6 +60,7 @@ const App = () => {
       </Helmet>
       <DefaultLayout>
         <Router>
+          <HeaderTwo />
           <Header />
           {/*
           A <Switch> looks through all its children <Route>

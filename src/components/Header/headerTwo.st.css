@@ -15,7 +15,7 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../components/Header/header.st.css";
+  -st-from: "../../components/Header/headerTwo.st.css";
   -st-default: Header;
   -st-named: navItem;
 }
@@ -31,7 +31,7 @@
 
 
   Header {
-    background: #222;
+    background: #9CC623;
     min-height: 70px;
     position: sticky;
     top: 0;
