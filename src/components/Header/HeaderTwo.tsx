@@ -18,7 +18,6 @@ const Header = ({ className: classNameProp, children, ...rest }: GridProps) => {
     !isTabletOrMobile && setBurgerManager(false);
   },[isTabletOrMobile]);
   
-  // console.log(classes)
   return (
     <div className="headerTwo">
     <Grid
@@ -29,41 +28,38 @@ const Header = ({ className: classNameProp, children, ...rest }: GridProps) => {
       {/* {children} */}
       <nav className={grid.goal} >
         <div className={classes.flex_spaceBetween} >
-        {isTabletOrMobile ? <div className={classes.burger_style} onClick={() => {setBurgerManager(!burgerManager)}}>
-            <div></div>
-            <div></div>
-            <div></div>
+        {/* {isTabletOrMobile ? <div className={classes.burger_style} onClick={() => {setBurgerManager(!burgerManager)}}>
           </div> : <ul className={classes.navList}>
           <Text uppercase vol={4} as="li">
             <Link className={classes.navItem} to="/">
               Home
             </Link>
-          </Text>
+          </Text> */}
 
-          <Text uppercase vol={4} as="li">
+          {/* <Text uppercase vol={4} as="li"> */}
             <Link className={classes.navItem} to="/challenges">
                 Grow for us, pick with us
             </Link>
-          </Text>
+          {/* </Text> */}
 
-          <Text uppercase vol={4} as="li">
+          {/* <Text uppercase vol={4} as="li"> */}
             <Link className={classes.navItem} to="/solutions">
-                United KIngdom, TXB273KE8
+                United Kingdom, TXB273KE8
             </Link>
-          </Text>
+          {/* </Text> */}
 
-          <Text uppercase vol={4} as="li">
+          {/* <Text uppercase vol={4} as="li"> */}
             <Link className={classes.navItem} to="/case-studies">
                 help@sweetpickings.com
             </Link>
-          </Text>
-        </ul> }                 
+          {/* </Text> */}
+        {/* </ul> }                  */}
         <div className={classes.search_div}>
         </div>
         </div>
       </nav>
       <br/>      
-      <div className={classnames(grid.goal, classes.burger_options)} hidden={!burgerManager}>
+      {/* <div className={classnames(grid.goal, classes.burger_options)} hidden={!burgerManager}>
       <div>
         <a href='/'>Home</a>          
       </div>
@@ -76,7 +72,7 @@ const Header = ({ className: classNameProp, children, ...rest }: GridProps) => {
       <div className={classes.last_div}>
         <a href='/case-studies'>Case Studies</a>
       </div>
-      </div>     
+      </div>      */}
     </Grid>
     </div>
   );

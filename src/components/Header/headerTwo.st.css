@@ -1,80 +1,76 @@
-:import {
-  -st-from: "@actionishope/shelley/styles/default/project.st.css";
-  -st-named:
-    --spacing-unit,
+/* header.st.css CSS API */
+.root {
 }
 
-:import {
-  -st-from: "./project.st.css";
-  -st-default: InchesTheme;
-  -st-named:
-    font-special,
-    --color-accent-1,
-    --color-ui;
+.navList {
 }
 
-/* = Root Component */
-:import {
-  -st-from: "../../components/Header/headerTwo.st.css";
-  -st-default: Header;
-  -st-named: navItem;
+.navItem {
 }
 
-:import {
-  -st-from: "@actionishope/shelley/components/Text/text.st.css";
-  -st-default: Text;
+.flex {
+  display: flex;
 }
 
-
-
-@st-scope InchesTheme {
-
-
-  Header {
-    background: #9CC623;
-    min-height: 70px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  Header::navList {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    list-style: none;
-  }
-
-  Header::navItem {
-    list-style: none;
-    padding: 20px;
-    display: inline-block;
-    text-transform: uppercase;
-    font-family: Impact;
-    letter-spacing: 0.07em;
-    -webkit-font-smoothing: antialiased;
-    text-decoration: none;
-    transition: background-color ease-in 100ms;
-    border-color: transparent;
-    font-family: value(font-special);
-  }
-
-  Header::navItem:hover,
-  Header::navItem:focus {
-    background-color: #222;
-    border-color: transparent;
-  }
-
-  /* Address in Shelley. */
-  Header Text .navItem {
-    color: #fff;
-  }
-
-  /* div.header-two {
-    background-color: 
-  } */
-
+.flex_spaceBetween {
+  display: flex;
+  justify-content: space-between;
 }
 
+.header_burger_border {
+  border-bottom: 1px solid #fff;
+}
 
+.burger_style {
+  align-self: center;
+  float: left;
+  cursor: pointer;
+}
 
+.burger_style div {
+  width: 30px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+}
+
+.burger_options {
+  font-family: Impact;
+  color: white;
+  font-size: 20px;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+.burger_options div {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.burger_options div a {
+  text-decoration: none;
+  width: 100%;
+}
+
+.last_div {
+  margin-bottom: 12px;
+}
+
+.search_div {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  width: 340px;
+}
+
+.search_field {
+  height: 40px;
+  width: 100%;
+  padding-left: 8px;
+}
+
+.search_button {
+  height: 40px;
+  width: 25%;
+  margin-left: 10px;
+}
