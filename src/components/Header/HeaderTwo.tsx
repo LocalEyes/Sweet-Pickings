@@ -4,6 +4,7 @@ import { st, classes } from "./headerTwo.st.css";
 import { Grid, GridProps, Text, Button } from "@actionishope/shelley";
 import { Link } from "react-router-dom";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
+import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, LinkedinIcon }  from "react-share";
 
 // @ts-ignore
 import { useMediaQuery } from 'react-responsive';
@@ -40,10 +41,10 @@ const Header = ({ className: classNameProp, children, ...rest }: GridProps) => {
                 help@sweetpickings.com
             </Link>
 
-            {/* <Link></Link> */}
-
-        <div className={classes.search_div}>
-        </div>
+            <Link className={classes.navItem} to="/" ><FacebookIcon round size={40}></FacebookIcon></Link>
+            <Link className={classes.navItem} to="/" ><TwitterIcon round size={40}></TwitterIcon></Link>
+            <Link className={classes.navItem} to="/" ><LinkedinIcon round size={40}></LinkedinIcon></Link>
+            
         </div>
       </nav>
       <br/>
