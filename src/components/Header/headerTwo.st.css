@@ -1,11 +1,17 @@
 /* header.st.css CSS API */
 .root {
+  background-color: #7FA11C;
 }
 
 .navList {
 }
 
 .navItem {
+  font-size: larger;
+  text-decoration: none;
+  color: black;
+  font-family: Barlow;
+  font-weight: bolder;
 }
 
 .flex {
