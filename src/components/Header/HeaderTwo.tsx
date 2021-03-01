@@ -41,7 +41,7 @@ const Header = ({ className: classNameProp, children, ...rest }: GridProps) => {
             </p>
 
             <p className={classes.navItem}>
-                <HiAtSymbol size="30px" /> help@sweetpickings.com
+                <HiAtSymbol size="30px" />help@sweetpickings.com
             </p>
 
             <FaFacebook size="40px" />
