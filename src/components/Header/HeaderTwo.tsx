@@ -4,9 +4,11 @@ import { st, classes } from "./headerTwo.st.css";
 import { Grid, GridProps, Text, Button } from "@actionishope/shelley";
 import { Link } from "react-router-dom";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
-// import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, LinkedinIcon }  from "react-share";
-// @ts-ignore
-import { SocialIcon } from 'react-social-icons';
+
+import { FaFacebook } from 'react-icons/fa';
+import { AiFillTwitterCircle, AiFillYoutube, AiFillLinkedin } from 'react-icons/ai';
+import { IoLocation } from 'react-icons/io5';
+import { HiAtSymbol } from "react-icons/hi";
 
 // @ts-ignore
 import { useMediaQuery } from 'react-responsive';
@@ -28,29 +30,25 @@ const Header = ({ className: classNameProp, children, ...rest }: GridProps) => {
       className={st(classnames(classes.root, classNameProp, burgerManager && classes.header_burger_border))}
       {...rest}
     >
-      {/* {children} */}
       <nav className={grid.goal} >
         <div className={classes.flex_spaceBetween} >
-            <Link className={classes.navItem} to="/challenges">
+            <p className={classes.navItem} >
                 Grow for us, pick with us
-            </Link>
+            </p>
 
-            <Link className={classes.navItem} to="/solutions">
-                United Kingdom, TXB273KE8
-            </Link>
+            <p className={classes.navItem} >
+              <IoLocation size="30px" /> United Kingdom, TXB273KE8
+            </p>
 
-            <Link className={classes.navItem} to="/case-studies">
-                help@sweetpickings.com
-            </Link>
+            <p className={classes.navItem}>
+                <HiAtSymbol size="30px" /> help@sweetpickings.com
+            </p>
 
-            {/* <Link className={classes.navItem} to="/" ><FacebookIcon round size={40}></FacebookIcon></Link>
-            <Link className={classes.navItem} to="/" ><TwitterIcon round size={40}></TwitterIcon></Link>
-            <Link className={classes.navItem} to="/" ><LinkedinIcon round size={40}></LinkedinIcon></Link> */}
-            <SocialIcon style={{width: 40, height: 40}} url="http://facebook.com" />
-            <SocialIcon style={{width: 40, height: 40}} url="http://twitter.com" />
-            <SocialIcon style={{width: 40, height: 40}} url="http://youtube.com" />
-            <SocialIcon style={{width: 40, height: 40}} url="http://linkedin.com" />
-            
+            <FaFacebook size="40px" />
+            <AiFillTwitterCircle size="40px" />
+            <AiFillYoutube size="40px" />
+            <AiFillLinkedin size="40px" />
+
         </div>
       </nav>
       <br/>

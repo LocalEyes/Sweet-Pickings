@@ -9,9 +9,11 @@
 .navItem {
   font-size: larger;
   text-decoration: none;
-  color: black;
+  text-decoration-color: black;
   font-family: Barlow;
   font-weight: bolder;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .flex {
