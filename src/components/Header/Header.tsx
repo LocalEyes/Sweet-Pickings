@@ -24,35 +24,42 @@ const Header = ({ className: classNameProp, children, ...rest }: GridProps) => {
       className={st(classnames(classes.root, classNameProp, burgerManager && classes.header_burger_border))}
       {...rest}
     >
-      {/* {children} */}
+      
+      {children}
       <nav className={grid.goal}>
         <div className={classes.flex_spaceBetween}>
         {isTabletOrMobile ? <div className={classes.burger_style} onClick={() => {setBurgerManager(!burgerManager)}}>
-            <div></div>
+        <div></div>
             <div></div>
             <div></div>
           </div> : <ul className={classes.navList}>
           <Text uppercase vol={4} as="li">
             <Link className={classes.navItem} to="/">
-              Home
+              Story
             </Link>
           </Text>
 
           <Text uppercase vol={4} as="li">
-            <Link className={classes.navItem} to="/challenges">
-              Challenges
+            <Link className={classes.navItem} to="/pickers">
+              Pickers
             </Link>
           </Text>
 
           <Text uppercase vol={4} as="li">
-            <Link className={classes.navItem} to="/solutions">
-              Solutions
+            <Link className={classes.navItem} to="/growers">
+              Growers
             </Link>
           </Text>
 
           <Text uppercase vol={4} as="li">
-            <Link className={classes.navItem} to="/case-studies">
-              Case Studies
+            <Link className={classes.navItem} to="/recipients">
+              Recipients
+            </Link>
+          </Text>
+
+          <Text uppercase vol={4} as="li">
+            <Link className={classes.navItem} to="/gallery">
+              Gallery
             </Link>
           </Text>
         </ul> }                 
@@ -76,16 +83,19 @@ const Header = ({ className: classNameProp, children, ...rest }: GridProps) => {
       <br/>      
       <div className={classnames(grid.goal, classes.burger_options)} hidden={!burgerManager}>
       <div>
-        <a href='/'>Home</a>          
+        <a href='/'>Story</a>          
       </div>
       <div>
-        <a href='/challenges'>Challenges</a>
+        <a href='/pickers'>Pickers</a>
       </div>
       <div>
-        <a href='/solutions'>Solutions</a>
+        <a href='/growers'>Growers</a>
       </div>
-      <div className={classes.last_div}>
-        <a href='/case-studies'>Case Studies</a>
+      <div>
+        <a href='/recipients'>Recipients</a>
+      </div>
+      <div>
+        <a href='/gallery'>Gallery</a>
       </div>
       </div>     
     </Grid>

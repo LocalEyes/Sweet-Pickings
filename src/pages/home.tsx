@@ -43,11 +43,11 @@ const Home = ({ group }: challengesProps) => {
   return (
     <div>
       <Helmet>
-        <title>Solutions database</title>
+        <title>Harvest database</title>
         <meta name="description" content="Practical ideas for climate action and nature recovery"/>
-        <meta property="og:title" content="Local Eyes"/>
+        <meta property="og:title" content="Sweet Pickings"/>
         <meta property="og:description" content="Practical ideas for climate action and nature recovery"/>
-        <meta property="og:image" content="url(https://ik.imagekit.io/tcvka0ufln/home_TUhFZjeTJ.jpg)"/>
+        <meta property="og:image" content="url(https://ik.imagekit.io/jhvsenz3dow/anastasiya-romanova-5jxlQo4Z-Ko-unsplash_jZ6D9rWyO.jpg)"/>
         <meta property="og:type" content="website"/>
       </Helmet>
       <Banner
@@ -56,24 +56,16 @@ const Home = ({ group }: challengesProps) => {
           <div
             style={{
               opacity: 0.9,
-              backgroundImage: `url(https://ik.imagekit.io/tcvka0ufln/home_TUhFZjeTJ.jpg`,
+              backgroundImage: 'url(https://ik.imagekit.io/jhvsenz3dow/anastasiya-romanova-5jxlQo4Z-Ko-unsplash_jZ6D9rWyO.jpg)',
               backgroundSize: "cover",
               backgroundPosition: "0 50%",
             }}
           />
         }
       >
-        <H1 className={grid.goal} vol={8} uppercase>
-          <span className={text.textBg}>NATURE &</span>
-          <br />
-          <span className={text.textBg}>CLIMATE</span>
-          <br />
-          <span className={text.textBg}>SOLUTIONS</span>
+        <H1 className={grid.goal} vol={7}>
+          <span>Ensuring nature's abundance of fruit does not go to waste...</span>
         </H1>
-        <br />
-        <H2 className={grid.goal} vol={5} uppercase>
-          <span className={text.textBg}>PRACTICAL IDEAS FOR CLIMATE ACTION AND NATURE RECOVERY</span>
-        </H2>
       </Banner>
       {/* <Grid tag="main" variant={1} formatted> */}
       <div className={classnames(text.sectionLinkBanner, grid.edge)}></div>
