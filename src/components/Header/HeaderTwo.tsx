@@ -44,10 +44,11 @@ const Header = ({ className: classNameProp, children, ...rest }: GridProps) => {
                 <HiAtSymbol size="30px" />help@sweetpickings.com
             </p>
 
-            <FaFacebook size="40px" />
-            <AiFillTwitterCircle size="40px" />
-            <AiFillYoutube size="40px" />
-            <AiFillLinkedin size="40px" />
+            {/* Links to be added below */}
+            <Link to="/"><FaFacebook size="40px" /></Link>
+            <Link to="/"><AiFillTwitterCircle size="40px" /></Link>
+            <Link to="/"><AiFillYoutube size="40px" /></Link>
+            <Link to="/"><AiFillLinkedin size="40px" /></Link>
 
         </div>
       </nav>

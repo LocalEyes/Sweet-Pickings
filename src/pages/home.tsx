@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { H1, H2, P, Grid } from "@actionishope/shelley";
 import Banner from "../components/Banner/Banner";
-import SocialShare from "../components/SocialSahre/SocialShare";
+import SocialShare from "../components/SocialShare/SocialShare";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
 import { classes as text } from "../styles/puma/text.st.css";
 import { classes as spacing } from "../styles/puma/spacing.st.css";

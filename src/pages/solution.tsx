@@ -7,7 +7,7 @@ import { Link, useParams } from "react-router-dom";
 import { api, slug } from "../api";
 import DefaultLayout from "../layouts/Default";
 import Banner from "../components/Banner/Banner";
-import SocialShare from "../components/SocialSahre/SocialShare";
+import SocialShare from "../components/SocialShare/SocialShare";
 import Card from "../components/Card/Card";
 import { H1, H2, P, Grid } from "@actionishope/shelley";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";

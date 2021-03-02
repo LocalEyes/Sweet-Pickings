@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 import DefaultLayout from "../layouts/Default";
 import Banner from "../components/Banner/Banner";
-import SocialShare from "../components/SocialSahre/SocialShare";
+import SocialShare from "../components/SocialShare/SocialShare";
 import { H1, H2, Grid, P } from "@actionishope/shelley";
 import { classes as spacing } from "@actionishope/shelley/styles/default/spacing.st.css";
 import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";

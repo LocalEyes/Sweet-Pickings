@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import classnames from "classnames";
 import { Helmet } from "react-helmet-async";
 import Banner from "../components/Banner/Banner";
-import SocialShare from "../components/SocialSahre/SocialShare";
+import SocialShare from "../components/SocialShare/SocialShare";
 import Card from "../components/Card/Card";
 import { api, slug } from "../api";
 import {
