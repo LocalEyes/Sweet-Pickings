@@ -47,7 +47,7 @@ const Home = ({ group }: challengesProps) => {
         <meta name="description" content="Practical ideas for climate action and nature recovery"/>
         <meta property="og:title" content="Sweet Pickings"/>
         <meta property="og:description" content="Practical ideas for climate action and nature recovery"/>
-        <meta property="og:image" content="url(https://ik.imagekit.io/jhvsenz3dow/anastasiya-romanova-5jxlQo4Z-Ko-unsplash_jZ6D9rWyO.jpg)"/>
+        <meta property="og:image" content="url(https://ik.imagekit.io/jhvsenz3dow/appletrees_88UMej9KK.png)"/>
         <meta property="og:type" content="website"/>
       </Helmet>
       <Banner
@@ -56,7 +56,7 @@ const Home = ({ group }: challengesProps) => {
           <div
             style={{
               opacity: 0.9,
-              backgroundImage: 'url(https://ik.imagekit.io/jhvsenz3dow/anastasiya-romanova-5jxlQo4Z-Ko-unsplash_jZ6D9rWyO.jpg)',
+              backgroundImage: 'url(https://ik.imagekit.io/jhvsenz3dow/appletrees_88UMej9KK.png)',
               backgroundSize: "cover",
               backgroundPosition: "0 50%",
             }}

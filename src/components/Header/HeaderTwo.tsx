@@ -18,7 +18,7 @@ const HeaderTwo = ({ className: classNameProp, children, ...rest }: GridProps) =
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991px)' });
   const [burgerManager, setBurgerManager] = useState<boolean>(false);
   const history = useHistory();
-  const [searchQuery, setSearchQuery] = useState('')
+  
   useEffect(() => {
     !isTabletOrMobile && setBurgerManager(false);
   },[isTabletOrMobile]);
