@@ -32,24 +32,26 @@ const HeaderTwo = ({ className: classNameProp, children, ...rest }: GridProps) =
     >
       <nav className={grid.goal} >
         <div className={classes.flex_spaceBetween} >
-            <p className={classes.navItem} >
-                Grow for us, pick with us
-            </p>
+          <div className={classes.navItem}> 
+            <p className={classes.navItem} >Grow for us, pick with us</p>
+          </div>
 
             {/* Actual links to be added below */}
             <p className={classes.navItem} >
-              <Link to="/"><IoLocation size="30px" /></Link> United Kingdom, TXB273KE8
+              <Link to="/"><IoLocation size="40px" /></Link> 
+              United Kingdom, TXB273KE8
             </p>
 
             <p className={classes.navItem}>
-                <Link to="/"><HiAtSymbol size="30px" /></Link> help@sweetpickings.com
+                <Link to="/"><HiAtSymbol size="40px" /></Link> 
+                help@sweetpickings.com
             </p>
 
             {/* Actual links to be added below */}
-            <Link to="/"><FaFacebook size="40px" /></Link>
-            <Link to="/"><AiFillTwitterCircle size="40px" /></Link>
-            <Link to="/"><AiFillYoutube size="40px" /></Link>
-            <Link to="/"><AiFillLinkedin size="40px" /></Link>
+            <Link className={classes.navItem} to="/"><FaFacebook size="40px" /></Link>
+            <Link className={classes.navItem} to="/"><AiFillTwitterCircle size="40px" /></Link>
+            <Link className={classes.navItem} to="/"><AiFillYoutube size="40px" /></Link>
+            <Link className={classes.navItem} to="/"><AiFillLinkedin size="40px" /></Link>
         </div>
       </nav>
       <br/>
