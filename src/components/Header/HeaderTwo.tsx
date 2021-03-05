@@ -37,15 +37,15 @@ const HeaderTwo = ({ className: classNameProp, children, ...rest }: GridProps) =
           </div>
 
             {/* Actual links to be added below */}
-            <p className={classes.navItem} >
-              <Link to="/"><IoLocation size="40px" /></Link> 
-              United Kingdom, TXB273KE8
-            </p>
+            <Link className={classes.navItem} to="/"><IoLocation size="40px" /></Link> 
+            <div className={classes.navItem}>
+              <p className={classes.navItem} >United Kingdom, TXB273KE8</p>
+            </div>
 
-            <p className={classes.navItem}>
-                <Link to="/"><HiAtSymbol size="40px" /></Link> 
-                help@sweetpickings.com
-            </p>
+            <Link className={classes.navItem} to="/"><HiAtSymbol size="40px" /></Link> 
+            <div className={classes.navItem}>
+              <p className={classes.navItem}>help@sweetpickings.com</p>
+            </div>
 
             {/* Actual links to be added below */}
             <Link className={classes.navItem} to="/"><FaFacebook size="40px" /></Link>
