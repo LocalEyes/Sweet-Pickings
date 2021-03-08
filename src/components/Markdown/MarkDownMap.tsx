@@ -1,52 +1,58 @@
-import React from "react";
-import { Text, TextProps } from "@actionishope/shelley";
-import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
-import { classes as spacing } from "../../styles/puma/spacing.st.css";
+import React from 'react'
 
-import {
-  getHTML,
-  shouldTransform,
-} from "../../components/Markdown/transformers/youtube";
+export default function MarkDownMap() {
+  return (
+    <div>
+      MarkDownMap
+    </div>
+  )
+}
 
-export const paragraph = ({ children, as = "p", vol = 3 }: TextProps) => (
-  <Text {...{ vol, as }}>{children}</Text>
-);
 
-export const listItem = ({ children, as = "li", vol = 3 }: TextProps) => (
-  <Text {...{ vol, as }} className={spacing.mb05}>
-    {children}
-  </Text>
-);
+// import {
+//   getHTML,
+//   shouldTransform,
+// } from "../../components/Markdown/transformers/youtube";
 
-export const link = (props: any) => {
-  // Struggling to get remark working so this is a hack to render youtubes from links.
-  // console.log(props, props.node.position.start.column === 1);
-  const html =
-    shouldTransform(props.href) && props.node.position.start.column === 1 ? (
-      getHTML(props.href)
-    ) : (
-      <a href={`${props.href}`}>{props.children}</a>
-    );
-  return html;
-};
+// export const paragraph = ({ children, as = "p", vol = 3 }: TextProps) => (
+//   <Text {...{ vol, as }}>{children}</Text>
+// );
 
-export const heading = ({ node, children }: any) => {
-  const as = node.depth === 2 ? "h2" : "h3";
-  const vol = node.depth === 2 ? 6 : 5;
-  return <Text {...{ as, vol }}>{children}</Text>;
-};
+// export const listItem = ({ children, as = "li", vol = 3 }: TextProps) => (
+//   <Text {...{ vol, as }} className={spacing.mb05}>
+//     {children}
+//   </Text>
+// );
 
-export const table = ({ children }: any) => {
-  return <table className={grid.pen}>{children}</table>;
-};
+// export const link = (props: any) => {
+//   // Struggling to get remark working so this is a hack to render youtubes from links.
+//   // console.log(props, props.node.position.start.column === 1);
+//   const html =
+//     shouldTransform(props.href) && props.node.position.start.column === 1 ? (
+//       getHTML(props.href)
+//     ) : (
+//       <a href={`${props.href}`}>{props.children}</a>
+//     );
+//   return html;
+// };
 
-export const renderers = {
-  heading,
-  paragraph,
-  link,
-  listItem,
-  table,
-};
+// export const heading = ({ node, children }: any) => {
+//   const as = node.depth === 2 ? "h2" : "h3";
+//   const vol = node.depth === 2 ? 6 : 5;
+//   return <Text {...{ as, vol }}>{children}</Text>;
+// };
+
+// export const table = ({ children }: any) => {
+//   return <table className={grid.pen}>{children}</table>;
+// };
+
+// export const renderers = {
+//   heading,
+//   paragraph,
+//   link,
+//   listItem,
+//   table,
+// };
 
 // <Text {...{ vol, tag, ...rest }}>{children}</Text>
 

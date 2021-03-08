@@ -8,12 +8,10 @@ import {
   // Link,
 } from "react-router-dom";
 
-import DefaultLayout from "./layouts/Default";
 import HomePage from "./pages/home";
 import ChallengesPage from "./pages/challenges";
 import SolutionsPage from "./pages/solutions";
 import CaseStudies from "./pages/case-studies";
-import { Helmet, HelmetProvider } from "react-helmet-async";
 import About from "./pages/about";
 import Suggestion from "./pages/suggestion";
 import Solution from "./pages/solution";
@@ -45,20 +43,6 @@ const App = () => {
   }, []);
 
   return (
-    <HelmetProvider>
-      <Helmet>
-        <title>LocalEyes</title>
-        <meta
-          name="apple-mobile-web-app-status-bar-style"
-          content="black-translucent"
-        ></meta>
-        {/* <link rel="manifest" href="./shelley.webmanifest"></link> */}
-        <link
-          rel="stylesheet"
-          href="https://use.typekit.net/bml4mzu.css"
-        ></link>
-      </Helmet>
-      <DefaultLayout>
         <Router>
           <HeaderTwo />
           <Header />
@@ -71,13 +55,13 @@ const App = () => {
         */}
           <Switch>
             <Route exact path="/">
-              <HomePage group={groupData}/>
+              <HomePage />
             </Route>
             <Route exact path="/challenges">
-              <ChallengesPage group={groupData} />
+              <ChallengesPage />
             </Route>
             <Route exact path="/solutions">
-              <SolutionsPage group={groupData} />
+              <SolutionsPage />
             </Route>
             <Route exact path="/case-studies">
               <CaseStudies />
@@ -92,10 +76,10 @@ const App = () => {
               <Suggestion />
             </Route>
             <Route exact path="/solutions/:topicId">
-              <SolutionsPage group={groupData} />
+              <SolutionsPage />
             </Route>
             <Route exact path="/search_results/:searchText">
-              <SearchResults group={groupData} search={''} />
+              <SearchResults />
             </Route>
           </Switch>
           <Route
@@ -108,8 +92,6 @@ const App = () => {
           />
           <Footer />
         </Router>
-      </DefaultLayout>
-    </HelmetProvider>
   );
 };
 

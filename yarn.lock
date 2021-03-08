@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@actionishope/shelley@^0.1.1-alpha.24":
+"/shelley@^0.1.1-alpha.24":
   "integrity" "sha512-LTNrTxiVMPiAUBBw9ncqDqa/O6Z3paTM2509kVlNsO7wQAiykC/RxdeBUk8ToMdcr4FDftVR29N2tSVOPQRyhg=="
-  "resolved" "https://registry.npmjs.org/@actionishope/shelley/-/shelley-0.1.1-alpha.27.tgz"
+  "resolved" "https://registry.npmjs.org//shelley/-/shelley-0.1.1-alpha.27.tgz"
   "version" "0.1.1-alpha.27"
   dependencies:
     "@stylable/dom-test-kit" "^3.11.9"

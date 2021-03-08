@@ -1,6 +1,6 @@
 /* = Default project vars. */
 :import {
-  -st-from: "@actionishope/shelley/styles/default/project.st.css";
+  -st-from: "/shelley/styles/default/project.st.css";
   -st-named:
     --spacing-unit;
 }
